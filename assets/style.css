@@ -397,3 +397,13 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 .quote figcaption b { color: var(--ink); font-weight: 600; }
 @media (max-width: 680px) { .quotes { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .quote { transition: none; } .quote:hover { transform: none; } }
+
+/* Hero shade: keeps white text readable over bright sunrise photos */
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(12,8,28,0.55) 0, rgba(12,8,28,0) 9rem),
+    linear-gradient(90deg, rgba(12,8,28,0.68) 0%, rgba(12,8,28,0.5) 40%, rgba(12,8,28,0.12) 72%, rgba(12,8,28,0) 100%); }
+@media (max-width: 680px) {
+  .hero::before { background:
+    linear-gradient(180deg, rgba(12,8,28,0.55) 0, rgba(12,8,28,0.4) 30%, rgba(12,8,28,0.62) 65%, rgba(12,8,28,0.55) 100%); }
+}
