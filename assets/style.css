@@ -282,3 +282,33 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
   .topbar .wrap { gap: 0.4rem 0.9rem; font-size: 0.84rem; }
   .topbar .home { font-size: 1.05rem; }
 }
+
+/* Guild: each crest animal comes alive when its card is hovered or focused. */
+.member, .spec { transition: transform .25s ease, border-color .25s ease; }
+.member:hover, .member:focus-within, .spec:hover, .spec:focus-within { transform: translateY(-2px); border-color: var(--accent); }
+.crest { transition: background .4s ease; transform-origin: 50% 90%; }
+.member:hover .crest.unicorn, .member:focus-within .crest.unicorn, .member.awake .crest.unicorn {
+  background: linear-gradient(120deg, #F29BBA, #F1C063, #8FD3C9, #B49BF2, #F29BBA) 0 0 / 300% 100%;
+  animation: rainbow 2.4s linear infinite, prance .9s ease-in-out infinite;
+}
+.member:hover .crest.griffin, .member:focus-within .crest.griffin, .member.awake .crest.griffin {
+  background: linear-gradient(180deg, #F7DA8C, #C98A2B);
+  animation: swoop 1.4s ease-in-out infinite;
+}
+.member:hover .crest.phoenix, .member:focus-within .crest.phoenix, .member.awake .crest.phoenix {
+  background: linear-gradient(0deg, #E2462B, #F28A2E 45%, #F7D56A) 0 0 / 100% 200%;
+  animation: flame 1.1s ease-in-out infinite alternate, rise 1.6s ease-in-out infinite;
+}
+@keyframes rainbow { to { background-position: 300% 0; } }
+@keyframes prance { 0%, 100% { transform: translateY(0) rotate(0); } 30% { transform: translateY(-6px) rotate(-8deg); } 60% { transform: translateY(0) rotate(3deg); } }
+@keyframes swoop { 0%, 100% { transform: translate(0, 0) rotate(0) scaleY(1); } 25% { transform: translate(3px, -7px) rotate(6deg) scaleY(.92); } 50% { transform: translate(-2px, -3px) rotate(-4deg) scaleY(1.05); } 75% { transform: translate(2px, -6px) rotate(3deg) scaleY(.95); } }
+@keyframes flame { to { background-position: 0 100%; } }
+@keyframes rise { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-7px) scale(1.06); } }
+.member .links, .spec .links { display: flex; gap: 0.15rem; margin: 0.35rem 0 -0.5rem -11px; }
+.member .icon-link, .spec .icon-link { width: 40px; height: 40px; margin: 0; color: var(--accent-text, var(--accent)); opacity: 0.9; }
+.member .icon-link:hover, .spec .icon-link:hover, .member .icon-link:focus-visible, .spec .icon-link:focus-visible { background-color: color-mix(in srgb, var(--accent) 16%, transparent); opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .member, .spec { transition: none; }
+  .member:hover, .member:focus-within, .spec:hover, .spec:focus-within { transform: none; }
+  .member .crest { animation: none !important; }
+}

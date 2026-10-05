@@ -60,4 +60,16 @@
         .catch(function () { btn.disabled = false; status.textContent = 'The owl got lost. Please book a call above instead.'; });
     });
   }
+  // Guild crests: phones have no hover, so wake each animal briefly as its card scrolls into view, and on tap.
+  var members = document.querySelectorAll('.member');
+  function wake(m, ms) { m.classList.add('awake'); clearTimeout(m._t); m._t = setTimeout(function () { m.classList.remove('awake'); }, ms); }
+  members.forEach(function (m) { m.addEventListener('click', function (e) { if (!e.target.closest('a')) wake(m, 2400); }); });
+  if (window.matchMedia && matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en, i) {
+        if (en.isIntersecting) { io.unobserve(en.target); setTimeout(function () { wake(en.target, 2400); }, i * 500); }
+      });
+    }, { threshold: 0.8 });
+    members.forEach(function (m) { io.observe(m); });
+  }
 })();
