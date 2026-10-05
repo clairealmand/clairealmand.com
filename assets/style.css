@@ -383,3 +383,17 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
   .js .timeline[data-anim] li { opacity: 1; transform: none; transition: none; }
   .js .timeline[data-anim].in li::before { animation: none; }
 }
+
+/* Home top menu, section kind tags, testimonials */
+.home-nav { position: absolute; top: 0; left: 0; right: 0; z-index: 3; }
+.kind { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: -0.4rem; }
+.which { margin-block: 1rem 0.25rem; max-width: 40rem; }
+.quotes-label { display: block; margin-top: 2.25rem; margin-bottom: 0.75rem; }
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
+.quote { margin: 0; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 10px; display: grid; gap: 0.9rem; align-content: space-between; min-width: 0; transition: transform .25s ease, border-color .25s ease; }
+.quote:hover { transform: translateY(-3px); border-color: var(--accent-text, var(--accent)); }
+.quote blockquote { margin: 0; font-size: 0.95rem; line-height: 1.55; }
+.quote figcaption { font-size: 0.82rem; color: var(--muted); display: grid; gap: 0.1rem; }
+.quote figcaption b { color: var(--ink); font-weight: 600; }
+@media (max-width: 680px) { .quotes { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .quote { transition: none; } .quote:hover { transform: none; } }
