@@ -29,4 +29,17 @@
   }, { passive: true });
   window.addEventListener('resize', update);
   update();
+
+  // Only the dawn photo loads up front; the rest of the sky arrives on the first scroll, or after a short pause.
+  var skyLoaded = false;
+  function loadSky() {
+    if (skyLoaded) return;
+    skyLoaded = true;
+    photos.forEach(function (ph) {
+      var src = ph.getAttribute('data-bg');
+      if (src) { ph.style.backgroundImage = "url('" + src + "')"; ph.removeAttribute('data-bg'); }
+    });
+  }
+  window.addEventListener('scroll', loadSky, { passive: true, once: true });
+  setTimeout(loadSky, 2500);
 })();
