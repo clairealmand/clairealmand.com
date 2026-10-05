@@ -72,4 +72,15 @@
     }, { threshold: 0.8 });
     members.forEach(function (m) { io.observe(m); });
   }
+  // Sections marked data-anim play their entrance (bars grow, the scenic route draws) once they scroll into view.
+  document.documentElement.classList.add('js');
+  var anims = document.querySelectorAll('[data-anim]');
+  if ('IntersectionObserver' in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); seen.unobserve(en.target); } });
+    }, { threshold: 0.25 });
+    anims.forEach(function (el) { seen.observe(el); });
+  } else {
+    anims.forEach(function (el) { el.classList.add('in'); });
+  }
 })();

@@ -96,8 +96,10 @@ main { position: relative; z-index: 1; }
 .rc-list li span { display: block; font-size: 0.85rem; font-weight: 400; color: var(--muted); }
 
 /* CMO */
-.fits { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.fits li { padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid var(--rule); font-size: 0.95rem; }
+.fits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
+.fit { display: grid; gap: 0.45rem; align-content: start; padding: 1.15rem 1.2rem; border-radius: 10px; border: 1px solid var(--rule); text-decoration: none; color: inherit; min-width: 0; }
+.fit h3 { font-size: 1.3rem; }
+.fit p { font-size: 0.88rem; color: var(--muted); }
 
 /* Timeline */
 .timeline { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem; position: relative; }
@@ -311,4 +313,72 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
   .member, .spec { transition: none; }
   .member:hover, .member:focus-within, .spec:hover, .spec:focus-within { transform: none; }
   .member .crest { animation: none !important; }
+}
+
+/* Interactive pass: everything that looks like an object responds to the pointer. */
+.card, .issue, .fit, .rc-list a, .fork, .timeline li { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.card:hover, .issue:hover, .fit:hover, .fit:focus-visible, .rc-list a:hover, .fork:hover {
+  transform: translateY(-3px); border-color: var(--accent-text, var(--accent)); box-shadow: 0 10px 24px -14px rgba(20, 14, 40, 0.45);
+}
+.card .go::after, .issue .go::after { content: "→"; display: inline-block; margin-left: 0.35em; transition: transform .25s ease; }
+.card:hover .go::after, .issue:hover .go::after { transform: translateX(4px); }
+.issue { position: relative; grid-template-rows: auto 1fr; align-content: start; }
+.issue a.more { text-decoration: none; }
+.issue a.more::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.issue .go { font-size: 0.82rem; font-weight: 600; color: var(--accent-text, var(--accent)); }
+.issue .art { transition: transform .5s ease; }
+.issue:hover .art { transform: scale(1.06); }
+.issues { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.rc-list li { padding: 0; border: 0; }
+.rc-list a { display: block; padding: 0.85rem 1rem; border-radius: 10px; border: 1px solid var(--rule); text-decoration: none; color: inherit; }
+
+/* Bars grow when the spells scroll into view. */
+.bars i { width: var(--w, 100%); }
+.js [data-anim] .bars i { width: 0; transition: width 1.1s cubic-bezier(.2,.7,.2,1); }
+.js [data-anim].in .bars i { width: var(--w); }
+.js [data-anim].in .card:nth-child(2) .bars i { transition-delay: .12s; }
+.js [data-anim].in .card:nth-child(3) .bars i { transition-delay: .24s; }
+.js [data-anim].in .card:nth-child(4) .bars i { transition-delay: .36s; }
+.js [data-anim].in .card:nth-child(5) .bars i { transition-delay: .48s; }
+.js [data-anim].in .card:nth-child(6) .bars i { transition-delay: .6s; }
+.card:hover .bars i.after { filter: brightness(1.15); }
+
+/* The scenic route draws itself, then each stop lights up in turn. */
+.timeline h3 a { text-decoration: none; color: inherit; }
+.timeline h3 a::after { content: ""; position: absolute; inset: 0; }
+.timeline li:hover h3, .timeline li:focus-within h3 { color: var(--accent-text, var(--accent)); }
+.timeline li::before { transition: transform .3s ease, background-color .3s ease, box-shadow .3s ease; z-index: 1; }
+.timeline li:hover::before, .timeline li:focus-within::before { background: var(--accent); transform: scale(1.35); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent); }
+.js .timeline[data-anim]::before { transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(.4,0,.2,1); }
+.js .timeline[data-anim].in::before { transform: scaleX(1); }
+.js .timeline[data-anim] li { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+.js .timeline[data-anim].in li { opacity: 1; transform: none; }
+.js .timeline[data-anim].in li::before { animation: stop-pop .5s ease both; }
+.js .timeline[data-anim].in li:nth-child(1), .js .timeline[data-anim].in li:nth-child(1)::before { transition-delay: 0.3s; animation-delay: 0.3s; }
+.js .timeline[data-anim].in li:nth-child(2), .js .timeline[data-anim].in li:nth-child(2)::before { transition-delay: 0.6s; animation-delay: 0.6s; }
+.js .timeline[data-anim].in li:nth-child(3), .js .timeline[data-anim].in li:nth-child(3)::before { transition-delay: 0.9s; animation-delay: 0.9s; }
+.js .timeline[data-anim].in li:nth-child(4), .js .timeline[data-anim].in li:nth-child(4)::before { transition-delay: 1.2s; animation-delay: 1.2s; }
+.js .timeline[data-anim].in li:nth-child(5), .js .timeline[data-anim].in li:nth-child(5)::before { transition-delay: 1.5s; animation-delay: 1.5s; }
+@keyframes stop-pop { 0% { transform: scale(0.4); background: var(--accent); } 60% { transform: scale(1.5); background: var(--accent); } 100% { transform: scale(1); } }
+@media (max-width: 680px) {
+  .js .timeline[data-anim]::before { transform: scaleY(0); transform-origin: top; }
+  .js .timeline[data-anim].in::before { transform: scaleY(1); }
+  .fits, .issues { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 900px) and (min-width: 681px) { .fits { grid-template-columns: repeat(3, minmax(0, 1fr)); } .issues { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* Spellbook post pages */
+.post-art { margin: 0.25rem 0 0.5rem; border-radius: 10px; overflow: hidden; max-width: 40rem; }
+.post-art img { display: block; width: 100%; height: auto; max-height: 26rem; object-fit: cover; }
+.prose ol { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.6rem; }
+.prose ul.trial, .prose ul.arrows { list-style: none; padding-left: 0; }
+.prose ul.arrows li::before { content: "→ "; color: var(--accent-text, var(--accent)); }
+.prose .sign { font-family: var(--display); font-size: 1.3rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .issue, .fit, .rc-list a, .fork, .timeline li, .issue .art { transition: none !important; transform: none !important; }
+  .js [data-anim] .bars i { width: var(--w); transition: none; }
+  .js .timeline[data-anim]::before { transform: none; transition: none; }
+  .js .timeline[data-anim] li { opacity: 1; transform: none; transition: none; }
+  .js .timeline[data-anim].in li::before { animation: none; }
 }
