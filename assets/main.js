@@ -42,4 +42,22 @@
   }
   window.addEventListener('scroll', loadSky, { passive: true, once: true });
   setTimeout(loadSky, 2500);
+  // "Send an owl" form: posts to /api/owl and reports back without leaving the page.
+  var owl = document.querySelector('.owl-form');
+  if (owl) {
+    var stamp = owl.querySelector('input[name="t"]');
+    if (stamp) stamp.value = String(Date.now());
+    owl.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = owl.querySelector('button'), status = owl.querySelector('.owl-status');
+      btn.disabled = true; status.textContent = 'Sending…';
+      fetch(owl.action, { method: 'POST', body: new FormData(owl) })
+        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+        .then(function (res) {
+          if (res.ok) { owl.reset(); status.textContent = 'Owl sent. I’ll write back soon.'; }
+          else { btn.disabled = false; status.textContent = res.error === 'missing' ? 'Please add your name, email, and a message.' : 'The owl got lost. Please book a call above instead.'; }
+        })
+        .catch(function () { btn.disabled = false; status.textContent = 'The owl got lost. Please book a call above instead.'; });
+    });
+  }
 })();

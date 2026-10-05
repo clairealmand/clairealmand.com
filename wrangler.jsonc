@@ -1,6 +1,7 @@
-// Cloudflare settings: serve this folder as a static site, no build step.
+// Cloudflare settings: a static site, plus a small worker for the contact form at /api/owl.
 {
   "name": "clairealmand-com",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
   "workers_dev": true,
   "routes": [
@@ -9,6 +10,11 @@
   ],
   "assets": {
     "directory": ".",
-    "not_found_handling": "404-page"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  // Sends the form to the inbox in the OWL_TO secret. Needs Email Routing on clairealmand.com
+  // with that inbox verified as a destination address.
+  "send_email": [{ "name": "OWL" }]
 }

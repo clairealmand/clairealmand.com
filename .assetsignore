@@ -5,3 +5,5 @@
 .gitignore
 wrangler.jsonc
 README.md
+src
+.dev.vars

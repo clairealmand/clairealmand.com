@@ -154,6 +154,16 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 .icon-link { display: inline-grid; place-items: center; width: 44px; height: 44px; margin: -11px 0; border-radius: 50%; color: inherit; opacity: 0.85; transition: opacity .2s, background-color .2s; }
 .fork .icon-link { margin: 0 0 0 -11px; color: var(--accent-text, var(--accent)); }
 .ch.night .fork .icon-link { color: #F2C46B; }
+.owl-form { margin-top: 1.5rem; padding: 1.25rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.14); display: grid; gap: 0.9rem; }
+.owl-form h3 { font-size: 1.35rem; }
+.owl-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
+.owl-form label { display: grid; gap: 0.35rem; font-size: 0.85rem; color: #B9B3D3; }
+.owl-form input, .owl-form textarea { font: inherit; font-size: 1rem; color: #EEEAF7; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 0.65rem 0.75rem; width: 100%; }
+.owl-form input:focus, .owl-form textarea:focus { outline: 2px solid #F2C46B; outline-offset: 1px; }
+.owl-form textarea { resize: vertical; min-height: 7rem; }
+.owl-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.owl-status { margin-left: 0.75rem; color: #F2C46B; font-size: 0.93rem; }
+@media (max-width: 680px) { .owl-row { grid-template-columns: minmax(0, 1fr); } }
 .icon-link:hover, .icon-link:focus-visible { opacity: 1; background-color: rgba(255,255,255,0.1); }
 
 @media (max-width: 900px) {
