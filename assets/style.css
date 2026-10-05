@@ -258,3 +258,8 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
   .honors ul { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .stop { transition: none; } }
+.case .cover { width: 100%; max-width: 40rem; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); }
+.issue { position: relative; }
+.issue a.more { text-decoration: none; color: inherit; }
+.issue a.more::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.issue:has(a.more):hover { border-color: var(--accent); }
