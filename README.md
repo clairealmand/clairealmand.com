@@ -18,4 +18,4 @@ Change the text in `index.html`, commit, and push. Every push to `main` deploys;
 - Before launch: remove the `noindex` meta tag in `index.html`.
 
 ## Hosting
-Built for Cloudflare Pages (no build command, output directory `/`). `_headers` sets caching. Works the same on Netlify.
+Hosted on Cloudflare Workers as a static site (`wrangler.jsonc`, deploy command `npx wrangler deploy`, no build command). `.assetsignore` keeps repo files private; `_headers` sets caching.
