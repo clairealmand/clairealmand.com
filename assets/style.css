@@ -149,7 +149,12 @@ main { position: relative; z-index: 1; }
 .text-link { color: var(--accent-text, var(--accent)); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
 footer { position: relative; z-index: 1; color: #CFC9E6; font-size: 0.88rem; }
 footer .wrap { padding-block: 2rem 5rem; display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: space-between; }
-footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem; }
+footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem; align-items: center; }
+.icons { display: flex; gap: 0.5rem; align-items: center; }
+.icon-link { display: inline-grid; place-items: center; width: 44px; height: 44px; margin: -11px 0; border-radius: 50%; color: inherit; opacity: 0.85; transition: opacity .2s, background-color .2s; }
+.fork .icon-link { margin: 0 0 0 -11px; color: var(--accent-text, var(--accent)); }
+.ch.night .fork .icon-link { color: #F2C46B; }
+.icon-link:hover, .icon-link:focus-visible { opacity: 1; background-color: rgba(255,255,255,0.1); }
 
 @media (max-width: 900px) {
   .cards, .guild { grid-template-columns: repeat(2, minmax(0, 1fr)); }
