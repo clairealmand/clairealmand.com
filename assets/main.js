@@ -43,21 +43,37 @@
   window.addEventListener('scroll', loadSky, { passive: true, once: true });
   setTimeout(loadSky, 2500);
   // "Send an owl" form: posts to /api/owl and reports back without leaving the page.
+  // Text stays in the form until the owl is confirmed sent. Each message carries an id, so a retry after
+  // a timeout can't deliver the same owl twice; editing the message starts a new id.
   var owl = document.querySelector('.owl-form');
   if (owl) {
     var stamp = owl.querySelector('input[name="t"]');
     if (stamp) stamp.value = String(Date.now());
+    var btn = owl.querySelector('button'), status = owl.querySelector('.owl-status'), sending = false, owlId = '';
+    var newId = function () { return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + '-' + Math.random().toString(36).slice(2, 10); };
+    var say = function (msg, kind) { status.textContent = msg; status.setAttribute('data-kind', kind || ''); };
+    owl.addEventListener('input', function () { owlId = ''; });
     owl.addEventListener('submit', function (e) {
       e.preventDefault();
-      var btn = owl.querySelector('button'), status = owl.querySelector('.owl-status');
-      btn.disabled = true; status.textContent = 'Sending…';
-      fetch(owl.action, { method: 'POST', body: new FormData(owl) })
-        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+      if (sending) return;
+      if (!owlId) owlId = newId();
+      var data = new FormData(owl); data.append('id', owlId);
+      sending = true; btn.disabled = true; say('Sending…');
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
+      var done = function () { clearTimeout(timer); sending = false; btn.disabled = false; };
+      fetch(owl.action, { method: 'POST', body: data, signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'unknown' }; }); })
         .then(function (res) {
-          if (res.ok) { owl.reset(); status.textContent = 'Owl sent. I’ll write back soon.'; }
-          else { btn.disabled = false; status.textContent = res.error === 'missing' ? 'Please add your name, email, and a message.' : 'The owl got lost. Please book a call above instead.'; }
+          done();
+          if (res.ok) { owl.reset(); owlId = ''; btn.textContent = 'Send another owl'; say('Owl sent. I’ll write back soon.', 'ok'); }
+          else if (res.error === 'missing') say('Please add your name, a valid email, and a message.', 'error');
+          else { btn.textContent = 'Try again'; say('The owl didn’t make it. Your message is still here, so you can try again, or book a call above.', 'error'); }
         })
-        .catch(function () { btn.disabled = false; status.textContent = 'The owl got lost. Please book a call above instead.'; });
+        .catch(function () {
+          done(); btn.textContent = 'Try again';
+          say('No word back from the owl, so it may or may not have arrived. Your message is still here. It’s safe to try again.', 'unsure');
+        });
     });
   }
   // Guild crests: phones have no hover, so wake each animal briefly as its card scrolls into view, and on tap.

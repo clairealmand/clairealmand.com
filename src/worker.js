@@ -29,6 +29,12 @@ export default {
     if (!name || !message || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) return json({ ok: false, error: 'missing' }, 400);
     if (!env.OWL || !env.OWL_TO) return json({ ok: false, error: 'not-configured' }, 503);
 
+    // A retry after a timeout carries the same id; if that owl already flew, don't send it twice.
+    // Best effort: the edge cache is per location, which covers a visitor retrying from the same place.
+    const id = /^[a-z0-9-]{8,64}$/i.test(String(form.get('id') || '')) ? String(form.get('id')) : '';
+    const seenKey = id && new Request('https://owl.internal/sent/' + id);
+    if (seenKey && await caches.default.match(seenKey)) return json({ ok: true, duplicate: true });
+
     const raw = [
       `From: "Owl from clairealmand.com" <${FROM}>`,
       `To: <${env.OWL_TO}>`,
@@ -50,6 +56,7 @@ export default {
 
     try {
       await env.OWL.send(new EmailMessage(FROM, env.OWL_TO, raw));
+      if (seenKey) await caches.default.put(seenKey, new Response('sent', { headers: { 'cache-control': 'max-age=86400' } }));
       return json({ ok: true });
     } catch (e) {
       console.error('owl send failed', e && e.message);

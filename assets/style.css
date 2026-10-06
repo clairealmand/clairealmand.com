@@ -455,3 +455,5 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
   animation: rainbow 2.4s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) { .topbar .home:hover, .topbar .home:focus-visible { animation: none; } }
+.owl-status[data-kind="ok"] { color: #8FD3C9; }
+.owl-status[data-kind="error"], .owl-status[data-kind="unsure"] { display: block; margin: 0.6rem 0 0; color: #F2C46B; }
