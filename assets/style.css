@@ -161,8 +161,8 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 .owl-form h3 { font-size: 1.35rem; }
 .owl-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
 .owl-form label { display: grid; gap: 0.35rem; font-size: 0.85rem; color: #B9B3D3; }
-.owl-form input, .owl-form textarea { font: inherit; font-size: 1rem; color: #EEEAF7; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 0.65rem 0.75rem; width: 100%; }
-.owl-form input:focus, .owl-form textarea:focus { outline: 2px solid #F2C46B; outline-offset: 1px; }
+.owl-form input, .owl-form textarea, .owl-form select { font: inherit; font-size: 1rem; color: #EEEAF7; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 0.65rem 0.75rem; width: 100%; }
+.owl-form input:focus, .owl-form textarea:focus, .owl-form select:focus { outline: 2px solid #F2C46B; outline-offset: 1px; }
 .owl-form textarea { resize: vertical; min-height: 7rem; }
 .owl-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .owl-status { margin-left: 0.75rem; color: #F2C46B; font-size: 0.93rem; }
@@ -475,3 +475,28 @@ html { scroll-padding-top: 4.5rem; }
   .cmo-intro .portrait { order: -1; width: 150px; }
 }
 .cmo-intro > div { display: grid; gap: 1.25rem; }
+
+/* Speaking page: click-to-load videos */
+.videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+@media (max-width: 680px) { .videos { grid-template-columns: minmax(0, 1fr); } }
+.video { margin: 0; display: grid; gap: 0.6rem; }
+.video-play { position: relative; display: block; padding: 0; border: 0; border-radius: 12px; overflow: hidden; cursor: pointer; background: #000; aspect-ratio: 16 / 9; }
+.video-play img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.video-play:hover img, .video-play:focus-visible img { transform: scale(1.03); }
+.video-play:focus-visible { outline: 3px solid #F2C46B; outline-offset: 2px; }
+.video .play { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(18,16,30,0.82); box-shadow: 0 0 0 3px #F2C46B; }
+.video .play::after { content: ""; position: absolute; left: 26px; top: 20px; border-style: solid; border-width: 12px 0 12px 19px; border-color: transparent transparent transparent #FFFDF8; }
+.video iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; }
+.video figcaption { font-size: 0.9rem; color: var(--muted); }
+.video figcaption b { color: var(--ink); }
+.owl-form select option { background: #1C1830; color: #EEEAF7; }
+
+/* How working together starts */
+.how h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; counter-reset: step; }
+.steps li { counter-increment: step; position: relative; padding: 1rem 1rem 1rem 3.1rem; border: 1px solid var(--rule); border-radius: 10px; font-size: 0.92rem; color: var(--muted); }
+.steps li b { display: block; color: var(--ink); font-size: 1rem; margin-bottom: 0.25rem; }
+.steps li::before { content: counter(step); position: absolute; left: 1rem; top: 1rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--ink); color: var(--paper); font: 600 0.85rem/1.5rem var(--body); text-align: center; }
+@media (max-width: 760px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+.speak-teaser { font-size: 0.95rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 1rem; }
+.speak-teaser .stamp { margin-right: 0.5rem; }

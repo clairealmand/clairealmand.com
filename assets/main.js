@@ -98,6 +98,9 @@
     var newId = function () { return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + '-' + Math.random().toString(36).slice(2, 10); };
     var say = function (msg, kind) { status.textContent = msg; status.setAttribute('data-kind', kind || ''); };
     owl.addEventListener('input', function () { owlId = ''; });
+    // Links like /?topic=speaking#owl preselect the reason for writing.
+    var topicParam = (location.search.match(/[?&]topic=(\w+)/) || [])[1];
+    if (topicParam && owl.elements.topic && owl.elements.topic.querySelector('option[value="' + topicParam + '"]')) owl.elements.topic.value = topicParam;
     var unsure = function () {
       btn.textContent = 'Try again';
       say('No word back from the owl, so it may or may not have arrived. Your message is still here if you want to try again or book a call above.', 'unsure');
