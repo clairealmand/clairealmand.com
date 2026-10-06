@@ -239,6 +239,13 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 .prose b { font-weight: 600; }
 .try { max-width: 40rem; padding: 1.1rem 1.25rem; border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 0 10px 10px 0; display: grid; gap: 0.4rem; }
 .try p { font-size: 1.05rem; }
+/* Case studies: a quick problem, action, result summary under the stats */
+.short { max-width: 44rem; padding: 1.1rem 1.25rem; border: 1px solid var(--rule); border-radius: 10px; display: grid; gap: 0.6rem; }
+.short .kind { margin: 0; }
+.short dl { margin: 0; display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 0.55rem 1rem; }
+.short dt { font-weight: 600; }
+.short dd { margin: 0; }
+@media (max-width: 560px) { .short dl { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; } .short dd { margin-bottom: 0.5rem; } }
 .credit { font-size: 0.88rem; color: var(--muted); font-style: italic; max-width: 40rem; }
 .case-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; margin-top: 0.5rem; }
 .case-nav a { padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 10px; text-decoration: none; font-family: var(--display); font-size: 1.2rem; display: grid; gap: 0.2rem; }
