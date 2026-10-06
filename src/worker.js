@@ -26,6 +26,8 @@ export default {
     const name = oneLine(form.get('name'), 120);
     const email = oneLine(form.get('email'), 200);
     const message = String(form.get('message') || '').trim().slice(0, 5000);
+    const topics = { cmo: 'a CMO role', speaking: 'speaking', other: '' };
+    const topic = topics[String(form.get('topic') || '')] || '';
     if (!name || !message || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) return json({ ok: false, error: 'missing' }, 400);
     if (!env.OWL || !env.OWL_TO) return json({ ok: false, error: 'not-configured' }, 503);
 
@@ -39,7 +41,7 @@ export default {
       `From: "Owl from clairealmand.com" <${FROM}>`,
       `To: <${env.OWL_TO}>`,
       `Reply-To: ${header(name.replace(/["\\]/g, ''))} <${email}>`,
-      `Subject: ${header(`Owl from ${name}`)}`,
+      `Subject: ${header(`Owl from ${name}${topic ? ` (${topic})` : ''}`)}`,
       `Date: ${new Date().toUTCString()}`,
       `Message-ID: <${crypto.randomUUID()}@clairealmand.com>`,
       'MIME-Version: 1.0',
