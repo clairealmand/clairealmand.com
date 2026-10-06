@@ -64,6 +64,24 @@
   }
   window.addEventListener('scroll', warmSky, { passive: true, once: true });
   setTimeout(warmSky, 2500);
+  // Homepage nav: past the hero it tucks away, and slides back in as soon as the reader scrolls up
+  // (or tabs into it), so Work, Story, Writing, and Contact stay one move away.
+  var nav = document.querySelector('.home-nav'), hero = document.querySelector('.hero');
+  if (nav && hero) {
+    var lastY = window.scrollY, navTick = false;
+    var navUpdate = function () {
+      navTick = false;
+      var y = window.scrollY, past = y > hero.offsetHeight * 0.6;
+      nav.classList.toggle('stuck', past);
+      if (!past) nav.classList.remove('show');
+      else if (y < lastY - 4) nav.classList.add('show');
+      else if (y > lastY + 4 && !nav.contains(document.activeElement)) nav.classList.remove('show');
+      lastY = y;
+    };
+    window.addEventListener('scroll', function () { if (!navTick) { navTick = true; requestAnimationFrame(navUpdate); } }, { passive: true });
+    nav.addEventListener('focusin', function () { nav.classList.add('show'); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setTimeout(function () { nav.classList.remove('show'); }, 50); });
+  }
   // "Send an owl" form: posts to /api/owl and reports back without leaving the page.
   // Text stays in the form until the owl is confirmed sent. Each message carries an id, so a retry after
   // a timeout can't deliver the same owl twice; editing the message starts a new id.
