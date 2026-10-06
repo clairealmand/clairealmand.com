@@ -468,8 +468,21 @@ html { scroll-padding-top: 4.5rem; }
 @media (max-width: 360px) { .home-nav.stuck .wrap { padding-block: 0.45rem; row-gap: 0.2rem; } }
 
 /* Portrait beside the "A CMO, for a season" intro */
-.cmo-intro { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 1rem 2.25rem; align-items: center; }
-.portrait img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 0 0 4px #F2C46B, 0 14px 40px rgba(20,14,40,0.25); }
+.cmo-intro { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 1rem 2.25rem; align-items: start; }
+/* Portrait: a thin ring in the section's accent; hover, focus, or tap flips it to Claire's unicorn crest */
+.portrait { display: block; perspective: 900px; border-radius: 14px; cursor: pointer; outline: none; }
+.portrait .flip { position: relative; display: grid; transition: transform .7s cubic-bezier(.3,.7,.3,1.2); transform-style: preserve-3d; }
+.portrait .face { grid-area: 1 / 1; display: block; border-radius: 14px; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 0 0 2px var(--accent-text, var(--accent)), 0 14px 40px rgba(20,14,40,0.25); }
+.portrait img { display: block; width: 100%; height: auto; }
+.portrait .back { transform: rotateY(180deg); background: radial-gradient(circle at 50% 40%, #2A2148, #12101E 75%); display: grid; place-content: center; justify-items: center; gap: 0.6rem; box-shadow: 0 0 0 2px #B49BF2, 0 14px 40px rgba(20,14,40,0.35); }
+.portrait .back .crest { width: 5.5rem; height: 5.5rem; background: linear-gradient(120deg, #F29BBA, #F1C063, #8FD3C9, #B49BF2, #F29BBA) 0 0 / 300% 100%; animation: rainbow 2.4s linear infinite, prance .9s ease-in-out infinite; }
+.portrait .back p { margin: 0; padding: 0 0.5rem; text-align: center; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F1C063; }
+.portrait:hover .flip, .portrait:focus-visible .flip, .portrait:focus .flip { transform: rotateY(180deg); }
+.portrait:focus-visible .face { outline: 3px solid #F2C46B; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .portrait .flip { transition: none; }
+  .portrait .back .crest { animation: none; }
+}
 @media (max-width: 680px) {
   .cmo-intro { grid-template-columns: minmax(0, 1fr); }
   .cmo-intro .portrait { order: -1; width: 150px; }
@@ -501,6 +514,15 @@ html { scroll-padding-top: 4.5rem; }
 @media (max-width: 760px) { .steps { grid-template-columns: minmax(0, 1fr); } }
 .speak-teaser { font-size: 0.95rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 1rem; }
 .speak-teaser .stamp { margin-right: 0.5rem; }
+.speak-teaser .star {
+  display: inline-block; font-size: 1.7rem; line-height: 1; vertical-align: -0.3rem; margin: -0.5rem 0.15rem -0.5rem 0;
+  background: linear-gradient(120deg, #F29BBA, #F1C063, #8FD3C9, #B49BF2, #F29BBA) 0 0 / 300% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  animation: rainbow 2.4s linear infinite, twinkle 3.2s ease-in-out infinite;
+}
+.speak-teaser:hover .star, .speak-teaser:focus-within .star { animation-duration: 1.2s, 1.2s; }
+@keyframes twinkle { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.3) rotate(25deg); } }
+@media (prefers-reduced-motion: reduce) { .speak-teaser .star { animation: none; } }
 
 /* Speaking page photo strip */
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
