@@ -500,3 +500,12 @@ html { scroll-padding-top: 4.5rem; }
 @media (max-width: 760px) { .steps { grid-template-columns: minmax(0, 1fr); } }
 .speak-teaser { font-size: 0.95rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 1rem; }
 .speak-teaser .stamp { margin-right: 0.5rem; }
+
+/* Speaking page photo strip */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.gallery figure { margin: 0; display: grid; gap: 0.4rem; align-content: start; }
+.gallery .wide { grid-column: 1 / -1; }
+.gallery img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.gallery figure:not(.wide) img { aspect-ratio: 3 / 4; object-fit: cover; }
+.gallery figcaption { font-size: 0.85rem; color: var(--muted); }
+.spoken li { margin-bottom: 0.4rem; }
