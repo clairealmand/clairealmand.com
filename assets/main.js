@@ -101,6 +101,8 @@
     // Links like /?topic=speaking#owl preselect the reason for writing.
     var topicParam = (location.search.match(/[?&]topic=(\w+)/) || [])[1];
     if (topicParam && owl.elements.topic && owl.elements.topic.querySelector('option[value="' + topicParam + '"]')) owl.elements.topic.value = topicParam;
+    // Diagnostics only: the failure type and topic, never the name, email, or message.
+    var fail = function (type) { if (window.gtag) gtag('event', 'contact_error', { failure_type: type, inquiry_type: (owl.elements.topic && owl.elements.topic.value) || 'general' }); };
     var unsure = function () {
       btn.textContent = 'Try again';
       say('No word back from the owl, so it may or may not have arrived. Your message is still here if you want to try again or book a call above.', 'unsure');
@@ -112,7 +114,8 @@
       var data = new FormData(owl); data.append('id', owlId);
       sending = true; btn.disabled = true; say('Sending…');
       var ctrl = window.AbortController ? new AbortController() : null;
-      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
+      var timedOut = false;
+      var timer = setTimeout(function () { timedOut = true; if (ctrl) ctrl.abort(); }, 15000);
       var done = function () { clearTimeout(timer); sending = false; btn.disabled = false; };
       fetch(owl.action, { method: 'POST', body: data, signal: ctrl ? ctrl.signal : undefined })
         .then(function (r) { return r.json().catch(function () { return { unclear: true }; }); })
@@ -124,10 +127,10 @@
             owl.reset(); owlId = ''; btn.textContent = 'Send another owl'; say('Owl sent. I’ll write back soon.', 'ok');
           }
           else if (res.error === 'missing') say('Please add your name, a valid email, and a message.', 'error');
-          else if (res.unclear) unsure();
-          else { btn.textContent = 'Try again'; say('The owl didn’t make it. Your message is still here, so you can try again, or book a call above.', 'error'); }
+          else if (res.unclear) { fail('server'); unsure(); }
+          else { fail('server'); btn.textContent = 'Try again'; say('The owl didn’t make it. Your message is still here, so you can try again, or book a call above.', 'error'); }
         })
-        .catch(function () { done(); unsure(); });
+        .catch(function () { done(); fail(timedOut ? 'timeout' : 'network'); unsure(); });
     });
   }
   // Guild crests: phones have no hover, so wake each animal briefly as its card scrolls into view, and on tap.

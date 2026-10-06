@@ -19,7 +19,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/Gloock.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=20261006k">
+<link rel="stylesheet" href="/assets/style.css?v=20261006l">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -31,18 +31,18 @@
 }
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SWDZZQYFFT"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SWDZZQYFFT');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="calendly.com"]');if(a)gtag('event','booking_click',{link_url:a.href,transport_type:'beacon'});});</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SWDZZQYFFT');document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('a,button');if(!t)return;var s=t.closest('[data-placement],section[id],nav,footer,header');var pl=s?(s.getAttribute('data-placement')||s.id||s.tagName.toLowerCase()):'content';if(t.hasAttribute('data-cta'))gtag('event','cta_click',{cta_id:t.getAttribute('data-cta'),placement:pl,link_url:t.href||'',transport_type:'beacon'});if(t.href&&t.href.indexOf('calendly.com')>-1)gtag('event','booking_click',{link_url:t.href,placement:pl,transport_type:'beacon'});});</script>
 </head>
 <body class="sub">
 <div class="sky-layer photos" aria-hidden="true"><div class="ph on" style="background-image:url('/img/sunset.jpg');background-image:image-set(url('/img/sunset.webp') type('image/webp'), url('/img/sunset.jpg') type('image/jpeg'))"></div></div>
-<nav class="topbar" aria-label="Site"><div class="wrap"><a class="home" href="/">Claire Almand</a><a href="/#spells">Work</a><a href="/journey/">Story</a><a href="/#spellbook">Spellbook</a><a href="/#owl">Contact</a></div></nav>
+<nav class="topbar" aria-label="Site"><div class="wrap"><a class="home" href="/">Claire Almand</a><a href="/#spells">Work</a><a href="/journey/">Story</a><a href="/#spellbook">Spellbook</a><a href="/#owl" data-cta="contact_nav">Contact</a></div></nav>
 <main>
   <article class="ch case speaking" data-key="sunset">
     <div class="wrap"><div class="panel">
       <span class="stamp">Talks · Workshops · Panels · Hosting</span>
       <h1>Speaking and workshops</h1>
       <p class="lead">I help teams make sense of what customers believe, reach people across markets, and communicate with clarity. My talks and workshops draw on years of building growth teams and hosting conversations with international students and experts.</p>
-      <p><a class="btn ink" href="/?topic=speaking#owl">Invite Claire to speak</a></p>
+      <p><a class="btn ink" href="/?topic=speaking#owl" data-cta="speaking_invite" data-placement="speaking_top">Invite Claire to speak</a></p>
 
       <div class="gallery">
         <figure class="wide"><picture><source srcset="/img/speaking/nepal-stage.webp" type="image/webp"><img src="/img/speaking/nepal-stage.jpg" alt="Claire Almand on stage at an education and career summit in Kathmandu" width="1280" height="720"></picture><figcaption>On stage at the International Education &amp; Global Career Summit, Kathmandu, March 2026.</figcaption></figure>
@@ -98,7 +98,7 @@
     <div class="wrap"><div class="panel">
       <span class="stamp">11:11 p.m. · Make a wish</span>
       <h2>Have a stage, a room, or a panel in mind?</h2>
-      <p class="soft">Tell me about the audience and the date. <a class="text-link" href="/?topic=speaking#owl">Send an owl</a> or <a class="text-link" href="https://calendly.com/claire-almand/30min">book a 30-minute call</a>.</p>
+      <p class="soft" data-placement="speaking_bottom">Tell me about the audience and the date. <a class="text-link" href="/?topic=speaking#owl" data-cta="speaking_owl">Send an owl</a> or <a class="text-link" href="https://calendly.com/claire-almand/30min">book a 30-minute call</a>.</p>
     </div></div>
   </section>
 </main>
@@ -109,6 +109,8 @@ document.querySelectorAll('.video[data-yt]').forEach(function (f) {
     var start = f.getAttribute('data-start');
     ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0' + (start ? '&start=' + start : '');
     ifr.title = f.querySelector('figcaption b').textContent; ifr.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; ifr.allowFullscreen = true;
+    // Counts the visitor choosing to load the player, not playback.
+    if (window.gtag) gtag('event', 'video_load', { video_id: id, video_start: Number(start || 0), placement: 'speaking_videos' });
     this.replaceWith(ifr); ifr.focus();
   });
 });
