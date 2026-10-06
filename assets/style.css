@@ -423,3 +423,24 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
   .btn:hover, .btn:focus-visible, .owl-form button:hover, .owl-form button:focus-visible,
   .hero .btn.line:hover, .hero .btn.line:focus-visible { animation: none; }
 }
+
+/* Narrow phones (320 to 360px): keep the hero inside the screen */
+.hero .wrap { grid-template-columns: minmax(0, 1fr); }
+.hero h1 { overflow-wrap: break-word; hyphens: manual; }
+@media (max-width: 360px) {
+  .hero h1 { font-size: 2.1rem; }
+  .hero .ctas { flex-direction: column; align-items: stretch; }
+  .hero .ctas .btn { text-align: center; min-height: 44px; }
+  .home-nav .wrap { gap: 0.35rem 0.75rem; font-size: 0.8rem; }
+  .home-nav .home { flex-basis: 100%; }
+}
+
+/* Proof line under the hero buttons */
+.hero .proof { font-size: 0.95rem; max-width: 36rem; text-shadow: 0 1px 12px rgba(0,0,0,0.6); }
+.hero .proof a { color: #FFD27A; font-weight: 600; }
+
+/* Key for the before/after bars on the case-study cards */
+.bars-key { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); margin: 0.25rem 0 0.75rem; }
+.bars-key span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.bars-key i { display: inline-block; width: 1.6rem; height: 0.55rem; border-radius: 3px; background: var(--bar-base); }
+.bars-key i.after { background: var(--accent); }
