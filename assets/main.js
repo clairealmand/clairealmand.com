@@ -25,9 +25,10 @@
     // Hold the current photo until the next one has arrived, so the sky never flashes blank.
     var target = byKey[key], idx = order.indexOf(key);
     loadPh(target); loadPh(byKey[order[idx + 1]]);
-    if (target && !target._ready) return;
+    if (target && !target._ready && !target._failed) return;
     current = key;
-    photos.forEach(function (ph) { ph.classList.toggle('on', ph.getAttribute('data-key') === key); });
+    // A photo that failed to load keeps the previous sky up rather than showing a blank.
+    if (!target || !target._failed) photos.forEach(function (ph) { ph.classList.toggle('on', ph.getAttribute('data-key') === key); });
     clockText.textContent = active.getAttribute('data-clock') + ' · ' + active.getAttribute('data-name');
     clock.classList.toggle('moon', key === 'dusk' || key === 'night');
     clock.style.setProperty('--orb', orbs[key] || '#EDE7D6');
@@ -46,13 +47,17 @@
     var src = ph.getAttribute('data-bg');
     if (!src) { ph._ready = true; return; }
     ph._loading = true;
-    if (webp) src = src.replace(/\.jpg$/, '.webp');
-    var img = new Image();
-    img.onload = img.onerror = function () {
-      ph.style.backgroundImage = "url('" + src + "')"; ph.removeAttribute('data-bg');
-      ph._ready = true; ph._loading = false; update();
-    };
-    img.src = src;
+    var tries = webp ? [src.replace(/\.jpg$/, '.webp'), src] : [src];
+    (function attempt() {
+      var url = tries.shift(), img = new Image();
+      img.onload = function () {
+        ph.style.backgroundImage = "url('" + url + "')"; ph.removeAttribute('data-bg');
+        ph._ready = true; ph._loading = false; update();
+      };
+      // WebP failed: try the JPEG. Both failed: give up and let the clock move on without this photo.
+      img.onerror = function () { if (tries.length) attempt(); else { ph._failed = true; ph._loading = false; update(); } };
+      img.src = url;
+    })();
   }
   var started = false;
   function warmSky() {
@@ -93,6 +98,10 @@
     var newId = function () { return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + '-' + Math.random().toString(36).slice(2, 10); };
     var say = function (msg, kind) { status.textContent = msg; status.setAttribute('data-kind', kind || ''); };
     owl.addEventListener('input', function () { owlId = ''; });
+    var unsure = function () {
+      btn.textContent = 'Try again';
+      say('No word back from the owl, so it may or may not have arrived. Your message is still here if you want to try again or book a call above.', 'unsure');
+    };
     owl.addEventListener('submit', function (e) {
       e.preventDefault();
       if (sending) return;
@@ -103,17 +112,19 @@
       var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
       var done = function () { clearTimeout(timer); sending = false; btn.disabled = false; };
       fetch(owl.action, { method: 'POST', body: data, signal: ctrl ? ctrl.signal : undefined })
-        .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'unknown' }; }); })
+        .then(function (r) { return r.json().catch(function () { return { unclear: true }; }); })
         .then(function (res) {
           done();
-          if (res.ok) { owl.reset(); owlId = ''; btn.textContent = 'Send another owl'; say('Owl sent. I’ll write back soon.', 'ok'); }
+          if (res.ok) {
+            // Count a lead only once the server confirms delivery. No name, email, or message goes to analytics.
+            if (window.gtag) gtag('event', 'generate_lead', { lead_method: 'contact_form', inquiry_type: (owl.elements.topic && owl.elements.topic.value) || 'general' });
+            owl.reset(); owlId = ''; btn.textContent = 'Send another owl'; say('Owl sent. I’ll write back soon.', 'ok');
+          }
           else if (res.error === 'missing') say('Please add your name, a valid email, and a message.', 'error');
+          else if (res.unclear) unsure();
           else { btn.textContent = 'Try again'; say('The owl didn’t make it. Your message is still here, so you can try again, or book a call above.', 'error'); }
         })
-        .catch(function () {
-          done(); btn.textContent = 'Try again';
-          say('No word back from the owl, so it may or may not have arrived. Your message is still here. It’s safe to try again.', 'unsure');
-        });
+        .catch(function () { done(); unsure(); });
     });
   }
   // Guild crests: phones have no hover, so wake each animal briefly as its card scrolls into view, and on tap.
