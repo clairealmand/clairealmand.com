@@ -6,6 +6,11 @@
   var clockText = document.getElementById('clock-text');
   var orbs = { dawn: '#F4A07F', early: '#F7B98A', morning: '#FFE29A', midday: '#FFF2B8', golden: '#F2C46B', sunset: '#F2836B' };
   var current = '';
+  var byKey = {}, order = [];
+  photos.forEach(function (ph) { var k = ph.getAttribute('data-key'); byKey[k] = ph; order.push(k); });
+  if (order.length) byKey[order[0]]._ready = true;
+  var webp = (function () { try { return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0; } catch (e) { return false; } })();
+
   var ticking = false;
 
   function update() {
@@ -17,6 +22,10 @@
     }
     var key = active.getAttribute('data-key');
     if (key === current) return;
+    // Hold the current photo until the next one has arrived, so the sky never flashes blank.
+    var target = byKey[key], idx = order.indexOf(key);
+    loadPh(target); loadPh(byKey[order[idx + 1]]);
+    if (target && !target._ready) return;
     current = key;
     photos.forEach(function (ph) { ph.classList.toggle('on', ph.getAttribute('data-key') === key); });
     clockText.textContent = active.getAttribute('data-clock') + ' · ' + active.getAttribute('data-name');
@@ -30,18 +39,31 @@
   window.addEventListener('resize', update);
   update();
 
-  // Only the dawn photo loads up front; the rest of the sky arrives on the first scroll, or after a short pause.
-  var skyLoaded = false;
-  function loadSky() {
-    if (skyLoaded) return;
-    skyLoaded = true;
-    photos.forEach(function (ph) {
-      var src = ph.getAttribute('data-bg');
-      if (src) { ph.style.backgroundImage = "url('" + src + "')"; ph.removeAttribute('data-bg'); }
-    });
+  // Only the dawn photo loads up front. After that the sky loads one chapter ahead of the reader,
+  // then fills in the rest while the page is idle. WebP where the browser takes it, JPEG otherwise.
+  function loadPh(ph) {
+    if (!ph || ph._ready || ph._loading) return;
+    var src = ph.getAttribute('data-bg');
+    if (!src) { ph._ready = true; return; }
+    ph._loading = true;
+    if (webp) src = src.replace(/\.jpg$/, '.webp');
+    var img = new Image();
+    img.onload = img.onerror = function () {
+      ph.style.backgroundImage = "url('" + src + "')"; ph.removeAttribute('data-bg');
+      ph._ready = true; ph._loading = false; update();
+    };
+    img.src = src;
   }
-  window.addEventListener('scroll', loadSky, { passive: true, once: true });
-  setTimeout(loadSky, 2500);
+  var started = false;
+  function warmSky() {
+    if (started) return;
+    started = true;
+    loadPh(photos[1]);
+    var rest = Array.prototype.slice.call(photos, 2), idle = window.requestIdleCallback || function (fn) { setTimeout(fn, 400); };
+    (function next() { var ph = rest.shift(); if (!ph) return; idle(function () { loadPh(ph); next(); }); })();
+  }
+  window.addEventListener('scroll', warmSky, { passive: true, once: true });
+  setTimeout(warmSky, 2500);
   // "Send an owl" form: posts to /api/owl and reports back without leaving the page.
   // Text stays in the form until the owl is confirmed sent. Each message carries an id, so a retry after
   // a timeout can't deliver the same owl twice; editing the message starts a new id.
