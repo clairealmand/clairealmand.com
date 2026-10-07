@@ -563,3 +563,9 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.005em; }
 .steps li { border: 0; border-radius: 0; padding: 0 0 0 2.2rem; margin: 0 0 0.9rem; font-size: 1rem; }
 .steps li::before { content: counter(step) "."; width: auto; height: auto; border-radius: 0; background: none; color: var(--accent-text, var(--accent)); font: italic 600 1.35rem/1.2 var(--display); left: 0; top: -0.1rem; }
 .steps li b { display: inline; font-size: inherit; margin: 0; }
+/* CMO section balance (7 Oct): smaller portrait centred on the intro text, more air above the steps */
+@media (min-width: 681px) {
+  .cmo-intro { grid-template-columns: minmax(0, 1fr) 160px; align-items: center; }
+}
+.fits-label { margin-bottom: -0.5rem; }
+.how { margin-top: 1.5rem; }
