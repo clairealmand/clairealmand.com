@@ -588,3 +588,5 @@ footer.site-foot .foot-note { margin-top: -1rem; }
 }
 footer.site-foot { background: linear-gradient(to bottom, rgba(10,8,24,0.55), rgba(10,8,24,0.88)); }
 footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
+/* Guild D&D classes (7 Oct) */
+.member .dnd, .spec .dnd { display: inline-block; justify-self: start; width: fit-content; margin: 0.15rem 0 0.2rem; padding: 0.05rem 0.55rem; border-radius: 999px; border: 1px solid var(--accent-text, var(--accent)); color: var(--accent-text, var(--accent)); font-family: var(--display); font-style: italic; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.02em; }
