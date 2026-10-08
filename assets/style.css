@@ -613,3 +613,15 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .slide-btn:disabled { opacity: 0.3; cursor: default; }
 @media (max-width: 900px) { .shelf .issues { grid-auto-columns: calc((100% - 0.9rem) / 2); } }
 @media (max-width: 680px) { .shelf .issues { grid-auto-columns: 84%; } }
+/* Photo slideshow (8 Oct): swipeable strip with arrows, no autoplay */
+.slideshow { margin: 0.5rem 0 0.25rem; display: grid; gap: 0.5rem; }
+.slideshow .slides { list-style: none; margin: 0; padding: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 12px; scrollbar-width: none; overscroll-behavior-x: contain; }
+.slideshow .slides::-webkit-scrollbar { display: none; }
+.slideshow .slides li { flex: 0 0 100%; scroll-snap-align: start; }
+.slideshow .slides img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.slideshow .slides:focus-visible { outline: 3px solid #F2C46B; outline-offset: 2px; }
+.slide-nav { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.slide-nav button { width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid currentColor; background: transparent; color: inherit; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.slide-nav button:focus-visible { outline: 3px solid #F2C46B; outline-offset: 2px; }
+.slide-nav .count { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 3.5rem; text-align: center; }
+.slideshow figcaption { font-size: 0.85rem; color: var(--muted); text-align: center; }
