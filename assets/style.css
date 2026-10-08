@@ -590,3 +590,8 @@ footer.site-foot { background: linear-gradient(to bottom, rgba(10,8,24,0.55), rg
 footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 /* Guild D&D classes (7 Oct) */
 .member .dnd, .spec .dnd { display: inline-block; justify-self: start; width: fit-content; margin: 0.15rem 0 0.2rem; padding: 0.05rem 0.55rem; border-radius: 999px; border: 1px solid var(--accent-text, var(--accent)); color: var(--accent-text, var(--accent)); font-family: var(--display); font-style: italic; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.02em; }
+/* MBArtist chalkboards (8 Oct): three across, the board's own 4:5 shape */
+.gallery.chalk { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.gallery.chalk figure:not(.wide) img { aspect-ratio: 4 / 5; }
+@media (max-width: 680px) { .gallery.chalk { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.prose .gallery, .prose .post-art { margin-block: 0.5rem 0.25rem; }
