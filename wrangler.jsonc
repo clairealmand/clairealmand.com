@@ -16,5 +16,9 @@
   },
   // Sends the form to the inbox in the OWL_TO secret. Needs Email Routing on clairealmand.com
   // with that inbox verified as a destination address.
-  "send_email": [{ "name": "OWL" }]
+  "send_email": [{ "name": "OWL" }],
+  // PR preview builds run "wrangler preview", which needs its own copy of the bindings.
+  "previews": {
+    "send_email": [{ "name": "OWL" }]
+  }
 }
