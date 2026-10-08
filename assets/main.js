@@ -145,6 +145,42 @@
     }, { threshold: 0.8 });
     members.forEach(function (m) { io.observe(m); });
   }
+  // Spellbook shelf: newest posts first in a sideways slider, with chips to show one series at a time.
+  var shelf = document.querySelector('[data-shelf]');
+  if (shelf) {
+    var track = shelf.querySelector('.issues'), posts = track.querySelectorAll('.issue');
+    var shelfNav = shelf.querySelector('.slide-nav'), prev = shelf.querySelector('.slide-btn.prev'), next = shelf.querySelector('.slide-btn.next');
+    var shelfChips = shelf.querySelectorAll('.chip');
+    var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    shelf.querySelector('.shelf-bar').hidden = false;
+    // Arrows only when there's somewhere to go; each end greys out its arrow.
+    var ends = function () {
+      var max = track.scrollWidth - track.clientWidth;
+      shelfNav.hidden = max <= 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max - 2;
+    };
+    var slide = function (dir) {
+      var card = track.querySelector('.issue:not([hidden])');
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      track.scrollBy({ left: dir * (card ? card.offsetWidth + gap : track.clientWidth), behavior: calm ? 'auto' : 'smooth' });
+    };
+    prev.addEventListener('click', function () { slide(-1); });
+    next.addEventListener('click', function () { slide(1); });
+    var shelfTick = false;
+    track.addEventListener('scroll', function () { if (!shelfTick) { shelfTick = true; requestAnimationFrame(function () { shelfTick = false; ends(); }); } }, { passive: true });
+    window.addEventListener('resize', ends);
+    shelfChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-f');
+        shelfChips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        posts.forEach(function (p) { p.hidden = f !== 'all' && p.getAttribute('data-series') !== f; });
+        track.scrollLeft = 0;
+        ends();
+      });
+    });
+    ends();
+  }
   // Sections marked data-anim play their entrance (bars grow, the scenic route draws) once they scroll into view.
   document.documentElement.classList.add('js');
   var anims = document.querySelectorAll('[data-anim]');
