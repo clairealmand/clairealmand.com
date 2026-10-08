@@ -595,3 +595,21 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .gallery.chalk figure:not(.wide) img { aspect-ratio: 4 / 5; }
 @media (max-width: 680px) { .gallery.chalk { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .prose .gallery, .prose .post-art { margin-block: 0.5rem 0.25rem; }
+
+/* Spellbook shelf: newest posts first, sliding sideways, filtered by series. */
+.shelf { display: grid; gap: 0.9rem; min-width: 0; }
+.shelf-bar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; }
+.shelf-bar[hidden] { display: none; }
+.shelf .chip[aria-pressed="false"]:hover { border-color: var(--accent-text, var(--accent)); }
+.shelf .issues { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 1.8rem) / 3); overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; padding: 4px 2px 14px; margin: -4px -2px -14px; }
+.shelf .issues::-webkit-scrollbar { display: none; }
+.shelf .issues:focus-visible { outline: 2px solid var(--accent-text, var(--accent)); outline-offset: 4px; border-radius: 10px; }
+.shelf .issue { scroll-snap-align: start; }
+.shelf .issue[hidden] { display: none; }
+.slide-nav { display: flex; gap: 0.5rem; margin-left: auto; }
+.slide-nav[hidden] { display: none; }
+.slide-btn { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; transition: border-color .2s ease, opacity .2s ease; }
+.slide-btn:hover:not(:disabled) { border-color: var(--accent-text, var(--accent)); color: var(--accent-text, var(--accent)); }
+.slide-btn:disabled { opacity: 0.3; cursor: default; }
+@media (max-width: 900px) { .shelf .issues { grid-auto-columns: calc((100% - 0.9rem) / 2); } }
+@media (max-width: 680px) { .shelf .issues { grid-auto-columns: 84%; } }
