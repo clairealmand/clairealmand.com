@@ -6,9 +6,9 @@
 @font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400 800; font-display: swap; src: url("/assets/fonts/EBGaramond-Italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 :root {
   --paper: #FBF7F3;
-  --panel: rgba(252, 248, 244, 0.86);
+  --panel: rgba(252, 248, 244, 0.76);
   --ink: #1C1830;
-  --muted: #55506B;
+  --muted: #48435E;
   --rule: #E6DCD6;
   --accent: #A8365F;
   --gold: #E9A23B;
@@ -625,3 +625,41 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .slide-nav button:focus-visible { outline: 3px solid #F2C46B; outline-offset: 2px; }
 .slide-nav .count { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 3.5rem; text-align: center; }
 .slideshow figcaption { font-size: 0.85rem; color: var(--muted); text-align: center; }
+/* Guild page (9 Oct): founders, specialists with saved seats, what the Guild covers, and Friends of the Guild. */
+.guild-page h1 { font-size: clamp(2.3rem, 5.6vw, 3.6rem); }
+.guild-page [id] { scroll-margin-top: 1.5rem; }
+.spec:target, .member:target { border-color: var(--accent-text, var(--accent)); }
+.spec.open { opacity: 0.85; }
+.spec.open h3, .spec.open .beats { color: var(--muted); }
+.spec.open .dnd { border-style: dashed; color: var(--muted); border-color: var(--muted); font-style: normal; }
+.covers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.75rem; }
+.covers li { padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 10px; display: grid; gap: 0.3rem; align-content: start; min-width: 0; }
+.covers h3 { font-family: var(--display); font-size: 1.25rem; line-height: 1.2; }
+.covers p { font-size: 0.92rem; color: var(--muted); }
+.covers .who { font-size: 0.85rem; letter-spacing: 0.02em; margin-top: 0.2rem; }
+.covers .who .text-link { color: var(--accent-text, var(--accent)); }
+.friends { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.5rem 1.5rem; }
+.friends[hidden] { display: none; }
+.friends a { font-family: var(--display); font-size: 1.2rem; }
+.friends span { display: block; font-size: 0.88rem; color: #B9B3D3; }
+.guild-more { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
+.guild-more p { color: var(--muted); max-width: 34rem; }
+.member .skill { font-size: 0.9rem; font-weight: 500; }
+.spec.open { border-color: var(--muted); }
+/* Day to night switch in the top nav (9 Oct): the knob sits on today's sky, the other icon shows where a tap goes. */
+.theme-toggle { position: relative; display: inline-flex; align-items: center; justify-content: space-between; flex: none; width: 3.25rem; height: 1.7rem; padding: 0 0.4rem; border-radius: 999px; border: 1px solid rgba(255,253,248,0.6); background: rgba(12,10,26,0.4); color: #FFFDF8; cursor: pointer; }
+.theme-toggle::before { content: ""; position: absolute; inset: -0.5rem; }
+.theme-toggle::after { content: ""; position: absolute; top: 2px; left: 2px; width: calc(1.7rem - 6px); height: calc(1.7rem - 6px); border-radius: 50%; background: #F2C46B; box-shadow: 0 0 8px rgba(242,196,107,0.7); transition: transform .3s ease, background .3s ease, box-shadow .3s ease; }
+.theme-toggle[aria-pressed="true"]::after { transform: translateX(1.55rem); background: #EDE7D6; box-shadow: 0 0 8px rgba(237,231,214,0.5); }
+.theme-toggle svg { position: relative; z-index: 1; }
+.theme-toggle .sun { color: #8A5A10; }
+.theme-toggle[aria-pressed="true"] .sun { color: #F2C46B; }
+.theme-toggle[aria-pressed="true"] .moon { color: #3B3656; }
+.theme-toggle:hover { border-color: #FFFDF8; }
+.theme-toggle:focus-visible { outline: 2px solid #F2C46B; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .theme-toggle::after { transition: none; } }
+/* Phones: the switch rides on the name row, and the links wrap below it. */
+@media (max-width: 560px) {
+  .topbar .home, .home-nav .home { order: -2; flex: 1 0 calc(100% - 4.6rem); }
+  .topbar .theme-toggle { order: -1; }
+}
