@@ -670,3 +670,39 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .js .grow-chart .grow-val { opacity: 0; transition: opacity .4s ease 1s; }
 .js .grow-chart.in .grow-val { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .js .grow-chart .grow-bars i, .js .grow-chart .grow-val { transition: none; } }
+
+/* Spell charts: comeback line */
+.line-chart { margin: 0.5rem 0 0.75rem; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 10px; display: grid; gap: 0.5rem; }
+.line-chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.lc-base { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 6; opacity: .6; }
+.lc-axis { stroke: var(--rule); stroke-width: 2; }
+.lc-line { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.lc-dot { fill: var(--paper); stroke: var(--accent); stroke-width: 3.5; }
+.lc-dot.end { fill: var(--accent); }
+.line-chart text { font-family: var(--body); fill: var(--muted); font-size: 17px; }
+.line-chart .lc-note { font-size: 15px; font-style: italic; }
+.line-chart .lc-val { font-family: var(--display); font-size: 26px; fill: var(--ink); }
+.line-chart .lc-val.big { font-size: 44px; fill: var(--accent-text, var(--accent)); }
+.line-chart figcaption { font-size: 0.85rem; color: var(--muted); }
+.js .line-chart .lc-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1); }
+.js .line-chart.in .lc-line { stroke-dashoffset: 0; }
+.js .line-chart .lc-dot, .js .line-chart .lc-val { opacity: 0; transition: opacity .4s ease; }
+.js .line-chart.in .lc-dot, .js .line-chart.in .lc-val { opacity: 1; }
+.js .line-chart.in .lc-dot:nth-of-type(2) { transition-delay: .7s; }
+.js .line-chart.in .lc-dot.end, .js .line-chart.in .lc-val.big { transition-delay: 1.5s; }
+
+@media (max-width: 560px) {
+  .line-chart text { font-size: 26px; }
+  .line-chart .lc-note { font-size: 24px; }
+  .line-chart .lc-val { font-size: 46px; }
+  .line-chart .lc-val.big { font-size: 60px; }
+}
+
+/* Spell charts: count-up */
+.count-chart { margin: 0.5rem 0 0.75rem; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 10px; display: grid; gap: 0.6rem; }
+.count-big { margin: 0; font-family: var(--display); font-size: clamp(3rem, 9vw, 4.6rem); line-height: 1; color: var(--accent-text, var(--accent)); font-variant-numeric: tabular-nums; }
+.count-label { margin: 0; color: var(--muted); max-width: 30rem; }
+.grow-chart.flat { margin: 0.4rem 0 0; padding: 0.9rem 0 0; border: 0; border-top: 1px solid var(--rule); border-radius: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .js .line-chart .lc-line, .js .line-chart .lc-dot, .js .line-chart .lc-val { transition: none; }
+}
