@@ -646,3 +646,20 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .guild-more p { color: var(--muted); max-width: 34rem; }
 .member .skill { font-size: 0.9rem; font-weight: 500; }
 .spec.open { border-color: var(--muted); }
+/* Day to night switch in the top nav (9 Oct): the knob sits on today's sky, the other icon shows where a tap goes. */
+.theme-toggle { position: relative; display: inline-flex; align-items: center; justify-content: space-between; flex: none; width: 3.25rem; height: 1.7rem; padding: 0 0.4rem; border-radius: 999px; border: 1px solid rgba(255,253,248,0.6); background: rgba(12,10,26,0.4); color: #FFFDF8; cursor: pointer; }
+.theme-toggle::before { content: ""; position: absolute; inset: -0.5rem; }
+.theme-toggle::after { content: ""; position: absolute; top: 2px; left: 2px; width: calc(1.7rem - 6px); height: calc(1.7rem - 6px); border-radius: 50%; background: #F2C46B; box-shadow: 0 0 8px rgba(242,196,107,0.7); transition: transform .3s ease, background .3s ease, box-shadow .3s ease; }
+.theme-toggle[aria-pressed="true"]::after { transform: translateX(1.55rem); background: #EDE7D6; box-shadow: 0 0 8px rgba(237,231,214,0.5); }
+.theme-toggle svg { position: relative; z-index: 1; }
+.theme-toggle .sun { color: #8A5A10; }
+.theme-toggle[aria-pressed="true"] .sun { color: #F2C46B; }
+.theme-toggle[aria-pressed="true"] .moon { color: #3B3656; }
+.theme-toggle:hover { border-color: #FFFDF8; }
+.theme-toggle:focus-visible { outline: 2px solid #F2C46B; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .theme-toggle::after { transition: none; } }
+/* Phones: the switch rides on the name row, and the links wrap below it. */
+@media (max-width: 560px) {
+  .topbar .home, .home-nav .home { order: -2; flex: 1 0 calc(100% - 4.6rem); }
+  .topbar .theme-toggle { order: -1; }
+}
