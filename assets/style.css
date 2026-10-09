@@ -295,8 +295,8 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 }
 
 /* Guild: each crest animal comes alive when its card is hovered or focused. */
-.member, .spec { transition: transform .25s ease, border-color .25s ease; }
-.member:hover, .member:focus-within, .spec:hover, .spec:focus-within { transform: translateY(-2px); border-color: var(--accent); }
+.member, .spec, .covers li { transition: transform .25s ease, border-color .25s ease; }
+.member:hover, .member:focus-within, .spec:hover, .spec:focus-within, .covers li:hover, .covers li:focus-within { transform: translateY(-2px); border-color: var(--accent); }
 .crest { transition: background .4s ease; transform-origin: 50% 90%; }
 .member:hover .crest.unicorn, .member:focus-within .crest.unicorn, .member.awake .crest.unicorn {
   background: linear-gradient(120deg, #F29BBA, #F1C063, #8FD3C9, #B49BF2, #F29BBA) 0 0 / 300% 100%;
@@ -319,8 +319,8 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 .member .icon-link, .spec .icon-link { width: 40px; height: 40px; margin: 0; color: var(--accent-text, var(--accent)); opacity: 0.9; }
 .member .icon-link:hover, .spec .icon-link:hover, .member .icon-link:focus-visible, .spec .icon-link:focus-visible { background-color: color-mix(in srgb, var(--accent) 16%, transparent); opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
-  .member, .spec { transition: none; }
-  .member:hover, .member:focus-within, .spec:hover, .spec:focus-within { transform: none; }
+  .member, .spec, .covers li { transition: none; }
+  .member:hover, .member:focus-within, .spec:hover, .spec:focus-within, .covers li:hover, .covers li:focus-within { transform: none; }
   .member .crest { animation: none !important; }
 }
 
@@ -632,7 +632,8 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .spec.open { opacity: 0.85; }
 .spec.open h3, .spec.open .beats { color: var(--muted); }
 .spec.open .dnd { border-style: dashed; color: var(--muted); border-color: var(--muted); font-style: normal; }
-.covers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.75rem; }
+.covers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+@media (max-width: 560px) { .covers { grid-template-columns: minmax(0, 1fr); } }
 .covers li { padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 10px; display: grid; gap: 0.3rem; align-content: start; min-width: 0; }
 .covers h3 { font-family: var(--display); font-size: 1.25rem; line-height: 1.2; }
 .covers p { font-size: 0.92rem; color: var(--muted); }
