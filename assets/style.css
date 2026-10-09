@@ -663,3 +663,27 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
   .topbar .home, .home-nav .home { order: -2; flex: 1 0 calc(100% - 4.6rem); }
   .topbar .theme-toggle { order: -1; }
 }
+
+/* Night sections follow the day-to-night switch (9 Oct): in light mode they use the light panel, with a deep gold accent. */
+@media not (prefers-color-scheme: dark) {
+:root:not([data-theme="dark"]) .ch.night .panel { background: var(--panel); color: var(--ink); }
+:root:not([data-theme="dark"]) .ch.night { --accent: #8A6410; --accent-text: #7A5A12; }
+:root:not([data-theme="dark"]) .ch.night .soft, :root:not([data-theme="dark"]) .ch.night .fork p, :root:not([data-theme="dark"]) .ch.night .stop p, :root:not([data-theme="dark"]) .ch.night .stop .yr, :root:not([data-theme="dark"]) .owl-form label { color: var(--muted); }
+:root:not([data-theme="dark"]) .ch.night .fork, :root:not([data-theme="dark"]) .owl-form { border-color: var(--rule); }
+:root:not([data-theme="dark"]) .ch.night .stamp, :root:not([data-theme="dark"]) .ch.night .text-link, :root:not([data-theme="dark"]) .ch.night .fork .icon-link { color: #7A5A12; }
+:root:not([data-theme="dark"]) .ch.night .stop::before { background: var(--paper); }
+:root:not([data-theme="dark"]) .owl-form input, :root:not([data-theme="dark"]) .owl-form textarea, :root:not([data-theme="dark"]) .owl-form select { color: var(--ink); background: rgba(255,255,255,0.7); border-color: #CFC4BC; }
+:root:not([data-theme="dark"]) .owl-form input:focus, :root:not([data-theme="dark"]) .owl-form textarea:focus, :root:not([data-theme="dark"]) .owl-form select:focus { outline-color: #A86A12; }
+:root:not([data-theme="dark"]) .owl-form select option { background: #FFFFFF; color: var(--ink); }
+:root:not([data-theme="dark"]) .friends span { color: var(--muted); }
+}
+:root[data-theme="light"] .ch.night .panel { background: var(--panel); color: var(--ink); }
+:root[data-theme="light"] .ch.night { --accent: #8A6410; --accent-text: #7A5A12; }
+:root[data-theme="light"] .ch.night .soft, :root[data-theme="light"] .ch.night .fork p, :root[data-theme="light"] .ch.night .stop p, :root[data-theme="light"] .ch.night .stop .yr, :root[data-theme="light"] .owl-form label { color: var(--muted); }
+:root[data-theme="light"] .ch.night .fork, :root[data-theme="light"] .owl-form { border-color: var(--rule); }
+:root[data-theme="light"] .ch.night .stamp, :root[data-theme="light"] .ch.night .text-link, :root[data-theme="light"] .ch.night .fork .icon-link { color: #7A5A12; }
+:root[data-theme="light"] .ch.night .stop::before { background: var(--paper); }
+:root[data-theme="light"] .owl-form input, :root[data-theme="light"] .owl-form textarea, :root[data-theme="light"] .owl-form select { color: var(--ink); background: rgba(255,255,255,0.7); border-color: #CFC4BC; }
+:root[data-theme="light"] .owl-form input:focus, :root[data-theme="light"] .owl-form textarea:focus, :root[data-theme="light"] .owl-form select:focus { outline-color: #A86A12; }
+:root[data-theme="light"] .owl-form select option { background: #FFFFFF; color: var(--ink); }
+:root[data-theme="light"] .friends span { color: var(--muted); }
