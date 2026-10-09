@@ -625,3 +625,28 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .slide-nav button:focus-visible { outline: 3px solid #F2C46B; outline-offset: 2px; }
 .slide-nav .count { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 3.5rem; text-align: center; }
 .slideshow figcaption { font-size: 0.85rem; color: var(--muted); text-align: center; }
+
+/* Spell charts: The human touch, 100 dots each side */
+.dots-chart { margin: 0.5rem 0 0.75rem; display: grid; gap: 0.75rem; }
+.dots-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.dots-side { padding: 1rem; border: 1px solid var(--rule); border-radius: 10px; display: grid; gap: 0.5rem; align-content: start; }
+.dots-side.with { border-color: var(--accent-text, var(--accent)); }
+.dots-num { margin: 0; font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1; color: var(--muted); }
+.dots-side.with .dots-num { color: var(--accent-text, var(--accent)); }
+.dots-num span { font-size: 0.45em; }
+.dots-label { margin: 0; font-size: 0.9rem; color: var(--muted); }
+.dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 15rem; }
+.dots i { display: block; aspect-ratio: 1; border-radius: 50%; background: var(--bar-base); }
+.dots i.on { background: var(--accent); }
+.js .dots-chart .dots i.on { background: var(--bar-base); transform: scale(0.7); transition: background-color .35s ease, transform .35s ease; transition-delay: calc(var(--i) * 30ms); }
+.js .dots-chart.in .dots i.on { background: var(--accent); transform: none; }
+.bubble { margin: 0.25rem 0 0; padding: 0.55rem 0.8rem; font-size: 0.9rem; line-height: 1.35; border-radius: 14px; max-width: 16rem; }
+.bubble.bot { background: var(--bar-base); color: var(--muted); border-bottom-left-radius: 4px; }
+.bubble.human { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); border-bottom-left-radius: 4px; }
+.js .dots-chart .bubble { opacity: 0; transform: translateY(6px); transition: opacity .5s ease 1.1s, transform .5s ease 1.1s; }
+.js .dots-chart.in .bubble { opacity: 1; transform: none; }
+.dots-chart figcaption { font-size: 0.85rem; color: var(--muted); }
+@media (max-width: 560px) { .dots-pair { gap: 0.6rem; } .dots-side { padding: 0.7rem; } .dots { gap: 2px; } .bubble { font-size: 0.8rem; padding: 0.45rem 0.6rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .js .dots-chart .dots i.on, .js .dots-chart .bubble { transition: none; }
+}
