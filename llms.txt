@@ -29,7 +29,7 @@
 ## The Guild
 Claire's Guild is the group she trusts with client work: https://www.clairealmand.com/guild/
 - Founders (Rarecraft): Claire Almand (growth strategy, customer psychology), Sagar Somani (product growth, referral programs), Aakash Sethi (GTM engineering, AI, and automation).
-- Specialists: Harsh Hede (brand identity, design, photo, and video), Madhushri Verma (PR and crisis communications), Akshay Madhavan (martech, tracking, and paid media), Silver Yang (international expansion, Asia to North America), Krishna Kishore (content strategy and global growth), Priyanshu Goyal (international growth marketing and automation), Nitish Malpotra (AI product and data).
+- Specialists: Harsh Hede (brand identity, design, photo, and video), Madhushri Verma (PR and crisis communications), Akshay Madhavan (martech, tracking, and paid media), Silver Yang (international expansion, Asia to North America), Krishna Kishore (content strategy and global growth), Priyanshu Goyal (international growth marketing and automation), Nitish Malpotra (AI product and data), Shreya Paul (product marketing).
 
 ## The Spellbook (writing)
 - Growth Grimoire No. 1, "The Allen Key Spell" (the IKEA effect for growth teams): https://www.clairealmand.com/spellbook/allen-key-spell/
