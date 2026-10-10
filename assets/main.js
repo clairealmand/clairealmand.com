@@ -268,3 +268,18 @@ document.querySelectorAll('[data-quotes]').forEach(function (box) {
     if (!e.target.closest('.fit')) cards.forEach(function (c) { c.classList.remove('flipped'); });
   });
 })();
+
+// Card skill lines: keep each phrase whole so a line never starts with a dash
+document.querySelectorAll('.beats').forEach(p => {
+  if (p.children.length) return;
+  const parts = p.textContent.split(' - ');
+  if (parts.length < 2) return;
+  p.textContent = '';
+  parts.forEach((t, i) => {
+    const s = document.createElement('span');
+    s.className = 'beat';
+    s.textContent = i < parts.length - 1 ? t + ' -' : t;
+    p.append(s);
+    if (i < parts.length - 1) p.append(' ');
+  });
+});
