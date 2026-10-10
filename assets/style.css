@@ -98,9 +98,21 @@ main { position: relative; z-index: 1; }
 
 /* CMO */
 .fits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
-.fit { display: grid; gap: 0.45rem; align-content: start; padding: 1.15rem 1.2rem; border-radius: 10px; border: 1px solid var(--rule); text-decoration: none; color: inherit; min-width: 0; }
+.fit { display: block; min-width: 0; perspective: 1100px; cursor: pointer; outline: none; border-radius: 10px; }
+/* "When you need" cards flip in place, like the portrait: the back teases the story and links to it */
+.fit .flip { position: relative; display: grid; height: 100%; transition: transform .7s cubic-bezier(.3,.7,.3,1.2); transform-style: preserve-3d; }
+.fit .side { grid-area: 1 / 1; display: grid; gap: 0.45rem; align-content: start; padding: 1.15rem 1.2rem; border-radius: 10px; border: 1px solid var(--rule); background: var(--panel, transparent); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.fit .back { transform: rotateY(180deg); align-content: center; border-color: var(--accent-text, var(--accent)); }
 .fit h3 { font-size: 1.3rem; }
 .fit p { font-size: 0.88rem; color: var(--muted); }
+.fit .more { font-size: 0.82rem; color: var(--accent-text, var(--accent)); }
+.fit .more::after { content: ' ↻'; }
+.fit .back .text-link { font-size: 0.92rem; }
+.fit .back .text-link::after { content: ' →'; }
+.fit:hover .flip, .fit:focus-within .flip, .fit.flipped .flip { transform: rotateY(180deg); }
+.fit:focus-visible .side { outline: 3px solid #F2C46B; outline-offset: 3px; }
+@media (hover: none) { .fit:hover .flip { transform: none; } .fit.flipped .flip { transform: rotateY(180deg); } }
+@media (prefers-reduced-motion: reduce) { .fit .flip { transition: none; } }
 
 /* Timeline */
 .timeline { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem; position: relative; }
@@ -1105,3 +1117,14 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .issue.flipcard .fc-back .fc-title { font-family: var(--display); font-size: 1.2rem; line-height: 1.2; color: inherit; }
 .issue.flipcard .fc-back p { margin: 0; font-size: 0.9rem; }
 @media (prefers-reduced-motion: reduce) { .issue.flipcard .fc-front, .issue.flipcard .art { transition: none; transform: none !important; } }
+
+/* Flip cue (Claire, 10 Oct 2026): a small swirl instead of an arrow, the same on every flip card; it spins on hover */
+:root { --swirl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12.5 12.2c.6-.9-.3-2-1.3-1.7-1.4.4-1.6 2.3-.6 3.2 1.5 1.3 4 .6 4.6-1.3.8-2.4-1.1-4.8-3.6-4.9-3.2-.1-5.6 2.9-5 6 .7 3.6 4.6 5.7 8 4.5 2.6-.9 4.4-3.4 4.4-6.1'/%3E%3C/svg%3E"); }
+.card.flipcard .fc-front .go::after, .issue.flipcard .fc-front .go::after, .fit .more::after, .flipcard .fc-hint {
+  content: ""; display: inline-block; width: 1.2em; height: 1.2em; vertical-align: -0.28em; margin-left: 0.3em;
+  background: currentColor; -webkit-mask: var(--swirl) center / contain no-repeat; mask: var(--swirl) center / contain no-repeat;
+  transition: transform .6s ease;
+}
+.flipcard .fc-hint { width: 1.1rem; height: 1.1rem; margin: 0; }
+.card.flipcard:hover .go::after, .issue.flipcard:hover .go::after, .fit:hover .more::after, .flipcard .fc-front:hover .fc-hint { transform: rotate(-270deg); }
+@media (prefers-reduced-motion: reduce) { .card.flipcard .go::after, .issue.flipcard .go::after, .fit .more::after, .flipcard .fc-hint { transition: none; transform: none !important; } }

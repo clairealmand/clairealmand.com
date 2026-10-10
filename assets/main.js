@@ -251,3 +251,20 @@ document.querySelectorAll('[data-quotes]').forEach(function (box) {
   window.addEventListener('resize', ends);
   ends();
 });
+
+// "When you need" cards: a tap flips the card to its story link; a second tap (or tapping elsewhere) flips it back.
+(function () {
+  var cards = document.querySelectorAll('.fit');
+  cards.forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      var on = !card.classList.contains('flipped');
+      cards.forEach(function (c) { c.classList.remove('flipped'); });
+      card.classList.toggle('flipped', on);
+      if (on && window.gtag) gtag('event', 'card_flip', { cta_id: card.getAttribute('data-cta') });
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.fit')) cards.forEach(function (c) { c.classList.remove('flipped'); });
+  });
+})();
