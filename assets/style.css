@@ -862,3 +862,36 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .sub-row button:disabled { opacity: 0.6; cursor: progress; }
 .sub-status { margin: 0; min-height: 1.2em; font-size: 0.93rem; color: var(--accent-text, var(--accent)); }
 .sub-alt { margin: 0; font-size: 0.88rem; color: var(--muted); }
+
+/* CMO page: "How a season runs". A gold line draws across four stages; each circle fills a quarter more. */
+@property --fill { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+.season { display: grid; gap: 0.6rem; margin-block: 0.75rem 1.5rem; }
+.season h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+.season > .soft { margin: 0; max-width: 40rem; }
+.season-path { list-style: none; margin: 1rem 0 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; }
+.season-path .track { position: absolute; left: 1.4rem; right: calc(25% - 1.4rem); top: 1.4rem; height: 2px; background: linear-gradient(90deg, #F4A07F, #F2C46B); transform-origin: left; border-radius: 2px; }
+.season-path li:not(.track) { position: relative; display: grid; gap: 0.35rem; align-content: start; }
+.season-path .node { width: 2.8rem; height: 2.8rem; border-radius: 50%; border: 2px solid #E0A93E; position: relative; z-index: 1; --fill: var(--p);
+  background: conic-gradient(#F2C46B var(--fill), var(--paper) 0); box-shadow: 0 0 0 5px var(--paper); }
+.season-path .when { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-text, var(--accent)); margin-top: 0.4rem; }
+.season-path h3 { font-size: 1.45rem; }
+.season-path p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+.js .season[data-anim] .track { transform: scaleX(0); transition: transform 1.6s cubic-bezier(.4,.1,.2,1); }
+.js .season[data-anim] li:not(.track) { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; transition-delay: calc(var(--i) * 0.4s + 0.15s); }
+.js .season[data-anim] .node { --fill: 0%; transition: --fill 0.9s ease; transition-delay: calc(var(--i) * 0.4s + 0.4s); }
+.js .season.in .track { transform: scaleX(1); }
+.js .season.in li:not(.track) { opacity: 1; transform: none; }
+.js .season.in .node { --fill: var(--p); }
+@media (max-width: 760px) {
+  .season-path { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
+  .season-path .track { left: 1.4rem; right: auto; top: 1.4rem; bottom: 1.4rem; width: 2px; height: auto; background: linear-gradient(180deg, #F4A07F, #F2C46B); transform-origin: top; }
+  .js .season[data-anim] .track { transform: scaleY(0); }
+  .js .season.in .track { transform: scaleY(1); }
+  .season-path li:not(.track) { grid-template-columns: 2.8rem minmax(0, 1fr); column-gap: 1rem; }
+  .season-path li:not(.track) > :not(.node) { grid-column: 2; }
+  .season-path .node { grid-row: 1 / span 3; }
+  .season-path .when { margin-top: 0.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .season[data-anim] .track, .js .season[data-anim] li:not(.track), .js .season[data-anim] .node { transition: none; }
+}
