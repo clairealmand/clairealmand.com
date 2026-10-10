@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010n">
+<link rel="stylesheet" href="/assets/style.css?v=20261010o">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -125,17 +125,10 @@
       <li><a href="https://fineartamerica.com/profiles/1-claire-almand" data-cta="photos_see_more">Photography</a></li>
       <li><a href="/guild/">The Guild</a></li>
     </ul></nav>
-    <form class="sub-form foot-sub" action="/api/owl" method="post" data-placement="signup_footer">
-        <input type="hidden" name="topic" value="subscribe"><input type="hidden" name="t" value=""><input type="hidden" name="page" value="/spells/the-human-touch/">
-        <label class="hp" aria-hidden="true">Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label>
-        <label class="foot-sub-label" for="foot-email">Get the Spellbook by email, every two weeks</label>
-        <div class="foot-sub-row"><input id="foot-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com"><button type="submit">Join</button></div>
-        <p class="sub-status" role="status" aria-live="polite"></p>
-      </form>
     <p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p>
     <p class="foot-note">Numbers are shown as ratios on purpose. MPOWER's dollars stay with MPOWER.</p>
     <p class="foot-copy">© 2026 Claire Almand. All rights reserved.</p>
   </div></footer>
-<script src="/assets/signup.js?v=20261010n" defer></script>
+<script src="/assets/signup.js?v=20261010o" defer></script>
 </body>
 </html>
