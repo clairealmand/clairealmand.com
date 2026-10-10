@@ -1132,3 +1132,8 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 footer.site-foot .foot-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(207,201,230,0.12); }
 footer.site-foot .foot-bottom .foot-sign { padding-top: 0; border-top: 0; }
 footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing: 0.02em; }
+
+/* Nav readability over bright photos (Sol QA): soft dark scrim behind the top bar */
+.topbar:not(.stuck)::before { content: ""; position: absolute; inset: 0 0 -2rem; background: linear-gradient(to bottom, rgba(10,8,24,0.62), rgba(10,8,24,0.32) 60%, rgba(10,8,24,0)); pointer-events: none; z-index: -1; }
+.topbar .wrap { text-shadow: 0 1px 2px rgba(0,0,0,0.6), 0 1px 12px rgba(0,0,0,0.55); }
+@media (max-width: 600px) { .topbar:not(.stuck)::before { background: linear-gradient(to bottom, rgba(10,8,24,0.7), rgba(10,8,24,0.45) 65%, rgba(10,8,24,0)); } }
