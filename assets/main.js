@@ -208,22 +208,23 @@
   }
 })();
 
-// Rarecraft cards: tap or click flips a card in place; tapping the back (not its link) or moving away flips it home
+// Flip cards (Rarecraft list, results): tap or click flips a card in place; tapping the back (not its link) or moving away flips it home
 document.querySelectorAll('.flipcard').forEach(function (card) {
   var front = card.querySelector('.fc-front'), back = card.querySelector('.fc-back');
+  var toggle = card.querySelector('.fc-toggle') || front;
   function set(on) {
     card.classList.toggle('flipped', on);
-    front.setAttribute('aria-expanded', on ? 'true' : 'false');
-    if (on) { back.removeAttribute('inert'); front.setAttribute('tabindex', '-1'); }
-    else { back.setAttribute('inert', ''); front.removeAttribute('tabindex'); }
+    toggle.setAttribute('aria-expanded', on ? 'true' : 'false');
+    if (on) { back.removeAttribute('inert'); front.setAttribute('inert', ''); }
+    else { back.setAttribute('inert', ''); front.removeAttribute('inert'); }
   }
   set(false);
   front.addEventListener('click', function () {
     set(true);
     var a = back.querySelector('a'); if (a) setTimeout(function () { a.focus({ preventScroll: true }); }, 350);
-    if (window.gtag) gtag('event', 'card_flip', { card: front.firstChild.textContent.trim() });
+    if (window.gtag) gtag('event', 'card_flip', { card: toggle.textContent.trim().slice(0, 60) });
   });
-  back.addEventListener('click', function (e) { if (!e.target.closest('a')) { set(false); front.focus({ preventScroll: true }); } });
+  back.addEventListener('click', function (e) { if (!e.target.closest('a')) { set(false); toggle.focus({ preventScroll: true }); } });
   card.addEventListener('mouseleave', function () { if (card.classList.contains('flipped')) set(false); });
-  back.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); front.focus(); } });
+  back.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); toggle.focus(); } });
 });
