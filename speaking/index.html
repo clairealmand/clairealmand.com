@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010c">
+<link rel="stylesheet" href="/assets/style.css?v=20261010d">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -36,14 +36,14 @@
 </head>
 <body class="sub">
 <div class="sky-layer photos" aria-hidden="true"><div class="ph on" style="background-image:url('/img/sunset.jpg');background-image:image-set(url('/img/sunset.webp') type('image/webp'), url('/img/sunset.jpg') type('image/jpeg'))"></div></div>
-<nav class="topbar" aria-label="Site"><div class="wrap"><a class="home" href="/">Claire Almand</a><a href="/#spells">Work</a><a href="/journey/">Story</a><a href="/#spellbook">Spellbook</a><a href="/guild/">Guild</a><a href="/#owl" data-cta="contact_nav">Contact</a><button type="button" class="theme-toggle" aria-label="Day to night" aria-pressed="false" title="Day to night"><svg class="sun" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="moon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg></button></div></nav>
+<nav class="topbar" aria-label="Site"><div class="wrap"><a class="home" href="/">Claire Almand</a><a href="/#spells">Work</a><a href="/journey/">Story</a><a href="/spellbook/">Spellbook</a><a href="/guild/">Guild</a><a href="/#owl" data-cta="contact_nav">Contact</a><button type="button" class="theme-toggle" aria-label="Day to night" aria-pressed="false" title="Day to night"><svg class="sun" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="moon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg></button></div></nav>
 <main>
   <article class="ch case speaking" data-key="sunset">
     <div class="wrap"><div class="panel">
       <span class="stamp">Talks · Workshops · Panels · Hosting</span>
       <h1>Speaking and workshops</h1>
       <p class="lead">I help teams make sense of what customers believe, reach people across markets, and communicate with clarity. My talks and workshops draw on years of building growth teams and hosting conversations with international students and experts.</p>
-      <p><a class="btn ink" href="/?topic=speaking#owl" data-cta="speaking_invite" data-placement="speaking_top">Invite Claire to speak</a></p>
+      <p class="btn-row"><a class="btn ink" href="/?topic=speaking#owl" data-cta="speaking_invite" data-placement="speaking_top">Invite Claire to speak</a> <a class="btn line" href="#kit" data-cta="speaking_kit">Speaker kit</a></p>
 
       <div class="gallery">
         <figure class="wide"><picture><source srcset="/img/speaking/nepal-stage.webp" type="image/webp"><img src="/img/speaking/nepal-stage.jpg" alt="Claire Almand on stage at an education and career summit in Kathmandu" width="1280" height="720"></picture><figcaption>On stage at the International Education &amp; Global Career Summit, Kathmandu, March 2026.</figcaption></figure>
@@ -93,6 +93,20 @@
 <li><b>Host</b>, MPOWER Financing's live Q&amp;As and webinars, 2022 to 2024, including <a class="text-link" href="https://www.youtube.com/watch?v=AyH8JQO5wx8">VISA 101 with immigration experts</a>. Plus the occasional <a class="text-link" href="https://www.youtube.com/watch?v=Q1z45XXLbf4">short explainer</a>.</li>
 </ul>
       </div>
+
+      <section class="kit" id="kit" aria-labelledby="kit-title">
+        <h2 id="kit-title">Speaker kit</h2>
+        <p class="soft">For event pages, programs, and introductions. Copy whichever bio fits; the headshot is free to use with my name.</p>
+        <div class="kit-grid">
+          <figure class="kit-photo"><picture><source srcset="/img/claire-almand-2026.webp" type="image/webp"><img src="/img/claire-almand-2026.jpg" alt="Claire Almand, smiling, headshot" width="960" height="960" loading="lazy"></picture>
+            <figcaption><a class="btn ink" href="/img/claire-almand-headshot-2026.jpg" download="Claire-Almand-headshot.jpg" data-cta="kit_headshot">Download headshot</a></figcaption></figure>
+          <div class="bios">
+        <div class="bio" id="bio-short"><div class="bio-head"><h3>Short bio</h3><span class="kind">42 words</span><button type="button" class="copy-bio" data-copy="bio-short-text" data-cta="kit_copy_short">Copy</button></div><div id="bio-short-text"><p>Claire Almand is a growth marketing leader and the co-founder and CEO of Rarecraft. She spent a decade at MPOWER Financing, rising from MBA intern to Director of Growth Marketing, and writes the Growth Grimoire, a newsletter on the psychology behind growth.</p></div></div>
+        <div class="bio" id="bio-medium"><div class="bio-head"><h3>Medium bio</h3><span class="kind">96 words</span><button type="button" class="copy-bio" data-copy="bio-medium-text" data-cta="kit_copy_medium">Copy</button></div><div id="bio-medium-text"><p>Claire Almand reads people for a living, then builds marketing that meets them where they are. She is the co-founder and CEO of Rarecraft, a senior marketing team that learns why customers buy, and she works with companies as a CMO for a season. Over a decade at MPOWER Financing, she rose from MBA intern to Director of Growth Marketing, grew the digital team from two people to 10, and led the team through about 23× growth. She won a Built In Moxie Award for Women in Tech in 2023 and writes the Growth Grimoire newsletter.</p></div></div>
+        <div class="bio" id="bio-long"><div class="bio-head"><h3>Long bio</h3><span class="kind">204 words</span><button type="button" class="copy-bio" data-copy="bio-long-text" data-cta="kit_copy_long">Copy</button></div><div id="bio-long-text"><p>Claire Almand reads people for a living, then builds marketing that meets them where they are. She is the co-founder and CEO of Rarecraft, a senior marketing team that learns why customers buy, then ships the positioning, campaigns, and AI workflows that change the answer. She also works with companies as a CMO for a season.</p><p>Claire spent a decade at MPOWER Financing, helping international students pay for their education, and rose from MBA intern to Director of Growth Marketing. She grew the digital team from two people to 10, led the relaunch that tripled qualified leads after a year-long pandemic shutdown, and opened Nepal as a new market, explaining it herself on Kantipur TV, Radio Kantipur, and NTV World. Under her leadership, the team grew about 23×.</p><p>Before MPOWER, she ran marketing for a restaurant and gallery and built websites for small businesses through her own consultancy. She holds a B.A. in Psychology from Swarthmore College and an MBA from the University of Maryland's Robert H. Smith School of Business, and won a Built In Moxie Award for Women in Tech in 2023. She writes the Growth Grimoire, a newsletter on the psychology behind growth, and is usually up early photographing the sunrise.</p></div></div>
+          </div>
+        </div>
+      </section>
       <p class="credit">Videos are from the Yudi J, MPOWER Financing, Kantipur, and NTV World YouTube channels, shared as examples of my speaking, not as current advice.</p>
     </div></div>
   </article>
@@ -117,6 +131,18 @@ document.querySelectorAll('.video[data-yt]').forEach(function (f) {
   });
 });
 </script>
+<script>
+// Speaker kit: copy a bio as plain text, with a blank line between paragraphs.
+document.querySelectorAll('.copy-bio').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var el = document.getElementById(b.getAttribute('data-copy'));
+    var text = Array.prototype.map.call(el.querySelectorAll('p'), function (p) { return p.textContent; }).join('\n\n');
+    var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () { b.textContent = 'Select and copy'; });
+    else b.textContent = 'Select and copy';
+  });
+});
+</script>
 <footer class="site-foot"><div class="wrap">
     <div class="foot-brand">
       <p class="foot-name">Claire Almand</p>
@@ -125,12 +151,12 @@ document.querySelectorAll('.video[data-yt]').forEach(function (f) {
     </div>
     <nav class="foot-col" aria-label="Work with Claire"><p class="kind">Work together</p><ul>
       <li><a href="https://rarecraft.ai/">Rarecraft, the firm</a></li>
-      <li><a href="/#cmo">CMO for a season</a></li>
+      <li><a href="/cmo/">CMO for a season</a></li>
       <li><a href="/speaking/">Speaking</a></li>
       <li><a href="/#owl" data-cta="footer_owl">Send an owl</a></li>
     </ul></nav>
     <nav class="foot-col" aria-label="Read"><p class="kind">Read</p><ul>
-      <li><a href="/#spellbook">Spellbook</a></li>
+      <li><a href="/spellbook/">Spellbook</a></li>
       <li><a href="https://www.linkedin.com/newsletters/7512841718925303808/">Growth Grimoire</a></li>
       <li><a href="/#spells">Spells that worked</a></li>
       <li><a href="/journey/">The scenic route</a></li>
