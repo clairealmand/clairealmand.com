@@ -946,7 +946,7 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .wk::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0.45rem; height: 0.45rem; margin: -0.225rem; border-radius: 50%; background: #F4A07F; }
 .wk.m::after { width: 0.85rem; height: 0.85rem; margin: -0.425rem; background: #F2C46B; }
 .wk.q::after { content: "✦"; width: auto; height: auto; margin: 0; background: none; transform: translate(-50%, -50%); color: #E0A93E; font-size: 1.3rem; line-height: 1; }
-.beats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; max-width: 44rem; }
+.rhythm .beats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; max-width: 44rem; }
 .beat { display: grid; gap: 0.3rem; align-content: start; }
 .beat h3 { font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
 .beat p { margin: 0; font-size: 0.92rem; color: var(--muted); }
@@ -980,7 +980,7 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .js .team-wheel.in .pill { opacity: 1; }
 .team-wheel .btn-row { justify-content: center; }
 @media (max-width: 640px) {
-  .beats { grid-template-columns: minmax(0, 1fr); }
+  .rhythm .beats { grid-template-columns: minmax(0, 1fr); }
   .weeks { gap: 0.2rem; } .wk { height: 1.8rem; border-radius: 6px; }
   .sunburst { display: none; }
   .tiers { display: grid; gap: 0.6rem; justify-items: center; }
@@ -993,14 +993,14 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 }
 @media (prefers-reduced-motion: reduce) { .js .rhythm[data-anim] .wk, .js .team-wheel[data-anim] .ray, .js .team-wheel[data-anim] .flare, .js .team-wheel[data-anim] .pill { transition: none; } }
 /* Align the legend with the weeks: both use the same 3 columns, each split into 4 week slots */
-.weeks, .beats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; max-width: 44rem; }
+.weeks, .rhythm .beats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; max-width: 44rem; }
 .weeks .month { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem; }
 .beat h3 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem; align-items: center; }
 .beat h3 .dot { justify-self: center; }
 .beat h3 > span:last-child { grid-column: 2 / -1; }
 .beat h3 .dot.q::before { display: block; }
 @media (max-width: 640px) {
-  .beats { grid-template-columns: minmax(0, 1fr); }
+  .rhythm .beats { grid-template-columns: minmax(0, 1fr); }
   .weeks { gap: 0.35rem; } .weeks .month { gap: 0.2rem; }
   .beat h3 { display: flex; gap: 0.5rem; }
 }
