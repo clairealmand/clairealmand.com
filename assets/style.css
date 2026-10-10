@@ -502,6 +502,7 @@ html { scroll-padding-top: 4.5rem; }
 .portrait .back { transform: rotateY(180deg); background: radial-gradient(circle at 50% 40%, #2A2148, #12101E 75%); display: grid; place-content: center; justify-items: center; gap: 0.6rem; box-shadow: 0 0 0 2px #B49BF2, 0 14px 40px rgba(20,14,40,0.35); }
 .portrait .back .crest { width: 5.5rem; height: 5.5rem; background: linear-gradient(120deg, #F29BBA, #F1C063, #8FD3C9, #B49BF2, #F29BBA) 0 0 / 300% 100%; animation: rainbow 2.4s linear infinite, prance .9s ease-in-out infinite; }
 .portrait .back p { margin: 0; padding: 0 0.5rem; text-align: center; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F1C063; }
+.portrait .back.photo { display: block; background: none; }
 .portrait:hover .flip, .portrait:focus-visible .flip, .portrait:focus .flip { transform: rotateY(180deg); }
 .portrait:focus-visible .face { outline: 3px solid #F2C46B; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {

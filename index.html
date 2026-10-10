@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/dawn.webp" type="image/webp">
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010c">
+<link rel="stylesheet" href="/assets/style.css?v=20261010h">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -139,7 +139,7 @@
         <h2 class="dup">A CMO, for a season.</h2>
         <p class="lead">Some people call this fractional. I call it a CMO for a season: someone senior who can read the room, make the calls, and leave the team stronger than she found it. Some companies don't need a whole marketing department yet. They need that.</p>
         </div>
-        <div class="portrait" tabindex="0"><div class="flip"><picture class="face"><source srcset="/img/claire-almand-2026.webp" type="image/webp"><img src="/img/claire-almand-2026.jpg" alt="Claire Almand" width="480" height="480" loading="lazy"></picture><div class="face back" aria-hidden="true"><div class="crest unicorn" style="--m:url('/img/unicorn.png')"></div><p>Magic for Breakfast</p></div></div></div>
+        <div class="portrait" tabindex="0"><div class="flip"><picture class="face"><source srcset="/img/claire-almand-2026.webp" type="image/webp"><img src="/img/claire-almand-2026.jpg" alt="Claire Almand" width="480" height="480" loading="lazy"></picture><picture class="face back photo"><source srcset="/img/claire-almand-casual.webp" type="image/webp"><img src="/img/claire-almand-casual.jpg" alt="Claire Almand, off duty, in a T-shirt" width="480" height="480" loading="lazy"></picture></div></div>
       </div>
       <p class="kind fits-label" id="fits-label">When you need</p>
       <div class="fits" data-anim aria-labelledby="fits-label">
