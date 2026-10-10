@@ -1129,4 +1129,6 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .card.flipcard:hover .go::after, .issue.flipcard:hover .go::after, .fit:hover .more::after, .flipcard .fc-front:hover .fc-hint { transform: rotate(-270deg); }
 @media (prefers-reduced-motion: reduce) { .card.flipcard .go::after, .issue.flipcard .go::after, .fit .more::after, .flipcard .fc-hint { transition: none; transform: none !important; } }
 
-footer.site-foot .foot-copy { grid-column: 1 / -1; margin-top: -0.75rem; font-size: 0.78rem; color: #9C95B8; letter-spacing: 0.02em; }
+footer.site-foot .foot-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(207,201,230,0.12); }
+footer.site-foot .foot-bottom .foot-sign { padding-top: 0; border-top: 0; }
+footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing: 0.02em; }
