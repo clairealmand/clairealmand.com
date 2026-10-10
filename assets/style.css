@@ -1054,3 +1054,11 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .card.flipcard .fc-back { border-color: var(--accent-text, var(--accent)); background: rgba(242,196,107,0.08); }
 .card.flipcard .go { text-decoration: none; }
 .btn-sub { margin-top: -0.25rem; font-size: 0.92rem; color: var(--muted); }
+
+/* CMO page: FAQ sits in its own panel; the team-wheel caption wraps evenly under the centred wheel */
+.wheel-key { text-wrap: balance; max-width: 34rem; }
+.cmo-faq { padding-top: 0; }
+.cmo-faq .panel { display: grid; gap: 0.75rem; }
+.cmo-faq h2 { margin: 0 0 0.25rem; }
+.faq-proof { margin: 0.75rem 0 0; }
+.team-wheel > .wheel-key { margin: 0.25rem auto 0; max-width: 34rem; }
