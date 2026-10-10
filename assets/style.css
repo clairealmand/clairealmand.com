@@ -1222,3 +1222,9 @@ body:not(.sub) main > .ch { padding-block: 9vh; }
 #cmo .cards.need { margin-top: 0.25rem; }
 #cmo .which { margin-top: 0.25rem; }
 @media (max-width: 680px) { #cmo .card.tile { gap: 0.4rem; padding: 1rem 1.1rem; } }
+.issues.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .issues.three { grid-template-columns: minmax(0, 1fr); } }
+.issue.post .text-link { font-weight: 600; justify-self: start; }
+.issue.post .text-link::after { content: ' ✦'; font-size: 0.75em; }
+@media (max-width: 900px) { .issue.post { grid-template-columns: 120px minmax(0, 1fr); } .issue.post .art { aspect-ratio: auto; min-height: 100%; } .issue.post .body p { display: none; } }
+.issue.post .text-link { font-size: 0.9rem; }
