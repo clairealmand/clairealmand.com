@@ -1161,3 +1161,9 @@ footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing
 .portrait .back.photo { box-shadow: 0 0 0 2px var(--accent-text, var(--accent)), 0 14px 40px rgba(20,14,40,0.25); }
 /* Menu (10 Oct): Work with me, Results, Spellbook, Guild, Contact. On the narrowest phones a slightly tighter gap keeps all five on one line. */
 @media (max-width: 360px) { .topbar .wrap { column-gap: 0.7rem; } }
+/* Leader-first homepage (10 Oct): chapters are short teasers with plain cards, no flips. On phones the Spellbook teaser shows one cover, and the corner clock shrinks to its sun so it never sits on the text. */
+@media (max-width: 600px) {
+  #spellbook .issue:not(:first-child) .art { display: none; }
+  .clock { padding: 0.45rem; gap: 0; }
+  .clock #clock-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
