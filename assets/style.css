@@ -702,3 +702,20 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .nw { white-space: nowrap; }
 .topbar a:not(.home) { position: relative; }
 .topbar a:not(.home)::after { content: ""; position: absolute; inset: -0.4rem -0.35rem; }
+
+/* Link hover swap: warm links (gold, coral, red) turn blue and cool links (blue, violet) turn gold, with a soft glow of the new color.
+   !important beats the per-chapter link colors, which use longer selectors. */
+:root { --swap-blue: #23538B; --swap-gold: #7A5200; --swap-blue-glow: rgba(141, 187, 234, 0.35); --swap-gold-glow: rgba(242, 196, 107, 0.45); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --swap-blue: #9CC8F5; --swap-gold: #FFD27A; --swap-blue-glow: rgba(141, 187, 234, 0.18); --swap-gold-glow: rgba(242, 196, 107, 0.18); } }
+:root[data-theme="dark"] { --swap-blue: #9CC8F5; --swap-gold: #FFD27A; --swap-blue-glow: rgba(141, 187, 234, 0.18); --swap-gold-glow: rgba(242, 196, 107, 0.18); }
+.text-link, .card .go, .issue .go, .hero .proof a, footer.site-foot ul a { transition: color .2s ease, background-color .2s ease, box-shadow .2s ease; border-radius: 3px; }
+.text-link:hover, .text-link:focus-visible, .card:is(:hover, :focus-within) .go, .issue:is(:hover, :focus-within) .go {
+  color: var(--swap-blue) !important; background-color: var(--swap-blue-glow); box-shadow: 0 0 0 3px var(--swap-blue-glow);
+}
+:is([data-key="morning"], [data-key="midday"], [data-key="dusk"]) :is(.text-link:is(:hover, :focus-visible), :is(.card, .issue):is(:hover, :focus-within) .go) {
+  color: var(--swap-gold) !important; background-color: var(--swap-gold-glow); box-shadow: 0 0 0 3px var(--swap-gold-glow);
+}
+.hero .proof a:hover, .hero .proof a:focus-visible { color: #9CC8F5; background-color: rgba(12, 10, 26, 0.45); box-shadow: 0 0 0 3px rgba(12, 10, 26, 0.45); }
+footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27A; }
+:is(.card, .issue):is(:hover, :focus-within) .go { background-color: transparent; box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .text-link, .card .go, .issue .go, .hero .proof a, footer.site-foot ul a { transition: none; } }
