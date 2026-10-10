@@ -70,7 +70,7 @@
   window.addEventListener('scroll', warmSky, { passive: true, once: true });
   setTimeout(warmSky, 2500);
   // Homepage nav: past the hero it tucks away, and slides back in as soon as the reader scrolls up
-  // (or tabs into it), so Work with me, Results, Spellbook, Guild, and Contact stay one move away.
+  // (or tabs into it), so Work, Story, Spellbook, and Contact stay one move away.
   var nav = document.querySelector('.home-nav'), hero = document.querySelector('.hero');
   if (nav && hero) {
     var lastY = window.scrollY, navTick = false;
@@ -189,11 +189,6 @@
       if (!book.querySelector('.chip[data-f="' + f + '"]')) f = 'all';
       bookChips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-f') === f ? 'true' : 'false'); });
       bookItems.forEach(function (p) { p.hidden = f !== 'all' && p.getAttribute('data-series') !== f; });
-      // The top menu underlines Results while the case studies are showing, Spellbook otherwise.
-      document.querySelectorAll('.topbar a[href^="/spellbook/"]').forEach(function (a) {
-        if ((a.getAttribute('href') === '/spellbook/?f=spells') === (f === 'spells')) a.setAttribute('aria-current', 'page');
-        else a.removeAttribute('aria-current');
-      });
     };
     book.querySelector('.shelf-bar').hidden = false;
     bookChips.forEach(function (chip) { chip.addEventListener('click', function () { pick(chip.getAttribute('data-f')); }); });
