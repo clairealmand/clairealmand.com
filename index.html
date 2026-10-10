@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/dawn.webp" type="image/webp">
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010q">
+<link rel="stylesheet" href="/assets/style.css?v=20261010r">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -154,8 +154,14 @@
     <div class="wrap"><div class="panel">
       <span class="stamp">12:10 p.m. · How I got here</span>
       <h2 class="dup">The scenic route</h2>
-      <p class="lead">Psychology, a restaurant with a gallery upstairs, my own consultancy, an MBA, and a decade at MPOWER. It looks random from a distance. Up close it's one question asked over and over: why do people say yes?</p>
-      <p><a class="btn ink" href="/journey/" data-cta="story_map">Explore the map</a></p>
+      <ol class="timeline" data-anim>
+        <li><span class="yr">2011</span><h3>Psychology</h3><p>Swarthmore, then behavioral data for clinical psychologists. Still my favorite toolkit.</p><a class="text-link" href="/journey/#psychology" data-cta="timeline_more">See the map</a></li>
+        <li><span class="yr">2012 to 2016</span><h3>Eastern Shore</h3><p>A restaurant with a gallery upstairs, a Professional Wizard consultancy, and a lot of sunrises.</p><a class="text-link" href="/journey/#eastern-shore" data-cta="timeline_more">See the map</a></li>
+        <li><span class="yr">2016 to 2018</span><h3>MBA</h3><p>University of Maryland, and a laugh that got me hired.</p><a class="text-link" href="/journey/#mba" data-cta="timeline_more">See the map</a></li>
+        <li><span class="yr">2017 to 2026</span><h3>MPOWER</h3><p>First growth marketer to Director of Growth Marketing. The digital team grew from two people to 10, across the US and India.</p><a class="text-link" href="/journey/#mpower" data-cta="timeline_more">See the map</a></li>
+        <li><span class="yr">2026</span><h3>Rarecraft</h3><p>Co-founder and CEO, with Sagar Somani and Aakash Sethi.</p><a class="text-link" href="/journey/#rarecraft" data-cta="timeline_more">See the map</a></li>
+      </ol>
+      <p class="timeline-more"><a class="btn ink" href="/journey/" data-cta="story_map">Explore the whole map</a></p>
     </div></div>
   </section>
 
@@ -238,7 +244,7 @@
     </ul></nav>
     <div class="foot-bottom"><p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p><p class="foot-copy">© 2026 Claire Almand. All rights reserved.</p></div>
   </div></footer>
-<script src="/assets/main.js?v=20261010q" defer></script>
-<script src="/assets/signup.js?v=20261010q" defer></script>
+<script src="/assets/main.js?v=20261010r" defer></script>
+<script src="/assets/signup.js?v=20261010r" defer></script>
 </body>
 </html>
