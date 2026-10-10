@@ -98,9 +98,21 @@ main { position: relative; z-index: 1; }
 
 /* CMO */
 .fits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
-.fit { display: grid; gap: 0.45rem; align-content: start; padding: 1.15rem 1.2rem; border-radius: 10px; border: 1px solid var(--rule); text-decoration: none; color: inherit; min-width: 0; }
+.fit { display: block; min-width: 0; perspective: 1100px; cursor: pointer; outline: none; border-radius: 10px; }
+/* "When you need" cards flip in place, like the portrait: the back teases the story and links to it */
+.fit .flip { position: relative; display: grid; height: 100%; transition: transform .7s cubic-bezier(.3,.7,.3,1.2); transform-style: preserve-3d; }
+.fit .side { grid-area: 1 / 1; display: grid; gap: 0.45rem; align-content: start; padding: 1.15rem 1.2rem; border-radius: 10px; border: 1px solid var(--rule); background: var(--panel, transparent); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.fit .back { transform: rotateY(180deg); align-content: center; border-color: var(--accent-text, var(--accent)); }
 .fit h3 { font-size: 1.3rem; }
 .fit p { font-size: 0.88rem; color: var(--muted); }
+.fit .more { font-size: 0.82rem; color: var(--accent-text, var(--accent)); }
+.fit .more::after { content: ' ↻'; }
+.fit .back .text-link { font-size: 0.92rem; }
+.fit .back .text-link::after { content: ' →'; }
+.fit:hover .flip, .fit:focus-within .flip, .fit.flipped .flip { transform: rotateY(180deg); }
+.fit:focus-visible .side { outline: 3px solid #F2C46B; outline-offset: 3px; }
+@media (hover: none) { .fit:hover .flip { transform: none; } .fit.flipped .flip { transform: rotateY(180deg); } }
+@media (prefers-reduced-motion: reduce) { .fit .flip { transition: none; } }
 
 /* Timeline */
 .timeline { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem; position: relative; }
@@ -502,6 +514,7 @@ html { scroll-padding-top: 4.5rem; }
 .portrait .back { transform: rotateY(180deg); background: radial-gradient(circle at 50% 40%, #2A2148, #12101E 75%); display: grid; place-content: center; justify-items: center; gap: 0.6rem; box-shadow: 0 0 0 2px #B49BF2, 0 14px 40px rgba(20,14,40,0.35); }
 .portrait .back .crest { width: 5.5rem; height: 5.5rem; background: linear-gradient(120deg, #F29BBA, #F1C063, #8FD3C9, #B49BF2, #F29BBA) 0 0 / 300% 100%; animation: rainbow 2.4s linear infinite, prance .9s ease-in-out infinite; }
 .portrait .back p { margin: 0; padding: 0 0.5rem; text-align: center; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F1C063; }
+.portrait .back.photo { display: block; background: none; }
 .portrait:hover .flip, .portrait:focus-visible .flip, .portrait:focus .flip { transform: rotateY(180deg); }
 .portrait:focus-visible .face { outline: 3px solid #F2C46B; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
@@ -1004,3 +1017,114 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
   .weeks { gap: 0.35rem; } .weeks .month { gap: 0.2rem; }
   .beat h3 { display: flex; gap: 0.5rem; }
 }
+
+/* Rarecraft cards flip in place (tap or click) to a short back with a "Learn more" link, like the portrait */
+.rc-list.flips li { perspective: 1000px; }
+.flipcard .fc-inner { position: relative; display: grid; transition: transform .7s cubic-bezier(.3,.7,.3,1.2); transform-style: preserve-3d; }
+.flipcard .fc-front, .flipcard .fc-back { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.rc-list .flipcard .fc-front, .rc-list .flipcard .fc-back { border-radius: 10px; border: 1px solid var(--rule); padding: 0.85rem 2.4rem 0.85rem 1rem; }
+.flipcard .fc-front { position: relative; display: block; width: 100%; text-align: left; font: inherit; font-weight: 500; color: inherit; background: transparent; cursor: pointer; transition: border-color .25s ease, box-shadow .25s ease; }
+.flipcard .fc-front span { display: block; font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+.flipcard .fc-front:hover, .flipcard .fc-front:focus-visible { border-color: var(--accent-text, var(--accent)); box-shadow: 0 0 0 1px var(--accent-text, var(--accent)); outline: none; }
+.flipcard .fc-hint { position: absolute; top: 0.8rem; right: 0.9rem; font-style: normal; font-size: 0.95rem; color: var(--muted); transition: transform .4s ease, color .25s ease; }
+.flipcard .fc-front:hover .fc-hint { transform: rotate(180deg); color: var(--accent-text, var(--accent)); }
+.flipcard .fc-back { transform: rotateY(180deg); cursor: pointer; }
+.rc-list .flipcard .fc-back { display: grid; align-content: center; gap: 0.35rem; padding-right: 1rem; background: rgba(242,196,107,0.08); border-color: var(--accent-text, var(--accent)); }
+.flipcard .fc-back p { margin: 0; font-size: 0.88rem; line-height: 1.45; }
+.flipcard .fc-back a { font-weight: 600; font-size: 0.9rem; color: var(--accent-text, var(--accent)); }
+.flipcard.flipped .fc-inner { transform: rotateY(180deg); }
+@media (prefers-reduced-motion: reduce) {
+  .flipcard .fc-inner { transition: none; }
+}
+.rc-list .fc-back a { display: inline; padding: 0; border: 0; border-radius: 0; text-decoration: underline; text-underline-offset: 3px; transform: none; box-shadow: none; }
+
+/* Results cards flip the same way: front is the stat, back is the short story and one small button */
+.card.flipcard { padding: 0; border: 0; perspective: 1000px; display: block; }
+.card.flipcard:hover { transform: none; box-shadow: none; }
+.card.flipcard .fc-front, .card.flipcard .fc-back { padding: 1.25rem; display: grid; gap: 0.6rem; align-content: start; border-radius: 10px; }
+.card.flipcard .fc-front { position: relative; cursor: pointer; transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+.card.flipcard:hover .fc-front { border-color: var(--accent-text, var(--accent)); transform: translateY(-3px); box-shadow: 0 10px 24px -14px rgba(20, 14, 40, 0.45); }
+.card.flipcard button.more { all: unset; cursor: pointer; }
+.card.flipcard button.more::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.card.flipcard button.more:focus-visible::after { outline: 3px solid #F2C46B; outline-offset: 2px; }
+.card.flipcard .fc-front .go::after { content: "↻"; }
+.card.flipcard .fc-back { align-content: center; }
+.card.flipcard .fc-back p { margin: 0; }
+.flipcard .btn-mini { justify-self: start; display: inline-block; padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid var(--accent-text, var(--accent)); color: var(--accent-text, var(--accent)); font-weight: 600; font-size: 0.85rem; text-decoration: none; }
+.flipcard .btn-mini:hover, .flipcard .btn-mini:focus-visible { background: var(--accent-text, var(--accent)); color: var(--bg, #fff); }
+
+/* Story timeline items flip below their dot */
+.timeline li.flipcard { perspective: 1000px; display: block; }
+.timeline .flipcard .fc-front, .timeline .flipcard .fc-back { display: grid; gap: 0.35rem; align-content: start; border-radius: 10px; }
+.timeline .flipcard .fc-front { position: relative; cursor: pointer; }
+.timeline .flipcard button.more { all: unset; cursor: pointer; }
+.timeline .flipcard button.more::after { content: ""; position: absolute; inset: -0.4rem; border-radius: 10px; }
+.timeline .flipcard button.more:focus-visible::after { outline: 3px solid #F2C46B; }
+.timeline .flipcard .fc-front:hover h3 { color: var(--accent-text, var(--accent)); }
+.timeline .flipcard .fc-back { padding: 0.6rem 0.7rem; border: 1px solid var(--accent-text, var(--accent)); background: rgba(242,196,107,0.08); }
+.timeline .flipcard .fc-back p { color: inherit; font-size: 0.88rem; margin: 0; }
+.card.flipcard .fc-front, .card.flipcard .fc-back { border: 1px solid var(--rule); }
+.card.flipcard .fc-back { border-color: var(--accent-text, var(--accent)); background: rgba(242,196,107,0.08); }
+.card.flipcard .go { text-decoration: none; }
+.btn-sub { margin-top: -0.25rem; font-size: 0.92rem; color: var(--muted); }
+
+/* CMO page: FAQ sits in its own panel; the team-wheel caption wraps evenly under the centred wheel */
+.wheel-key { text-wrap: balance; max-width: 34rem; }
+.cmo-faq { padding-top: 0; }
+.cmo-faq .panel { display: grid; gap: 0.75rem; }
+.cmo-faq h2 { margin: 0 0 0.25rem; }
+.faq-proof { margin: 0.75rem 0 0; }
+.team-wheel > .wheel-key { margin: 0.25rem auto 0; max-width: 34rem; }
+
+/* Footer: one quiet email line */
+.foot-sub { margin-top: 0.9rem; max-width: 20rem; }
+.foot-sub-label { display: block; font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.35rem; }
+.foot-sub-row { display: flex; align-items: center; border-bottom: 1px solid currentColor; opacity: 0.9; }
+.foot-sub-row input { flex: 1; min-width: 0; background: transparent; border: 0; color: inherit; font: inherit; font-size: 0.88rem; padding: 0.35rem 0; outline: none; }
+.foot-sub-row input::placeholder { color: inherit; opacity: 0.5; }
+.foot-sub-row button { background: none; border: 0; color: #F2C46B; font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 0.35rem 0 0.35rem 0.75rem; }
+.foot-sub-row:focus-within { opacity: 1; border-bottom-color: #F2C46B; }
+.foot-sub .sub-status { font-size: 0.78rem; margin: 0.35rem 0 0; min-height: 0; }
+
+/* Reviews slider: three across on desktop, one and a peek on phones */
+.quote-slider { display: grid; gap: 0.75rem; min-width: 0; }
+.quote-slider .quotes { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 1.8rem) / 3); overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; padding: 4px 2px 6px; margin: -4px -2px -6px; }
+.quote-slider .quotes::-webkit-scrollbar { display: none; }
+.quote-slider .quotes:focus-visible { outline: 2px solid var(--accent-text, var(--accent)); outline-offset: 4px; border-radius: 10px; }
+.quote-slider .quote { scroll-snap-align: start; }
+.quote-nav { justify-content: flex-end; gap: 0.5rem; }
+.quote-nav[hidden] { display: none; }
+.quote-nav button { width: 2.2rem; height: 2.2rem; font-size: 1.3rem; }
+.quote-nav button:disabled { opacity: 0.3; cursor: default; }
+@media (max-width: 900px) { .quote-slider .quotes { grid-auto-columns: calc((100% - 0.9rem) / 2); } }
+@media (max-width: 680px) { .quote-slider .quotes { grid-template-columns: none; grid-auto-columns: 85%; } }
+
+/* Spellbook shelf cards flip in place too (10 Oct 2026): the front is the cover, the back carries the teaser and one short link */
+.issue.flipcard { border: 0; overflow: visible; perspective: 1000px; display: block; }
+.issue.flipcard:hover { transform: none; box-shadow: none; }
+.issue.flipcard .fc-inner { height: 100%; }
+.issue.flipcard .fc-front, .issue.flipcard .fc-back { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.issue.flipcard .fc-front { position: relative; display: grid; grid-template-rows: auto 1fr; align-content: start; cursor: pointer; transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+.issue.flipcard:hover .fc-front { border-color: var(--accent-text, var(--accent)); transform: translateY(-3px); box-shadow: 0 10px 24px -14px rgba(20, 14, 40, 0.45); }
+.issue.flipcard:hover .art { transform: none; }
+.issue.flipcard .fc-front:hover .art { transform: scale(1.06); }
+.issue.flipcard button.more { all: unset; cursor: pointer; }
+.issue.flipcard button.more::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.issue.flipcard button.more:focus-visible::after { outline: 3px solid #F2C46B; outline-offset: 2px; }
+.issue.flipcard .fc-front .go::after { content: "↻"; display: inline-block; margin-left: 0.35em; }
+.issue.flipcard .go { text-decoration: none; }
+.issue.flipcard .fc-back { display: grid; align-content: center; gap: 0.6rem; padding: 1.25rem; border-color: var(--accent-text, var(--accent)); background: rgba(242,196,107,0.08); }
+.issue.flipcard .fc-back .fc-title { font-family: var(--display); font-size: 1.2rem; line-height: 1.2; color: inherit; }
+.issue.flipcard .fc-back p { margin: 0; font-size: 0.9rem; }
+@media (prefers-reduced-motion: reduce) { .issue.flipcard .fc-front, .issue.flipcard .art { transition: none; transform: none !important; } }
+
+/* Flip cue (Claire, 10 Oct 2026): a small swirl instead of an arrow, the same on every flip card; it spins on hover */
+:root { --swirl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12.5 12.2c.6-.9-.3-2-1.3-1.7-1.4.4-1.6 2.3-.6 3.2 1.5 1.3 4 .6 4.6-1.3.8-2.4-1.1-4.8-3.6-4.9-3.2-.1-5.6 2.9-5 6 .7 3.6 4.6 5.7 8 4.5 2.6-.9 4.4-3.4 4.4-6.1'/%3E%3C/svg%3E"); }
+.card.flipcard .fc-front .go::after, .issue.flipcard .fc-front .go::after, .fit .more::after, .flipcard .fc-hint {
+  content: ""; display: inline-block; width: 1.2em; height: 1.2em; vertical-align: -0.28em; margin-left: 0.3em;
+  background: currentColor; -webkit-mask: var(--swirl) center / contain no-repeat; mask: var(--swirl) center / contain no-repeat;
+  transition: transform .6s ease;
+}
+.flipcard .fc-hint { width: 1.1rem; height: 1.1rem; margin: 0; }
+.card.flipcard:hover .go::after, .issue.flipcard:hover .go::after, .fit:hover .more::after, .flipcard .fc-front:hover .fc-hint { transform: rotate(-270deg); }
+@media (prefers-reduced-motion: reduce) { .card.flipcard .go::after, .issue.flipcard .go::after, .fit .more::after, .flipcard .fc-hint { transition: none; transform: none !important; } }

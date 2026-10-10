@@ -207,3 +207,64 @@
     anims.forEach(function (el) { el.classList.add('in'); });
   }
 })();
+
+// Flip cards (Rarecraft list, results): tap or click flips a card in place; tapping the back (not its link) or moving away flips it home
+document.querySelectorAll('.flipcard').forEach(function (card) {
+  var front = card.querySelector('.fc-front'), back = card.querySelector('.fc-back');
+  var toggle = card.querySelector('.fc-toggle') || front;
+  function set(on) {
+    card.classList.toggle('flipped', on);
+    toggle.setAttribute('aria-expanded', on ? 'true' : 'false');
+    if (on) { back.removeAttribute('inert'); front.setAttribute('inert', ''); }
+    else { back.setAttribute('inert', ''); front.removeAttribute('inert'); }
+  }
+  set(false);
+  front.addEventListener('click', function () {
+    set(true);
+    var a = back.querySelector('a'); if (a) setTimeout(function () { a.focus({ preventScroll: true }); }, 350);
+    if (window.gtag) gtag('event', 'card_flip', { card: toggle.textContent.trim().slice(0, 60) });
+  });
+  back.addEventListener('click', function (e) { if (!e.target.closest('a')) { set(false); toggle.focus({ preventScroll: true }); } });
+  card.addEventListener('mouseleave', function () { if (card.classList.contains('flipped')) set(false); });
+  back.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); toggle.focus(); } });
+});
+
+// Reviews: a sideways slider with two small arrows; swipe works on phones
+document.querySelectorAll('[data-quotes]').forEach(function (box) {
+  var track = box.querySelector('.quotes'), nav = box.querySelector('.quote-nav');
+  var prev = nav.querySelector('.prev'), next = nav.querySelector('.next');
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ends() {
+    var max = track.scrollWidth - track.clientWidth;
+    nav.hidden = max <= 2;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max - 2;
+  }
+  function slide(dir) {
+    var card = track.querySelector('.quote'), gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.scrollBy({ left: dir * (card ? card.offsetWidth + gap : track.clientWidth), behavior: calm ? 'auto' : 'smooth' });
+  }
+  prev.addEventListener('click', function () { slide(-1); });
+  next.addEventListener('click', function () { slide(1); });
+  var tick = false;
+  track.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; ends(); }); } }, { passive: true });
+  window.addEventListener('resize', ends);
+  ends();
+});
+
+// "When you need" cards: a tap flips the card to its story link; a second tap (or tapping elsewhere) flips it back.
+(function () {
+  var cards = document.querySelectorAll('.fit');
+  cards.forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      var on = !card.classList.contains('flipped');
+      cards.forEach(function (c) { c.classList.remove('flipped'); });
+      card.classList.toggle('flipped', on);
+      if (on && window.gtag) gtag('event', 'card_flip', { cta_id: card.getAttribute('data-cta') });
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.fit')) cards.forEach(function (c) { c.classList.remove('flipped'); });
+  });
+})();

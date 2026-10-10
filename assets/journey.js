@@ -12,4 +12,7 @@
       });
     });
   });
+  // Open with a thread already picked, e.g. /journey/?thread=teams from the home page cards.
+  var pick = new URLSearchParams(location.search).get('thread');
+  chips.forEach(function (chip) { if (pick && chip.getAttribute('data-f') === pick) chip.click(); });
 })();
