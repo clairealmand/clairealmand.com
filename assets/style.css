@@ -1136,3 +1136,5 @@ footer.site-foot .foot-sub { grid-column: 1; margin-top: 0; }
   footer.site-foot .foot-note { margin-top: 0; }
 }
 @media (max-width: 760px) { footer.site-foot .foot-sub { grid-column: 1 / -1; } }
+footer.site-foot .foot-copy { grid-column: 1 / -1; padding-top: 1rem; border-top: 1px solid rgba(207,201,230,0.12); font-size: 0.78rem; color: #9C95B8; letter-spacing: 0.02em; }
+@media (min-width: 761px) { footer.site-foot .foot-copy { grid-row: auto; } }
