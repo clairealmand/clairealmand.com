@@ -1157,3 +1157,5 @@ footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing
 .timeline .flipcard .fc-back { border-color: var(--accent-text, var(--accent)); }
 /* Case-study cards: every card in a row is the same height */
 .card.flipcard .fc-inner { height: 100%; }
+/* Flipped portrait photo: same outline as the front, in the section's own color */
+.portrait .back.photo { box-shadow: 0 0 0 2px var(--accent-text, var(--accent)), 0 14px 40px rgba(20,14,40,0.25); }
