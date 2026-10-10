@@ -1228,3 +1228,5 @@ body:not(.sub) main > .ch { padding-block: 9vh; }
 .issue.post .text-link::after { content: ' ✦'; font-size: 0.75em; }
 @media (max-width: 900px) { .issue.post { grid-template-columns: 120px minmax(0, 1fr); } .issue.post .art { aspect-ratio: auto; min-height: 100%; } .issue.post .body p { display: none; } }
 .issue.post .text-link { font-size: 0.9rem; }
+/* Menu (10 Oct): Work with me, Results, Spellbook, Guild, Contact. On the narrowest phones a slightly tighter gap keeps all five on one line. */
+@media (max-width: 360px) { .topbar .wrap { column-gap: 0.7rem; } }
