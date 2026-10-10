@@ -1202,3 +1202,23 @@ body:not(.sub) main > .ch { padding-block: 9vh; }
 .moved-cards .btn-row { margin-top: 1rem; }
 /* No arrow symbols anywhere (Claire, 10 Oct): links that need a marker get a small star. */
 .btn-mini::after { content: ' ✦'; font-size: 0.75em; }
+/* Intro beat and timeline case studies (10 Oct 2026). */
+#hello .forks { margin-top: 0.25rem; }
+#hello .fork { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.timeline .tl-open { justify-self: start; margin-top: 0.15rem; padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid var(--accent-text, var(--accent)); background: transparent; color: var(--accent-text, var(--accent)); font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.timeline .tl-open::after { content: ' ✦'; font-size: 0.75em; }
+.timeline .tl-open:hover, .timeline .tl-open:focus-visible, .timeline li.open .tl-open { background: var(--accent-text, var(--accent)); color: var(--paper, #fff); }
+.tl-spells { margin-top: 1.25rem; padding: 1.25rem; border: 1px solid var(--accent-text, var(--accent)); border-radius: 10px; animation: tl-in .35s ease; }
+@keyframes tl-in { from { opacity: 0; transform: translateY(-6px); } }
+.tl-roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 0.5rem; }
+.tl-role h4 { font-family: var(--body); font-weight: 600; font-size: 1rem; margin: 0 0 0.4rem; }
+.tl-role h4 span { display: block; font-family: var(--mono); font-size: 0.72rem; font-weight: 400; color: var(--muted); letter-spacing: 0.08em; }
+.tl-role ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.tl-role li { font-size: 0.9rem; color: var(--muted); }
+.tl-role li b { font-family: var(--display); font-size: 1.15rem; color: var(--accent-text, var(--accent)); margin-right: 0.2rem; }
+.tl-role .text-link { font-weight: 600; }
+@media (max-width: 760px) { .tl-roles { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .tl-spells { animation: none; } }
+#cmo .cards.need { margin-top: 0.25rem; }
+#cmo .which { margin-top: 0.25rem; }
+@media (max-width: 680px) { #cmo .card.tile { gap: 0.4rem; padding: 1rem 1.1rem; } }
