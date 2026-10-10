@@ -1143,3 +1143,13 @@ footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing
 .member .crest { margin-top: 0.15rem; }
 .member .skill, .spec .skill { text-wrap: balance; }
 .beats .beat { white-space: nowrap; }
+
+/* Tablets: the five-column career timeline gets too narrow ("Eastern / Shore"), so use the stacked phone layout up to 960px */
+@media (max-width: 960px) {
+  .timeline { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding-left: 2rem; }
+  .timeline::before { left: 0.5rem; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: linear-gradient(180deg, #F08A5D, #F2C14E, #6FA3D8, #E8593C, #3A2D63); }
+  .js .timeline[data-anim]::before { transform: scaleY(0); transform-origin: top; }
+  .js .timeline[data-anim].in::before { transform: scaleY(1); }
+  .timeline li { padding-top: 0; }
+  .timeline li::before { left: -2rem; top: 0.2rem; }
+}
