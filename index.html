@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/dawn.webp" type="image/webp">
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010b">
+<link rel="stylesheet" href="/assets/style.css?v=20261010c">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -225,7 +225,7 @@
           <article class="issue" data-series="charms" data-date="2026-10-05"><div class="art" style="background-image:url('/img/posts/moxie-cover-card.jpg')"></div><div class="body"><span class="no">Claire's Charms · No. 1</span><h3><a class="more" href="/spellbook/moxie/">Moxie, scheduled</a></h3><p>What winning a 2023 Moxie Award taught me about the scary, visible thing.</p><span class="go">Read the charm</span></div></article>
         </div>
       </div>
-      <p><a class="btn ink" href="https://www.linkedin.com/newsletters/7512841718925303808/">Subscribe on LinkedIn</a></p>
+      <p class="btn-row"><a class="btn ink" href="/spellbook/" data-cta="spellbook_all">See the whole Spellbook</a> <a class="btn ink" href="https://www.linkedin.com/newsletters/7512841718925303808/">Subscribe on LinkedIn</a></p>
     </div></div>
   </section>
 
@@ -288,7 +288,7 @@
       <li><a href="/#owl" data-cta="footer_owl">Send an owl</a></li>
     </ul></nav>
     <nav class="foot-col" aria-label="Read"><p class="kind">Read</p><ul>
-      <li><a href="/#spellbook">Spellbook</a></li>
+      <li><a href="/spellbook/">Spellbook</a></li>
       <li><a href="https://www.linkedin.com/newsletters/7512841718925303808/">Growth Grimoire</a></li>
       <li><a href="/#spells">Spells that worked</a></li>
       <li><a href="/journey/">The scenic route</a></li>
@@ -299,6 +299,6 @@
     </ul></nav>
     <p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p>
   </div></footer>
-<script src="/assets/main.js?v=20261009a" defer></script>
+<script src="/assets/main.js?v=20261010c" defer></script>
 </body>
 </html>

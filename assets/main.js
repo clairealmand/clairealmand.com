@@ -181,6 +181,20 @@
     });
     ends();
   }
+  // Spellbook home: every post and case study in one grid; chips show one series, and ?f=spells opens on that series.
+  var book = document.querySelector('[data-book]');
+  if (book) {
+    var bookItems = book.querySelectorAll('.issue'), bookChips = book.querySelectorAll('.chip');
+    var pick = function (f) {
+      if (!book.querySelector('.chip[data-f="' + f + '"]')) f = 'all';
+      bookChips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-f') === f ? 'true' : 'false'); });
+      bookItems.forEach(function (p) { p.hidden = f !== 'all' && p.getAttribute('data-series') !== f; });
+    };
+    book.querySelector('.shelf-bar').hidden = false;
+    bookChips.forEach(function (chip) { chip.addEventListener('click', function () { pick(chip.getAttribute('data-f')); }); });
+    var m = /[?&]f=([a-z]+)/.exec(location.search);
+    if (m) pick(m[1]);
+  }
   // Sections marked data-anim play their entrance (bars grow, the scenic route draws) once they scroll into view.
   document.documentElement.classList.add('js');
   var anims = document.querySelectorAll('[data-anim]');
