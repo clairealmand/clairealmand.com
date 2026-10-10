@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010p">
+<link rel="stylesheet" href="/assets/style.css?v=20261010q">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -36,7 +36,7 @@
 </head>
 <body class="sub">
 <div class="sky-layer photos" aria-hidden="true"><div class="ph on" style="background-image:url('/img/sunset.jpg');background-image:image-set(url('/img/sunset.webp') type('image/webp'), url('/img/sunset.jpg') type('image/jpeg'))"></div></div>
-<nav class="topbar" aria-label="Site"><div class="wrap"><a class="home" href="/">Claire Almand</a><a href="/#rarecraft" data-cta="work_nav">Work</a><a href="/journey/">Story</a><a href="/spellbook/?f=spells">Results</a><a href="/spellbook/">Spellbook</a><a href="/#owl" data-cta="contact_nav">Contact</a><button type="button" class="theme-toggle" aria-label="Day to night" aria-pressed="false" title="Day to night"><svg class="sun" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="moon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg></button></div></nav>
+<nav class="topbar" aria-label="Site"><div class="wrap"><a class="home" href="/">Claire Almand</a><a href="/cmo/" data-cta="work_nav">Work with me</a><a href="/spellbook/?f=spells">Results</a><a href="/spellbook/">Spellbook</a><a href="/guild/">Guild</a><a href="/#owl" data-cta="contact_nav">Contact</a><button type="button" class="theme-toggle" aria-label="Day to night" aria-pressed="false" title="Day to night"><svg class="sun" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="moon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg></button></div></nav>
 <main>
   <article class="ch case speaking" data-key="sunset">
     <div class="wrap"><div class="panel">
@@ -152,6 +152,7 @@ document.querySelectorAll('.copy-bio').forEach(function (b) {
     <nav class="foot-col" aria-label="Work with Claire"><p class="kind">Work together</p><ul>
       <li><a href="https://rarecraft.ai/">Rarecraft, the firm</a></li>
       <li><a href="/cmo/">CMO for a season</a></li>
+      <li><a href="/guild/">The Guild</a></li>
       <li><a href="/speaking/">Speaking</a></li>
       <li><a href="/#owl" data-cta="footer_owl">Send an owl</a></li>
     </ul></nav>
@@ -163,7 +164,6 @@ document.querySelectorAll('.copy-bio').forEach(function (b) {
     </ul></nav>
     <nav class="foot-col" aria-label="Elsewhere"><p class="kind">Elsewhere</p><ul>
       <li><a href="https://fineartamerica.com/profiles/1-claire-almand" data-cta="photos_see_more">Photography</a></li>
-      <li><a href="/guild/">The Guild</a></li>
     </ul></nav>
     <div class="foot-bottom"><p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p><p class="foot-copy">© 2026 Claire Almand. All rights reserved.</p></div>
   </div></footer>

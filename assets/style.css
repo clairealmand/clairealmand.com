@@ -1159,3 +1159,5 @@ footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing
 .card.flipcard .fc-inner { height: 100%; }
 /* Flipped portrait photo: same outline as the front, in the section's own color */
 .portrait .back.photo { box-shadow: 0 0 0 2px var(--accent-text, var(--accent)), 0 14px 40px rgba(20,14,40,0.25); }
+/* Menu (10 Oct): Work with me, Results, Spellbook, Guild, Contact. On the narrowest phones a slightly tighter gap keeps all five on one line. */
+@media (max-width: 360px) { .topbar .wrap { column-gap: 0.7rem; } }
