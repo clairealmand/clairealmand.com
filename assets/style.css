@@ -1004,3 +1004,21 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
   .weeks { gap: 0.35rem; } .weeks .month { gap: 0.2rem; }
   .beat h3 { display: flex; gap: 0.5rem; }
 }
+
+/* Rarecraft cards flip in place (tap or click) to a short back with a "Learn more" link, like the portrait */
+.rc-list.flips li { perspective: 1000px; }
+.flipcard .fc-inner { position: relative; display: grid; transition: transform .7s cubic-bezier(.3,.7,.3,1.2); transform-style: preserve-3d; }
+.flipcard .fc-front, .flipcard .fc-back { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; border: 1px solid var(--rule); padding: 0.85rem 2.4rem 0.85rem 1rem; }
+.flipcard .fc-front { position: relative; display: block; width: 100%; text-align: left; font: inherit; font-weight: 500; color: inherit; background: transparent; cursor: pointer; transition: border-color .25s ease, box-shadow .25s ease; }
+.flipcard .fc-front span { display: block; font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+.flipcard .fc-front:hover, .flipcard .fc-front:focus-visible { border-color: var(--accent-text, var(--accent)); box-shadow: 0 0 0 1px var(--accent-text, var(--accent)); outline: none; }
+.flipcard .fc-hint { position: absolute; top: 0.8rem; right: 0.9rem; font-style: normal; font-size: 0.95rem; color: var(--muted); transition: transform .4s ease, color .25s ease; }
+.flipcard .fc-front:hover .fc-hint { transform: rotate(180deg); color: var(--accent-text, var(--accent)); }
+.flipcard .fc-back { transform: rotateY(180deg); display: grid; align-content: center; gap: 0.35rem; padding-right: 1rem; background: rgba(242,196,107,0.08); border-color: var(--accent-text, var(--accent)); cursor: pointer; }
+.flipcard .fc-back p { margin: 0; font-size: 0.88rem; line-height: 1.45; }
+.flipcard .fc-back a { font-weight: 600; font-size: 0.9rem; color: var(--accent-text, var(--accent)); }
+.flipcard.flipped .fc-inner { transform: rotateY(180deg); }
+@media (prefers-reduced-motion: reduce) {
+  .flipcard .fc-inner { transition: none; }
+}
+.rc-list .fc-back a { display: inline; padding: 0; border: 0; border-radius: 0; text-decoration: underline; text-underline-offset: 3px; transform: none; box-shadow: none; }

@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/dawn.webp" type="image/webp">
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010d">
+<link rel="stylesheet" href="/assets/style.css?v=20261010e">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -121,11 +121,23 @@
           <p><b>This is my personal site.</b> For the marketing agency and the team, head to Rarecraft.</p>
           <p><a class="btn ink" href="https://rarecraft.ai/" data-cta="rarecraft_visit">Visit Rarecraft</a></p>
         </div>
-        <ul class="rc-list">
-          <li><a href="https://rarecraft.ai/how-we-work/">Senior people, start to finish<span>No hand-offs to a junior team.</span></a></li>
-          <li><a href="/guild/">Specialists on six continents<span>Brought in when the work needs them. Meet them in the Guild.</span></a></li>
-          <li><a href="https://rarecraft.ai/how-we-work/">AI for the busywork<span>People for the judgment.</span></a></li>
-          <li><a href="https://rarecraft.ai/">Fixed fees, never a percentage of ad spend<span>It starts with a free Growth Review.</span></a></li>
+        <ul class="rc-list flips">
+          <li class="flipcard"><div class="fc-inner">
+            <button class="fc-front" type="button" aria-expanded="false" aria-controls="fc0">Senior people, start to finish<span>No hand-offs to a junior team.</span><i class="fc-hint" aria-hidden="true">↻</i></button>
+            <div class="fc-back" id="fc0"><p>The people on your first call are the people doing the work, from the first audit to the last report.</p><a href="https://rarecraft.ai/how-we-work/" data-cta="rc_card_more">Learn more about how we work →</a></div>
+          </div></li>
+          <li class="flipcard"><div class="fc-inner">
+            <button class="fc-front" type="button" aria-expanded="false" aria-controls="fc1">Specialists on six continents<span>Senior specialists, ready when you need them.</span><i class="fc-hint" aria-hidden="true">↻</i></button>
+            <div class="fc-back" id="fc1"><p>Paid media, design, content, data, and engineering, brought in when the work calls for them.</p><a href="/guild/" data-cta="rc_card_more">Meet them in the Guild →</a></div>
+          </div></li>
+          <li class="flipcard"><div class="fc-inner">
+            <button class="fc-front" type="button" aria-expanded="false" aria-controls="fc2">AI for the busywork<span>People for the judgment.</span><i class="fc-hint" aria-hidden="true">↻</i></button>
+            <div class="fc-back" id="fc2"><p>AI drafts, sorts, and reports, so the senior hours go to deciding what it all means.</p><a href="https://rarecraft.ai/how-we-work/" data-cta="rc_card_more">Learn more about our AI workflows →</a></div>
+          </div></li>
+          <li class="flipcard"><div class="fc-inner">
+            <button class="fc-front" type="button" aria-expanded="false" aria-controls="fc3">Fixed fees, never a percentage of ad spend<span>It starts with a free Growth Review.</span><i class="fc-hint" aria-hidden="true">↻</i></button>
+            <div class="fc-back" id="fc3"><p>You know the price before we start, and it doesn't climb when your ad budget does.</p><a href="https://rarecraft.ai/" data-cta="rc_card_more">Learn more about the Growth Review →</a></div>
+          </div></li>
         </ul>
       </div>
     </div></div>
@@ -284,6 +296,6 @@
     </ul></nav>
     <p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p>
   </div></footer>
-<script src="/assets/main.js?v=20261010d" defer></script>
+<script src="/assets/main.js?v=20261010e" defer></script>
 </body>
 </html>
