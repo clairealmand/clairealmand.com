@@ -962,3 +962,15 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
   .wheel li, .js .team-wheel[data-anim] li, .js .team-wheel.in li { position: static; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .js .rhythm[data-anim] .wk, .js .team-wheel[data-anim] li { transition: none; } }
+/* Align the legend with the weeks: both use the same 3 columns, each split into 4 week slots */
+.weeks, .beats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; max-width: 44rem; }
+.weeks .month { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem; }
+.beat h3 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem; align-items: center; }
+.beat h3 .dot { justify-self: center; }
+.beat h3 > span:last-child { grid-column: 2 / -1; }
+.beat h3 .dot.q::before { display: block; }
+@media (max-width: 640px) {
+  .beats { grid-template-columns: minmax(0, 1fr); }
+  .weeks { gap: 0.35rem; } .weeks .month { gap: 0.2rem; }
+  .beat h3 { display: flex; gap: 0.5rem; }
+}
