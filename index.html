@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/dawn.webp" type="image/webp">
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010d">
+<link rel="stylesheet" href="/assets/style.css?v=20261010j">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -143,9 +143,18 @@
       </div>
       <p class="kind fits-label" id="fits-label">When you need</p>
       <div class="fits" data-anim aria-labelledby="fits-label">
-        <a class="fit" href="/spells/opening-nepal/" data-cta="cmo_need_new_market"><h3>A new market opened</h3><p>Been there: in Nepal, MPOWER's site traffic was up 300% year over year by February, ahead of our first event in March 2026, which drew 1,500 qualified prospects.</p><span class="more">Read the Nepal story</span></a>
-        <a class="fit" href="/journey/?thread=teams#mpower" data-cta="cmo_need_team"><h3>A team that runs without you</h3><p>Been there: MPOWER's growth team went from one part-time MBA student to 10 people across the US and India.</p><span class="more">See how the team grew</span></a>
-        <a class="fit" href="#spells" data-cta="cmo_need_growth"><h3>Growth unstuck</h3><p>Been there: 1.8× revenue on a flat budget in 2023, and 3× qualified leads six months after a year-long shutdown.</p><span class="more">See the case studies</span></a>
+        <div class="fit" tabindex="0" data-cta="cmo_need_new_market"><div class="flip">
+          <div class="side front"><h3>A new market opened</h3><p>Been there: in Nepal, MPOWER's site traffic was up 300% year over year by February, ahead of our first event in March 2026, which drew 1,500 qualified prospects.</p><span class="more">Flip for the story</span></div>
+          <div class="side back"><p>MPOWER was unknown in Nepal, and students assumed an education loan meant putting up family property. One message fixed that: no collateral, carried on national TV and radio.</p><a class="text-link" href="/spells/opening-nepal/" data-cta="cmo_need_new_market_story">Learn more about opening Nepal</a></div>
+        </div></div>
+        <div class="fit" tabindex="0" data-cta="cmo_need_team"><div class="flip">
+          <div class="side front"><h3>A team that runs without you</h3><p>Been there: MPOWER's growth team went from one part-time MBA student to 10 people across the US and India.</p><span class="more">Flip for the story</span></div>
+          <div class="side back"><p>Contractors became employees, and the team grew two layers of management. The whole path is on my career map, with the team-building stops lit up.</p><a class="text-link" href="/journey/?thread=teams#mpower" data-cta="cmo_need_team_story">Learn more about building the team</a></div>
+        </div></div>
+        <div class="fit" tabindex="0" data-cta="cmo_need_growth"><div class="flip">
+          <div class="side front"><h3>Growth unstuck</h3><p>Been there: 1.8× revenue on a flat budget in 2023, and 3× qualified leads six months after a year-long shutdown.</p><span class="more">Flip for the story</span></div>
+          <div class="side back"><p>Two case studies behind those numbers.</p><a class="text-link" href="/spells/paid-ads-habit/" data-cta="cmo_need_growth_paid">Learn more about breaking the paid-ads habit</a><a class="text-link" href="/spells/restarting-the-engine/" data-cta="cmo_need_growth_restart">Learn more about restarting the engine</a></div>
+        </div></div>
       </div>
       <div class="how">
         <h3>How working together starts</h3>
@@ -284,6 +293,6 @@
     </ul></nav>
     <p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p>
   </div></footer>
-<script src="/assets/main.js?v=20261010d" defer></script>
+<script src="/assets/main.js?v=20261010j" defer></script>
 </body>
 </html>
