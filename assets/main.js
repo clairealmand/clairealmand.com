@@ -228,3 +228,26 @@ document.querySelectorAll('.flipcard').forEach(function (card) {
   card.addEventListener('mouseleave', function () { if (card.classList.contains('flipped')) set(false); });
   back.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); toggle.focus(); } });
 });
+
+// Reviews: a sideways slider with two small arrows; swipe works on phones
+document.querySelectorAll('[data-quotes]').forEach(function (box) {
+  var track = box.querySelector('.quotes'), nav = box.querySelector('.quote-nav');
+  var prev = nav.querySelector('.prev'), next = nav.querySelector('.next');
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ends() {
+    var max = track.scrollWidth - track.clientWidth;
+    nav.hidden = max <= 2;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max - 2;
+  }
+  function slide(dir) {
+    var card = track.querySelector('.quote'), gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.scrollBy({ left: dir * (card ? card.offsetWidth + gap : track.clientWidth), behavior: calm ? 'auto' : 'smooth' });
+  }
+  prev.addEventListener('click', function () { slide(-1); });
+  next.addEventListener('click', function () { slide(1); });
+  var tick = false;
+  track.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; ends(); }); } }, { passive: true });
+  window.addEventListener('resize', ends);
+  ends();
+});

@@ -1072,3 +1072,16 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .foot-sub-row button { background: none; border: 0; color: #F2C46B; font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 0.35rem 0 0.35rem 0.75rem; }
 .foot-sub-row:focus-within { opacity: 1; border-bottom-color: #F2C46B; }
 .foot-sub .sub-status { font-size: 0.78rem; margin: 0.35rem 0 0; min-height: 0; }
+
+/* Reviews slider: three across on desktop, one and a peek on phones */
+.quote-slider { display: grid; gap: 0.75rem; min-width: 0; }
+.quote-slider .quotes { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 1.8rem) / 3); overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; padding: 4px 2px 6px; margin: -4px -2px -6px; }
+.quote-slider .quotes::-webkit-scrollbar { display: none; }
+.quote-slider .quotes:focus-visible { outline: 2px solid var(--accent-text, var(--accent)); outline-offset: 4px; border-radius: 10px; }
+.quote-slider .quote { scroll-snap-align: start; }
+.quote-nav { justify-content: flex-end; gap: 0.5rem; }
+.quote-nav[hidden] { display: none; }
+.quote-nav button { width: 2.2rem; height: 2.2rem; font-size: 1.3rem; }
+.quote-nav button:disabled { opacity: 0.3; cursor: default; }
+@media (max-width: 900px) { .quote-slider .quotes { grid-auto-columns: calc((100% - 0.9rem) / 2); } }
+@media (max-width: 680px) { .quote-slider .quotes { grid-template-columns: none; grid-auto-columns: 85%; } }
