@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/sunset.webp" type="image/webp">
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010c">
+<link rel="stylesheet" href="/assets/style.css?v=20261010d">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -79,7 +79,18 @@
           <article class="issue spell" data-series="spells"><div class="art spell-art"><b>23×</b><small>growth while I led digital</small></div><div class="body"><span class="no">The scenic route</span><h3><a class="more" href="/journey/#mpower">Growing up, not just out</a></h3><p>Loan applications started and loan volume disbursed, April to December 2018 compared with the same months of 2025.</p><span class="go">Read the story</span></div></article>
         </div>
       </div>
-      <p><a class="btn ink" href="https://www.linkedin.com/newsletters/7512841718925303808/">Subscribe on LinkedIn</a></p>
+      <div class="signup" id="signup" data-placement="signup_spellbook">
+        <h2>Get the next spell by email</h2>
+        <p class="soft">New Growth Grimoire issues, charms, and throwbacks, sent when they're out. I'll only use your email for that, and you can reply anytime to leave.</p>
+        <form class="sub-form" action="/api/owl" method="post">
+          <input type="hidden" name="topic" value="subscribe"><input type="hidden" name="t" value=""><input type="hidden" name="page" value="/spellbook/">
+          <label class="hp" aria-hidden="true">Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label>
+          <label class="sub-label" for="sub-email">Your email</label>
+          <div class="sub-row"><input id="sub-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com"><button type="submit">Sign me up</button></div>
+          <p class="sub-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="sub-alt">Prefer LinkedIn? <a class="text-link" href="https://www.linkedin.com/newsletters/7512841718925303808/">Subscribe to the Growth Grimoire there</a>.</p>
+      </div>
     </div></div>
   </header>
 
@@ -100,7 +111,7 @@
     </div>
     <nav class="foot-col" aria-label="Work with Claire"><p class="kind">Work together</p><ul>
       <li><a href="https://rarecraft.ai/">Rarecraft, the firm</a></li>
-      <li><a href="/#cmo">CMO for a season</a></li>
+      <li><a href="/cmo/">CMO for a season</a></li>
       <li><a href="/speaking/">Speaking</a></li>
       <li><a href="/#owl" data-cta="footer_owl">Send an owl</a></li>
     </ul></nav>
@@ -116,6 +127,7 @@
     </ul></nav>
     <p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p>
   </div></footer>
-<script src="/assets/main.js?v=20261010c" defer></script>
+<script src="/assets/main.js?v=20261010d" defer></script>
+<script src="/assets/signup.js?v=20261010d" defer></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/dawn.webp" type="image/webp">
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261010c">
+<link rel="stylesheet" href="/assets/style.css?v=20261010d">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -156,7 +156,7 @@
         </ol>
       </div>
       <p class="soft which">I take CMO roles through <a class="text-link" href="#rarecraft">Rarecraft</a>, the firm I co-founded. Start with one senior leader inside your team, and bring in the full team when the work calls for it.</p>
-      <p><a class="btn ink" href="#owl" data-cta="cmo_owl">Send an owl about a CMO role</a></p>
+      <p class="btn-row"><a class="btn ink" href="/cmo/" data-cta="cmo_how">How a season works</a> <a class="btn line" href="#owl" data-cta="cmo_owl">Send an owl about a CMO role</a></p>
       <p class="speak-teaser"><span class="stamp"><span class="star" aria-hidden="true">✦</span> Public displays of magic</span> Talks, workshops, panels, podcasts, and hosting, on customer psychology, international growth, and leadership. <a class="text-link" href="/speaking/" data-cta="speaking_teaser" data-placement="speaking_teaser">Invite Claire to speak</a></p>
     </div></div>
   </section>
@@ -210,7 +210,7 @@
         <article class="issue" data-series="grimoire" data-date="2026-10-06"><div class="art" style="background-image:url('/img/posts/allen-key-spell-card.jpg')"></div><div class="body"><span class="no">Growth Grimoire · No. 1</span><h3><a class="more" href="/spellbook/allen-key-spell/">The Allen Key Spell</a></h3><p>Why people overvalue what they help build, and when extra effort backfires.</p><span class="go">Read the issue</span></div></article>
         <article class="issue" data-series="charms" data-date="2026-10-05"><div class="art" style="background-image:url('/img/posts/a-decade-in-one-post-cover-card.jpg')"></div><div class="body"><span class="no">Claire's Charms · No. 2</span><h3><a class="more" href="/spellbook/a-decade-in-one-post/">A decade in one post</a></h3><p>Ten years at MPOWER, and the people who made them.</p><span class="go">Read the charm</span></div></article>
       </div>
-      <p class="btn-row"><a class="btn ink" href="/spellbook/" data-cta="spellbook_all">Open the Spellbook</a> <a class="btn ink" href="https://www.linkedin.com/newsletters/7512841718925303808/">Subscribe on LinkedIn</a></p>
+      <p class="btn-row"><a class="btn ink" href="/spellbook/" data-cta="spellbook_all">Open the Spellbook</a> <a class="btn ink" href="https://www.linkedin.com/newsletters/7512841718925303808/">Subscribe on LinkedIn</a> <a class="btn line" href="/spellbook/#signup" data-cta="spellbook_email">Get it by email</a></p>
     </div></div>
   </section>
 
@@ -268,7 +268,7 @@
     </div>
     <nav class="foot-col" aria-label="Work with Claire"><p class="kind">Work together</p><ul>
       <li><a href="https://rarecraft.ai/">Rarecraft, the firm</a></li>
-      <li><a href="/#cmo">CMO for a season</a></li>
+      <li><a href="/cmo/">CMO for a season</a></li>
       <li><a href="/speaking/">Speaking</a></li>
       <li><a href="/#owl" data-cta="footer_owl">Send an owl</a></li>
     </ul></nav>
@@ -284,6 +284,6 @@
     </ul></nav>
     <p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p>
   </div></footer>
-<script src="/assets/main.js?v=20261010c" defer></script>
+<script src="/assets/main.js?v=20261010d" defer></script>
 </body>
 </html>

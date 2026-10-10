@@ -23,9 +23,14 @@ export default {
     const started = Number(form.get('t')) || 0;
     if (form.get('website') || Date.now() - started < 3000) return json({ ok: true });
 
-    const name = oneLine(form.get('name'), 120);
+    // A Spellbook signup only needs an email; it arrives as an owl so Claire can keep the list herself.
+    const subscribe = form.get('topic') === 'subscribe';
     const email = oneLine(form.get('email'), 200);
-    const message = String(form.get('message') || '').trim().slice(0, 5000);
+    const name = subscribe ? oneLine(form.get('name'), 120) || email : oneLine(form.get('name'), 120);
+    const from = oneLine(form.get('page'), 200);
+    const message = subscribe
+      ? `Please add me to the Spellbook email list.${from ? `\n\nSigned up on: ${from}` : ''}`
+      : String(form.get('message') || '').trim().slice(0, 5000);
     const topics = { cmo: 'a CMO role', speaking: 'speaking', other: '' };
     const topic = topics[String(form.get('topic') || '')] || '';
     if (!name || !message || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) return json({ ok: false, error: 'missing' }, 400);
@@ -41,14 +46,14 @@ export default {
       `From: "Owl from clairealmand.com" <${FROM}>`,
       `To: <${env.OWL_TO}>`,
       `Reply-To: ${header(name.replace(/["\\]/g, ''))} <${email}>`,
-      `Subject: ${header(`Owl from ${name}${topic ? ` (${topic})` : ''}`)}`,
+      `Subject: ${header(subscribe ? `New Spellbook subscriber: ${email}` : `Owl from ${name}${topic ? ` (${topic})` : ''}`)}`,
       `Date: ${new Date().toUTCString()}`,
       `Message-ID: <${crypto.randomUUID()}@clairealmand.com>`,
       'MIME-Version: 1.0',
       'Content-Type: text/plain; charset=utf-8',
       'Content-Transfer-Encoding: 8bit',
       '',
-      `${name} <${email}> sent an owl from clairealmand.com:`,
+      subscribe ? `${email} signed up for new Spellbook posts on clairealmand.com:` : `${name} <${email}> sent an owl from clairealmand.com:`,
       '',
       message,
       '',
