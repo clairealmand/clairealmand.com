@@ -210,6 +210,21 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 :root[data-theme="dark"] [data-key="golden"] { --accent: #F2C46B; --accent-text: #F2C46B; }
 :root[data-theme="dark"] [data-key="sunset"] { --accent: #F2836B; --accent-text: #F2836B; }
 :root[data-theme="dark"] [data-key="dusk"] { --accent: #B9A2EA; --accent-text: #B9A2EA; }
+/* Guild seasons (10 Oct): the Guild page runs autumn to summer instead of dawn to night. */
+[data-key="autumn"] { --accent: #A86A12; --accent-text: #72480C; }
+[data-key="winter"] { --accent: #2D68AE; --accent-text: #23538B; }
+[data-key="spring"] { --accent: #B4436E; --accent-text: #8E3256; }
+[data-key="summer"] { --accent: #2F7A3E; --accent-text: #24602F; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-key="autumn"] { --accent: #F2C46B; --accent-text: #F2C46B; }
+  :root:not([data-theme="light"]) [data-key="winter"] { --accent: #A9CBEF; --accent-text: #A9CBEF; }
+  :root:not([data-theme="light"]) [data-key="spring"] { --accent: #F2A7C3; --accent-text: #F2A7C3; }
+  :root:not([data-theme="light"]) [data-key="summer"] { --accent: #9BD69A; --accent-text: #9BD69A; }
+}
+:root[data-theme="dark"] [data-key="autumn"] { --accent: #F2C46B; --accent-text: #F2C46B; }
+:root[data-theme="dark"] [data-key="winter"] { --accent: #A9CBEF; --accent-text: #A9CBEF; }
+:root[data-theme="dark"] [data-key="spring"] { --accent: #F2A7C3; --accent-text: #F2A7C3; }
+:root[data-theme="dark"] [data-key="summer"] { --accent: #9BD69A; --accent-text: #9BD69A; }
 .ch.night .stamp, .ch.night .text-link { color: #F2C46B; }
 .clock .orb { background: var(--orb, #FFD27A); }
 
@@ -712,7 +727,7 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 .text-link:hover, .text-link:focus-visible, .card:is(:hover, :focus-within) .go, .issue:is(:hover, :focus-within) .go {
   color: var(--swap-blue) !important; background-color: var(--swap-blue-glow); box-shadow: 0 0 0 3px var(--swap-blue-glow);
 }
-:is([data-key="morning"], [data-key="midday"], [data-key="dusk"]) :is(.text-link:is(:hover, :focus-visible), :is(.card, .issue):is(:hover, :focus-within) .go) {
+:is([data-key="morning"], [data-key="midday"], [data-key="dusk"], [data-key="winter"], [data-key="summer"]) :is(.text-link:is(:hover, :focus-visible), :is(.card, .issue):is(:hover, :focus-within) .go) {
   color: var(--swap-gold) !important; background-color: var(--swap-gold-glow); box-shadow: 0 0 0 3px var(--swap-gold-glow);
 }
 .hero .proof a:hover, .hero .proof a:focus-visible { color: #9CC8F5; background-color: rgba(12, 10, 26, 0.45); box-shadow: 0 0 0 3px rgba(12, 10, 26, 0.45); }

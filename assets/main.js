@@ -4,7 +4,7 @@
   var photos = document.querySelectorAll('.photos .ph');
   var clock = document.querySelector('.clock');
   var clockText = document.getElementById('clock-text');
-  var orbs = { dawn: '#F4A07F', early: '#F7B98A', morning: '#FFE29A', midday: '#FFF2B8', golden: '#F2C46B', sunset: '#F2836B' };
+  var orbs = { dawn: '#F4A07F', early: '#F7B98A', morning: '#FFE29A', midday: '#FFF2B8', golden: '#F2C46B', sunset: '#F2836B', autumn: '#F2C46B', winter: '#DCEBFA', spring: '#F7C6D9', summer: '#B8E6A0' };
   var current = '';
   var byKey = {}, order = [];
   photos.forEach(function (ph) { var k = ph.getAttribute('data-key'); byKey[k] = ph; order.push(k); });
