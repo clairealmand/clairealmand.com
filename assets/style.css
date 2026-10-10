@@ -691,3 +691,14 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 :root[data-theme="light"] .owl-form input:focus, :root[data-theme="light"] .owl-form textarea:focus, :root[data-theme="light"] .owl-form select:focus { outline-color: #A86A12; }
 :root[data-theme="light"] .owl-form select option { background: #FFFFFF; color: var(--ink); }
 :root[data-theme="light"] .friends span { color: var(--muted); }
+
+/* QA polish: buttons stay on one line, labels wrap evenly instead of leaving one word behind, and the small nav links get a finger-sized tap area. */
+.btn { white-space: nowrap; }
+@media (max-width: 400px) { .btn { padding-inline: 1.05rem; } }
+.stamp { display: block; line-height: 1.55; text-wrap: balance; }
+.speak-teaser .stamp { display: inline; }
+.kind { text-wrap: balance; }
+.hero .tag .seg { display: inline-block; }
+.nw { white-space: nowrap; }
+.topbar a:not(.home) { position: relative; }
+.topbar a:not(.home)::after { content: ""; position: absolute; inset: -0.4rem -0.35rem; }

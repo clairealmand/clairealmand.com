@@ -187,7 +187,7 @@
   if ('IntersectionObserver' in window) {
     var seen = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); seen.unobserve(en.target); } });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.1 });
     anims.forEach(function (el) { seen.observe(el); });
   } else {
     anims.forEach(function (el) { el.classList.add('in'); });
