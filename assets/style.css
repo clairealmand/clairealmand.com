@@ -1159,3 +1159,35 @@ footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing
 .card.flipcard .fc-inner { height: 100%; }
 /* Flipped portrait photo: same outline as the front, in the section's own color */
 .portrait .back.photo { box-shadow: 0 0 0 2px var(--accent-text, var(--accent)), 0 14px 40px rgba(20,14,40,0.25); }
+
+/* Calmer home (10 Oct 2026): leader-first hero with the portrait, plain result tiles, one newest post. */
+.hero .hero-me { grid-template-columns: minmax(0, 1fr) 220px; align-items: end; gap: 1.25rem 2.5rem; }
+.hero .hero-text { display: grid; gap: 1.25rem; min-width: 0; }
+.hero .hero-me .portrait { margin-bottom: 0.5rem; }
+@media (max-width: 760px) {
+  .hero .hero-me { grid-template-columns: minmax(0, 1fr); }
+  .hero .hero-me .portrait { order: -1; width: 128px; margin-bottom: 0; }
+}
+.card.tile:hover { transform: none; border-color: var(--rule); box-shadow: none; }
+.card.tile .text-link { font-size: 0.9rem; font-weight: 600; justify-self: start; }
+.card.tile .text-link::after, .issue.latest .text-link::after { content: ' →'; }
+.issue.latest { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); max-width: 44rem; margin-block: 0.5rem 0.25rem; }
+.issue.latest:hover { transform: none; border-color: var(--rule); box-shadow: none; }
+.issue.latest .art { aspect-ratio: auto; min-height: 180px; }
+.issue.latest .body { align-content: center; }
+.issue.latest .text-link { font-weight: 600; justify-self: start; }
+@media (max-width: 560px) { .issue.latest { grid-template-columns: minmax(0, 1fr); } .issue.latest .art { aspect-ratio: 4 / 3; min-height: 0; } }
+#rarecraft .guild { margin-block: 0.5rem; }
+body:not(.sub) main > .ch { padding-block: 9vh; }
+@media (max-width: 680px) {
+  .hero.ch-hero .wrap { padding-bottom: 5rem; }
+  .card.tile > p { display: none; }
+  .card.tile { gap: 0.4rem; padding: 1rem 1.1rem; }
+  #rarecraft .member .beats, #rarecraft .member .links { display: none; }
+  #rarecraft .member { padding: 0.8rem 1rem; }
+}
+/* On phones the clock shrinks to its coloured dot, so it never sits on text or buttons. */
+@media (max-width: 680px) {
+  .clock { padding: 0.45rem; gap: 0; }
+  .clock #clock-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
