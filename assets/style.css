@@ -1085,3 +1085,22 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .quote-nav button:disabled { opacity: 0.3; cursor: default; }
 @media (max-width: 900px) { .quote-slider .quotes { grid-auto-columns: calc((100% - 0.9rem) / 2); } }
 @media (max-width: 680px) { .quote-slider .quotes { grid-template-columns: none; grid-auto-columns: 85%; } }
+
+/* Spellbook shelf cards flip in place too (10 Oct 2026): the front is the cover, the back carries the teaser and one short link */
+.issue.flipcard { border: 0; overflow: visible; perspective: 1000px; display: block; }
+.issue.flipcard:hover { transform: none; box-shadow: none; }
+.issue.flipcard .fc-inner { height: 100%; }
+.issue.flipcard .fc-front, .issue.flipcard .fc-back { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.issue.flipcard .fc-front { position: relative; display: grid; grid-template-rows: auto 1fr; align-content: start; cursor: pointer; transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+.issue.flipcard:hover .fc-front { border-color: var(--accent-text, var(--accent)); transform: translateY(-3px); box-shadow: 0 10px 24px -14px rgba(20, 14, 40, 0.45); }
+.issue.flipcard:hover .art { transform: none; }
+.issue.flipcard .fc-front:hover .art { transform: scale(1.06); }
+.issue.flipcard button.more { all: unset; cursor: pointer; }
+.issue.flipcard button.more::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.issue.flipcard button.more:focus-visible::after { outline: 3px solid #F2C46B; outline-offset: 2px; }
+.issue.flipcard .fc-front .go::after { content: "↻"; display: inline-block; margin-left: 0.35em; }
+.issue.flipcard .go { text-decoration: none; }
+.issue.flipcard .fc-back { display: grid; align-content: center; gap: 0.6rem; padding: 1.25rem; border-color: var(--accent-text, var(--accent)); background: rgba(242,196,107,0.08); }
+.issue.flipcard .fc-back .fc-title { font-family: var(--display); font-size: 1.2rem; line-height: 1.2; color: inherit; }
+.issue.flipcard .fc-back p { margin: 0; font-size: 0.9rem; }
+@media (prefers-reduced-motion: reduce) { .issue.flipcard .fc-front, .issue.flipcard .art { transition: none; transform: none !important; } }
