@@ -1150,3 +1150,10 @@ footer.site-foot .foot-copy { font-size: 0.78rem; color: #9C95B8; letter-spacing
   .timeline li { padding-top: 0; }
   .timeline li::before { left: -2rem; top: 0.2rem; }
 }
+
+/* Scenic route: every item gets the same padded box, so the hover outline sits evenly around the text and all items in a row are the same height */
+.timeline .flipcard .fc-inner { height: calc(100% + 0.5rem); margin: -0.5rem -0.55rem 0; }
+.timeline .flipcard .fc-front, .timeline .flipcard .fc-back { padding: 0.5rem 0.55rem 0.6rem; border: 1px solid transparent; }
+.timeline .flipcard .fc-back { border-color: var(--accent-text, var(--accent)); }
+/* Case-study cards: every card in a row is the same height */
+.card.flipcard .fc-inner { height: 100%; }
