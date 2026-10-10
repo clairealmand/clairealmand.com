@@ -941,27 +941,42 @@ footer.site-foot ul a:hover, footer.site-foot ul a:focus-visible { color: #FFD27
 .beat .dot.q::before { content: "✦"; color: #E0A93E; font-size: 1.2rem; line-height: 1; }
 .js .rhythm[data-anim] .wk { opacity: 0; transform: scale(.8); transition: opacity .35s ease, transform .35s ease; transition-delay: calc(var(--i) * 0.08s); }
 .js .rhythm.in .wk { opacity: 1; transform: none; }
-/* Whole team: Claire at the hub, the services Rarecraft can add around her */
-.wheel { position: relative; width: min(100%, 30rem); aspect-ratio: 1; margin: 0.5rem auto 0.25rem; }
-.wheel::before { content: ""; position: absolute; inset: 10%; border-radius: 50%; border: 1px dashed #E0A93E; }
-.wheel .hub { position: absolute; left: 50%; top: 50%; width: 7.5rem; height: 7.5rem; transform: translate(-50%, -50%); border-radius: 50%; display: grid; place-content: center; text-align: center; background: radial-gradient(circle at 50% 40%, #F2C46B, #E0A93E); color: #1C1830; box-shadow: 0 10px 30px rgba(20,14,40,0.2); }
-.wheel .hub b { font-family: var(--display); font-size: 1.5rem; font-weight: 600; line-height: 1; }
-.wheel .hub span { font-size: 0.85rem; }
-.wheel ul { list-style: none; margin: 0; padding: 0; }
-.wheel li { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); padding: 0.45rem 0.85rem; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); font-size: 0.88rem; white-space: nowrap; box-shadow: 0 4px 14px rgba(20,14,40,0.08); }
-.js .team-wheel[data-anim] li { opacity: 0; transform: translate(-50%, -50%) scale(.7); transition: opacity .4s ease, transform .4s ease; transition-delay: calc(var(--i) * 0.12s + 0.2s); }
-.js .team-wheel.in li { opacity: 1; transform: translate(-50%, -50%); }
+/* Whole team: a sunburst. Claire at the core, co-founders on the inner ring, specialists on the outer ring */
+.wheel { width: min(100%, 38rem); margin: 0.25rem auto 0; }
+.sunburst { display: block; width: 100%; height: auto; overflow: visible; }
+.sunburst .ring { fill: none; stroke: #E0A93E; stroke-width: 1.2; stroke-dasharray: 4 6; opacity: .7; }
+.sunburst .ray { stroke: #E0A93E; stroke-width: 1.6; stroke-dasharray: 3 5; }
+.sunburst .flare { stroke: #F2C46B; stroke-width: 2; stroke-linecap: round; opacity: .6; }
+.sunburst .link { stroke: #E0A93E; stroke-width: 2; }
+.sunburst .core { fill: #E8B54F; }
+.sunburst .core-glow { fill: #F2C46B; opacity: .18; }
+.sunburst .core-name { font-family: var(--display); font-size: 30px; font-weight: 600; fill: #1C1830; }
+.sunburst .core-sub { font-family: var(--body); font-size: 15px; fill: #1C1830; }
+.sunburst .pill rect { fill: var(--paper); stroke: var(--rule); }
+.sunburst .pill.co rect { stroke: #E0A93E; stroke-width: 1.5; }
+.sunburst .pill text { font-family: var(--body); font-size: 16px; fill: var(--ink); }
+.sunburst .pill.co text { font-weight: 600; }
+.wheel-key { margin: 0.25rem auto 0; max-width: 38rem; text-align: center; font-size: 0.95rem; }
+.tiers { display: none; }
+.js .team-wheel[data-anim] .ray, .js .team-wheel[data-anim] .flare { transform-origin: 320px 300px; transform: scale(.3); opacity: 0; transition: transform .7s ease, opacity .7s ease; transition-delay: calc(var(--i) * 0.06s); }
+.js .team-wheel[data-anim] .pill { opacity: 0; transition: opacity .5s ease; transition-delay: calc(var(--i) * 0.12s + 0.3s); }
+.js .team-wheel.in .ray, .js .team-wheel.in .flare { transform: none; opacity: 1; }
+.js .team-wheel.in .flare { opacity: .6; }
+.js .team-wheel.in .pill { opacity: 1; }
 .team-wheel .btn-row { justify-content: center; }
 @media (max-width: 640px) {
   .beats { grid-template-columns: minmax(0, 1fr); }
   .weeks { gap: 0.2rem; } .wk { height: 1.8rem; border-radius: 6px; }
-  .wheel { aspect-ratio: auto; width: 100%; display: grid; gap: 0.8rem; justify-items: center; }
-  .wheel::before { display: none; }
-  .wheel .hub { position: static; transform: none; width: 6rem; height: 6rem; }
-  .wheel ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; }
-  .wheel li, .js .team-wheel[data-anim] li, .js .team-wheel.in li { position: static; transform: none; }
+  .sunburst { display: none; }
+  .tiers { display: grid; gap: 0.6rem; justify-items: center; }
+  .tier { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; position: relative; }
+  .tier + .tier::before { content: ""; position: absolute; top: -0.6rem; left: 50%; width: 1px; height: 0.6rem; background: #E0A93E; }
+  .tier span { padding: 0.4rem 0.8rem; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); font-size: 0.88rem; }
+  .tier:nth-child(2) span { border-color: #E0A93E; font-weight: 600; }
+  .core-t { width: 5.5rem; height: 5.5rem; border-radius: 50%; place-content: center; flex-direction: column; align-items: center; gap: 0; background: radial-gradient(circle at 50% 40%, #F2C46B, #E0A93E); color: #1C1830; font-size: 0.85rem; }
+  .core-t b { font-family: var(--display); font-size: 1.4rem; line-height: 1; }
 }
-@media (prefers-reduced-motion: reduce) { .js .rhythm[data-anim] .wk, .js .team-wheel[data-anim] li { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .js .rhythm[data-anim] .wk, .js .team-wheel[data-anim] .ray, .js .team-wheel[data-anim] .flare, .js .team-wheel[data-anim] .pill { transition: none; } }
 /* Align the legend with the weeks: both use the same 3 columns, each split into 4 week slots */
 .weeks, .beats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; max-width: 44rem; }
 .weeks .month { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem; }
