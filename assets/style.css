@@ -1268,3 +1268,16 @@ body:not(.sub) main > .ch { padding-block: 9vh; }
 .skills li.dim { opacity: 0.45; }
 .skills li.hit { background: color-mix(in srgb, var(--accent) 38%, transparent); border-color: var(--accent); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .learned, .skills li { transition: none; } }
+
+/* Story: each role's result, and a summary under the filters that links straight to it. */
+.stop .win { font-weight: 600; color: var(--accent-text, var(--accent)); }
+.thread-sum { margin-top: 1.4rem; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+.sum-head { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.6rem; }
+.sum-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; max-width: 46rem; }
+.sum-list a { display: grid; grid-template-columns: 3.2rem 1fr auto; column-gap: 0.8rem; align-items: baseline; padding: 0.4rem 0.5rem; border-radius: 8px; color: var(--ink); text-decoration: none; }
+.sum-list a:hover, .sum-list a:focus-visible { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.sum-list .yr { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+.sum-list b { font-weight: 600; }
+.sum-list span:not(.yr) { grid-column: 2; color: var(--muted); font-size: 0.92rem; }
+.sum-list i { grid-column: 3; grid-row: 1; font-style: normal; font-size: 0.78rem; padding: 0.15rem 0.6rem; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); white-space: nowrap; }
+@media (max-width: 600px) { .sum-list a { grid-template-columns: 2.8rem 1fr; } .sum-list i { grid-column: 2; grid-row: auto; justify-self: start; margin-top: 0.25rem; } }
