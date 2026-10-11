@@ -318,6 +318,13 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
   .honors ul { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .stop { transition: none; } }
+/* Story page: what each chapter taught me, with the skills as quiet tags. */
+.learned { margin: 1.8rem 0 0 2rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); max-width: 42rem; display: grid; gap: 0.6rem; }
+.learned p { margin: 0; }
+.skills { list-style: none; margin: 0.2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skills li { font-size: 0.85rem; line-height: 1.3; padding: 0.3rem 0.75rem; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+@media (max-width: 600px) { .learned { margin-left: 0; } }
+
 @media (max-width: 440px) {
   .topbar .wrap { gap: 0.4rem 0.9rem; font-size: 0.84rem; }
   .topbar .home { font-size: 1.05rem; }
