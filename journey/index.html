@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261011b">
+<link rel="stylesheet" href="/assets/style.css?v=20261011c">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -70,7 +70,7 @@
 
 <nav class="topbar" aria-label="Site"><div class="wrap"><a class="home" href="/">Claire Almand</a><a href="/cmo/" data-cta="work_nav">Work</a><a href="/journey/" aria-current="page">Story</a><a href="/spellbook/">Spellbook</a><a href="/#owl" data-cta="contact_nav">Contact</a><button type="button" class="theme-toggle" aria-label="Day to night" aria-pressed="false" title="Day to night"><svg class="sun" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="moon" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg></button></div></nav>
 
-<main>
+<main data-view="roles">
   <header class="ch map-intro" data-key="dawn" data-clock="2011" data-name="Dawn">
     <div class="wrap"><div class="panel">
       <span class="stamp">The scenic route</span>
@@ -82,6 +82,10 @@
         <div><dt>Results</dt><dd><a class="text-link" href="#mpower-arc">About 23× growth</a> in loan applications and disbursed loan volume, 2018 to 2025. <a class="text-link" href="/spells/paid-ads-habit/">Acquisition cost down 90%</a>. Revenue up 1.8× on a flat budget.</dd></div>
         <div><dt>Education</dt><dd>MBA, University of Maryland. B.A. in Psychology, Swarthmore.</dd></div>
       </dl>
+      <div class="view-toggle" role="group" aria-label="Show on the timeline">
+        <button type="button" data-v="roles" aria-pressed="true">Positions</button>
+        <button type="button" data-v="cases" aria-pressed="false">Case studies</button>
+      </div>
       <div class="filters" role="group" aria-label="Highlight roles and skills">
         <span class="stamp">Highlight by skill</span>
         <button type="button" class="chip" data-f="all" aria-pressed="true">Everything</button>
@@ -92,17 +96,6 @@
         <button type="button" class="chip" data-f="brand" aria-pressed="false">Brand and content</button>
         <button type="button" class="chip" data-f="data" aria-pressed="false">Analytics and operations</button>
         <button type="button" class="chip" data-f="psych" aria-pressed="false">Customer psychology</button>
-      </div>
-      <div class="thread-sum" aria-live="polite">
-        <p class="sum-head">Results with a full case study</p>
-        <ul class="sum-list">
-          <li><a href="#relaunch"><span class="yr">2021</span><b>3× qualified leads within six months</b><span>Restarting the engine</span></a></li>
-          <li><a href="#trust"><span class="yr">2021</span><b>4× late-funnel conversions</b><span>“Is this a scam?”</span></a></li>
-          <li><a href="#paid-ads"><span class="yr">2022</span><b>Acquisition cost down 90%</b><span>Breaking the paid-ads habit</span></a></li>
-          <li><a href="#human-touch"><span class="yr">2024</span><b>33%+ of leads qualified, against 4%</b><span>The human touch</span></a></li>
-          <li><a href="#women-who-dream"><span class="yr">2025</span><b>2.4× qualified leads from women</b><span>Women Who Dream</span></a></li>
-          <li><a href="#nepal"><span class="yr">2025</span><b>1,500 qualified prospects at the first event</b><span>Opening Nepal</span></a></li>
-        </ul>
       </div>
     </div></div>
   </header>
@@ -156,9 +149,10 @@
     <div class="wrap"><div class="panel">
       <span class="stamp">2021 to 2023 · The comeback</span>
       <ol class="stops">
-        <li class="stop" id="relaunch" data-tags="growth teams strategy data"><span class="yr">May 2021 to Oct 2022</span><h2>Senior Manager: restarting the engine</h2><span class="win">3× qualified leads within six months</span><p>After a year-long pandemic shutdown, I planned and led the relaunch and rebuilt the team across performance marketing, analytics, SEO, and content. Qualified leads tripled from pre-pandemic levels within six months. I also hired Sagar Somani, now my Rarecraft co-founder.</p><a class="text-link" href="/spells/restarting-the-engine/">Read the spell</a></li>
-        <li class="stop" id="trust" data-tags="psych brand intl"><span class="yr">2021 to 2022</span><h2>“Is this a scam?”</h2><span class="win">4× late-funnel conversions</span><p>Trustpilot and live Q&amp;As for students meeting a new brand for the first time. I hosted more than 90% of the first 25+ sessions; late-funnel conversions grew 4×.</p><a class="text-link" href="/spells/is-this-a-scam/">Read the spell</a></li>
-        <li class="stop" id="associate-director" data-tags="growth teams strategy data intl"><span class="yr">Oct 2022 to Nov 2025</span><h2>Associate Director: same budget, more volume</h2><span class="win">1.8× revenue on a flat budget</span><p>Promoted to Associate Director. In 2023, on a flat budget, revenue grew 1.8× and qualified leads 2.3×. When Google's financial-services rules threatened key markets, I kept our ads running in 15 countries. A Built In Moxie Award for Women in Tech followed.</p></li>
+        <li class="stop" id="senior-manager" data-tags="growth teams strategy data"><span class="yr">May 2021 to Oct 2022</span><h2>Senior Manager, Marketing</h2><span class="win">Led the post-pandemic relaunch</span><p>After a year-long pandemic shutdown, I planned and led the relaunch and rebuilt the team across performance marketing, analytics, SEO, and content. I also hired Sagar Somani, now my Rarecraft co-founder.</p></li>
+        <li class="stop" id="relaunch" data-kind="case" data-tags="growth teams strategy data"><span class="yr">2021</span><h2>Restarting the engine</h2><span class="win">3× qualified leads within six months</span><p>MPOWER restarted lending after a year-long shutdown, and we had to win students back from a standing start. Qualified leads tripled from pre-pandemic levels within six months.</p><a class="text-link" href="/spells/restarting-the-engine/">Read the case study</a></li>
+        <li class="stop" id="trust" data-kind="case" data-tags="psych brand intl"><span class="yr">2021 to 2022</span><h2>“Is this a scam?”</h2><span class="win">4× late-funnel conversions</span><p>Trustpilot and live Q&amp;As for students meeting a new brand for the first time. I hosted more than 90% of the first 25+ sessions; late-funnel conversions grew 4×.</p><a class="text-link" href="/spells/is-this-a-scam/">Read the case study</a></li>
+        <li class="stop" id="associate-director" data-tags="growth teams strategy data intl"><span class="yr">Oct 2022 to Nov 2025</span><h2>Associate Director, Marketing</h2><span class="win">1.8× revenue on a flat budget</span><p>Promoted to Associate Director. In 2023, on a flat budget, revenue grew 1.8× and qualified leads 2.3×. When Google's financial-services rules threatened key markets, I kept our ads running in 15 countries. A Built In Moxie Award for Women in Tech followed.</p></li>
       </ol>
       <div class="learned"><span class="stamp">What I learned</span><p>A relaunch means rebuilding the forecast, the team, and the message at the same time.</p><ul class="skills" aria-label="Skills"><li data-tags="strategy">Relaunch planning</li><li data-tags="teams">Team rebuilding</li><li data-tags="teams growth">Agency management</li><li data-tags="data strategy">Budget management</li><li data-tags="intl growth">Ad policy across 15 countries</li><li data-tags="psych brand">Trust building and live Q&amp;As</li></ul></div>
     </div></div>
@@ -168,10 +162,10 @@
     <div class="wrap"><div class="panel">
       <span class="stamp">2022 to 2025 · Growing up, not just out</span>
       <ol class="stops">
-        <li class="stop" id="paid-ads" data-tags="growth data strategy"><span class="yr">2022 to 2025</span><h2>Breaking the paid-ads habit</h2><span class="win">Acquisition cost down 90%</span><p>Shifted investment to organic search, referrals, and student ambassadors as each matured. Customer acquisition cost fell 90%, from 10¢ to 1¢ per dollar lent.</p><a class="text-link" href="/spells/paid-ads-habit/">Read the spell</a></li>
+        <li class="stop" id="paid-ads" data-kind="case" data-tags="growth data strategy"><span class="yr">2022 to 2025</span><h2>Breaking the paid-ads habit</h2><span class="win">Acquisition cost down 90%</span><p>Shifted investment to organic search, referrals, and student ambassadors as each matured. Customer acquisition cost fell 90%, from 10¢ to 1¢ per dollar lent.</p><a class="text-link" href="/spells/paid-ads-habit/">Read the case study</a></li>
         <li class="stop" id="india-team" data-tags="teams intl"><span class="yr">2022 to 2025</span><h2>Building the India team</h2><span class="win">42% women on the team, 8+ mentored</span><p>By 2023, our India digital team had reached 42% female representation, and I had mentored 8+ women through coaching and stretch assignments. I also spent five and a half months onsite in India on a leadership rotation.</p></li>
-        <li class="stop" id="women-who-dream" data-tags="psych brand growth data"><span class="yr">2025</span><h2>Women Who Dream</h2><span class="win">2.4× qualified leads from women</span><p>The data showed women converted better at every stage of the funnel. I spotted the opportunity and partnered with Shreya Paul to launch a campaign for them. Qualified leads from women grew 2.4×.</p><a class="text-link" href="/spells/women-who-dream/">Read the spell</a></li>
-        <li class="stop" id="human-touch" data-tags="intl psych growth"><span class="yr">2024 to 2025</span><h2>The human touch</h2><span class="win">33%+ of leads qualified, against 4%</span><p>Our team&#39;s localized follow-up in South Asia turned 33%+ of social media leads into qualified applicants, against 4% without personal follow-up.</p><a class="text-link" href="/spells/the-human-touch/">Read the spell</a></li>
+        <li class="stop" id="women-who-dream" data-kind="case" data-tags="psych brand growth data"><span class="yr">2025</span><h2>Women Who Dream</h2><span class="win">2.4× qualified leads from women</span><p>The data showed women converted better at every stage of the funnel. I spotted the opportunity and partnered with Shreya Paul to launch a campaign for them. Qualified leads from women grew 2.4×.</p><a class="text-link" href="/spells/women-who-dream/">Read the case study</a></li>
+        <li class="stop" id="human-touch" data-kind="case" data-tags="intl psych growth"><span class="yr">2024 to 2025</span><h2>The human touch</h2><span class="win">33%+ of leads qualified, against 4%</span><p>Our team&#39;s localized follow-up in South Asia turned 33%+ of social media leads into qualified applicants, against 4% without personal follow-up.</p><a class="text-link" href="/spells/the-human-touch/">Read the case study</a></li>
       </ol>
       <div class="learned"><span class="stamp">What I learned</span><p>Growing up meant tracing where the budget worked, and building a team that could make those calls without me.</p><ul class="skills" aria-label="Skills"><li data-tags="data">Attribution</li><li data-tags="growth data">Customer acquisition cost</li><li data-tags="growth">Organic and referral growth</li><li data-tags="psych data">Conversion research</li><li data-tags="intl psych">Localized follow-up</li><li data-tags="teams">Mentoring</li></ul></div>
     </div></div>
@@ -182,7 +176,7 @@
       <span class="stamp">2025 to 2026 · Director</span>
       <ol class="stops">
         <li class="stop" id="director" data-tags="growth teams data"><span class="yr">Nov 2025 to Jul 2026</span><h2>Director, Growth Marketing</h2><span class="win">A one-hour report cut to five minutes</span><p>Led global growth marketing across paid, organic, affiliate, and country teams. I rebuilt paid advertising with sharper targeting, measurement, and creative, and brought AI into the team's daily work. One recurring report went from an hour to five minutes.</p></li>
-        <li class="stop" id="nepal" data-tags="intl brand strategy teams"><span class="yr">2025 to 2026</span><h2>Bina dhito: opening Nepal</h2><span class="win">1,500 qualified prospects at the first event</span><p>I hired the agency and market lead, launched MPOWER in Nepal around one message, and explained it myself on Kantipur TV, Radio Kantipur, and NTV World. Our first event drew 1,500 qualified prospects and turned away 1,500 more.</p><a class="text-link" href="/spells/opening-nepal/">Read the spell</a></li>
+        <li class="stop" id="nepal" data-kind="case" data-tags="intl brand strategy teams"><span class="yr">2025 to 2026</span><h2>Bina dhito: opening Nepal</h2><span class="win">1,500 qualified prospects at the first event</span><p>I hired the agency and market lead, launched MPOWER in Nepal around one message, and explained it myself on Kantipur TV, Radio Kantipur, and NTV World. Our first event drew 1,500 qualified prospects and turned away 1,500 more.</p><a class="text-link" href="/spells/opening-nepal/">Read the case study</a></li>
         <li class="stop" id="mpower-arc" data-tags="teams growth"><span class="yr">2017 to 2026</span><h2>The whole MPOWER arc</h2><span class="win">About 23× growth in applications and loan volume</span><p>Promoted five times, from MBA intern to Director. Digital marketing grew from two people to 10 staff, six agencies, and 50+ contractors, and our team grew loan applications and disbursed loan volume about 23× (April to December, 2018 compared with 2025).</p></li>
       </ol>
       <div class="learned"><span class="stamp">What I learned</span><p>The job became choosing the bets: what to bring in-house, where AI saves hours, which market to open next, and when to explain it on national TV myself.</p><ul class="skills" aria-label="Skills"><li data-tags="growth">In-house paid media</li><li data-tags="data">AI workflows</li><li data-tags="intl strategy">Market entry</li><li data-tags="brand">Press and broadcast</li><li data-tags="teams">Building a marketing function</li></ul></div>
@@ -235,7 +229,7 @@
     <div class="foot-bottom"><p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p><p class="foot-copy">© 2026 Claire Almand. All rights reserved.</p></div>
   </div></footer>
 <script src="/assets/main.js?v=20261010v" defer></script>
-<script src="/assets/journey.js?v=20261011b" defer></script>
+<script src="/assets/journey.js?v=20261011c" defer></script>
 <script src="/assets/signup.js?v=20261010v" defer></script>
 </body>
 </html>
