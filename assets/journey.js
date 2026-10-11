@@ -10,7 +10,7 @@
 
   // Chapters with no case study step aside in the case-study view.
   document.querySelectorAll('section.ch').forEach(function (sec) {
-    if (!sec.querySelector('.stop[data-kind="case"]')) sec.classList.add('no-cases');
+    if (!sec.querySelector('.stop[data-kind="case"], .stop[data-kind="both"]')) sec.classList.add('no-cases');
   });
 
   function setView(v) {
@@ -20,6 +20,11 @@
   views.forEach(function (b) {
     b.addEventListener('click', function () {
       setView(b.getAttribute('data-v'));
+      // If the reader has scrolled into the timeline, bring them back to its top so the change is visible.
+      var sw = document.querySelector('.board-switch');
+      if (sw && sw.getBoundingClientRect().top <= 20) {
+        window.scrollTo({ top: Math.max(0, sw.offsetTop - 10), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
       if (window.gtag) gtag('event', 'story_view', { view: b.getAttribute('data-v') });
     });
   });

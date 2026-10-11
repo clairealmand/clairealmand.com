@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261011c">
+<link rel="stylesheet" href="/assets/style.css?v=20261011d">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -82,10 +82,6 @@
         <div><dt>Results</dt><dd><a class="text-link" href="#mpower-arc">About 23× growth</a> in loan applications and disbursed loan volume, 2018 to 2025. <a class="text-link" href="/spells/paid-ads-habit/">Acquisition cost down 90%</a>. Revenue up 1.8× on a flat budget.</dd></div>
         <div><dt>Education</dt><dd>MBA, University of Maryland. B.A. in Psychology, Swarthmore.</dd></div>
       </dl>
-      <div class="view-toggle" role="group" aria-label="Show on the timeline">
-        <button type="button" data-v="roles" aria-pressed="true">Roles</button>
-        <button type="button" data-v="cases" aria-pressed="false">Results</button>
-      </div>
       <div class="filters" role="group" aria-label="Highlight roles and skills">
         <span class="stamp">Highlight by skill</span>
         <button type="button" class="chip" data-f="all" aria-pressed="true">Everything</button>
@@ -99,6 +95,13 @@
       </div>
     </div></div>
   </header>
+
+  <div class="board-switch"><div class="wrap">
+    <div class="view-toggle" role="group" aria-label="Show on the timeline">
+      <button type="button" data-v="roles" aria-pressed="true">Roles</button>
+      <button type="button" data-v="cases" aria-pressed="false">Results</button>
+    </div>
+  </div></div>
 
   <section class="ch" id="psychology" data-key="dawn" data-clock="2011 to 2013" data-name="Dawn">
     <div class="wrap"><div class="panel">
@@ -177,7 +180,7 @@
       <ol class="stops">
         <li class="stop" id="director" data-tags="growth teams data"><span class="yr">Nov 2025 to Jul 2026</span><h2>Director, Growth Marketing</h2><span class="win">A one-hour report cut to five minutes</span><p>Led global growth marketing across paid, organic, affiliate, and country teams. I rebuilt paid advertising with sharper targeting, measurement, and creative, and brought AI into the team's daily work. One recurring report went from an hour to five minutes.</p></li>
         <li class="stop" id="nepal" data-kind="case" data-tags="intl brand strategy teams"><span class="yr">2025 to 2026</span><h2>Bina dhito: opening Nepal</h2><span class="win">1,500 qualified prospects at the first event</span><p>I hired the agency and market lead, launched MPOWER in Nepal around one message, and explained it myself on Kantipur TV, Radio Kantipur, and NTV World. Our first event drew 1,500 qualified prospects and turned away 1,500 more.</p><a class="text-link" href="/spells/opening-nepal/">Read the case study</a></li>
-        <li class="stop" id="mpower-arc" data-tags="teams growth"><span class="yr">2017 to 2026</span><h2>The whole MPOWER arc</h2><span class="win">About 23× growth in applications and loan volume</span><p>Promoted five times, from MBA intern to Director. Digital marketing grew from two people to 10 staff, six agencies, and 50+ contractors, and our team grew loan applications and disbursed loan volume about 23× (April to December, 2018 compared with 2025).</p></li>
+        <li class="stop" id="mpower-arc" data-kind="both" data-tags="teams growth"><span class="yr">2017 to 2026</span><h2>The whole MPOWER arc</h2><span class="win">About 23× growth in applications and loan volume</span><p>Promoted five times, from MBA intern to Director. Digital marketing grew from two people to 10 staff, six agencies, and 50+ contractors, and our team grew loan applications and disbursed loan volume about 23× (April to December, 2018 compared with 2025).</p></li>
       </ol>
       <div class="learned"><span class="stamp">What I learned</span><p>The job became choosing the bets: what to bring in-house, where AI saves hours, which market to open next, and when to explain it on national TV myself.</p><ul class="skills" aria-label="Skills"><li data-tags="growth">In-house paid media</li><li data-tags="data">AI workflows</li><li data-tags="intl strategy">Market entry</li><li data-tags="brand">Press and broadcast</li><li data-tags="teams">Building a marketing function</li></ul></div>
     </div></div>
@@ -229,7 +232,7 @@
     <div class="foot-bottom"><p class="foot-sign">Built on experience, Oxford commas, and a little bit of sorcery.</p><p class="foot-copy">© 2026 Claire Almand. All rights reserved.</p></div>
   </div></footer>
 <script src="/assets/main.js?v=20261010v" defer></script>
-<script src="/assets/journey.js?v=20261011c" defer></script>
+<script src="/assets/journey.js?v=20261011d" defer></script>
 <script src="/assets/signup.js?v=20261010v" defer></script>
 </body>
 </html>
