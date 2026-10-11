@@ -18,6 +18,8 @@
     var mid = window.innerHeight * 0.5;
     var active = chapters[0];
     for (var i = 0; i < chapters.length; i++) {
+      // Skip chapters a view has hidden; they report a top of 0 and would steal the sky.
+      if (!chapters[i].getClientRects().length) continue;
       if (chapters[i].getBoundingClientRect().top < mid) active = chapters[i];
     }
     var key = active.getAttribute('data-key');
