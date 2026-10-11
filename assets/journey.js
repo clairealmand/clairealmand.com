@@ -1,14 +1,24 @@
-// Skill filters on the scenic route: highlight the stops that carry a thread, dim the rest.
+// Skill filters on the scenic route: highlight the roles and skills that carry a thread, dim the rest.
 (function () {
   var chips = document.querySelectorAll('.filters .chip');
-  var stops = document.querySelectorAll('.stop');
+  var stops = document.querySelectorAll('.stop[data-tags]');
+  var skills = document.querySelectorAll('.skills li[data-tags]');
+  var learned = document.querySelectorAll('.learned');
+  function has(el, f) { return el.getAttribute('data-tags').split(' ').indexOf(f) !== -1; }
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
       var f = chip.getAttribute('data-f');
+      var all = f === 'all';
       chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
-      stops.forEach(function (s) {
-        var on = f === 'all' || s.getAttribute('data-tags').split(' ').indexOf(f) !== -1;
-        s.classList.toggle('dim', !on);
+      stops.forEach(function (s) { s.classList.toggle('dim', !all && !has(s, f)); });
+      skills.forEach(function (li) {
+        var on = !all && has(li, f);
+        li.classList.toggle('hit', on);
+        li.classList.toggle('dim', !all && !on);
+      });
+      // A chapter's lesson stays lit when any of its skills match.
+      learned.forEach(function (box) {
+        box.classList.toggle('dim', !all && !box.querySelector('.skills li.hit'));
       });
     });
   });

@@ -1254,3 +1254,17 @@ body:not(.sub) main > .ch { padding-block: 9vh; }
 /* Speaking: the longer bios stay folded until someone wants them; Copy still copies the full text. */
 .bio-more summary { cursor: pointer; font-size: 0.92rem; color: var(--accent-text, var(--accent)); font-weight: 600; }
 .bio-more[open] summary { margin-bottom: 0.6rem; }
+
+/* Story as a resume: at-a-glance summary, role titles, and skill pills that light up with the filter. */
+.glance { margin: 0.4rem 0 1.4rem; display: grid; gap: 0.55rem; max-width: 44rem; }
+.glance div { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; align-items: baseline; }
+.glance dt { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.glance dd { margin: 0; }
+@media (max-width: 600px) { .glance div { grid-template-columns: 1fr; gap: 0.1rem; } }
+.stop .role { font-style: italic; color: var(--muted); margin-top: -0.2rem; }
+.learned { transition: opacity 0.3s; }
+.learned.dim { opacity: 0.5; }
+.skills li { transition: opacity 0.3s, background-color 0.3s; }
+.skills li.dim { opacity: 0.45; }
+.skills li.hit { background: color-mix(in srgb, var(--accent) 38%, transparent); border-color: var(--accent); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .learned, .skills li { transition: none; } }
