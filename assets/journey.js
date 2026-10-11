@@ -15,6 +15,8 @@
 
   function setView(v) {
     main.setAttribute('data-view', v);
+    // Hidden chapters change which photo belongs on screen, so let the sky re-check.
+    window.dispatchEvent(new Event('scroll'));
     views.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false'); });
   }
   views.forEach(function (b) {
@@ -28,6 +30,24 @@
       if (window.gtag) gtag('event', 'story_view', { view: b.getAttribute('data-v') });
     });
   });
+
+  // Pinned switch: tucks away while reading down so it never sits on the text, returns on any scroll up.
+  var sw = document.querySelector('.board-switch');
+  if (sw) {
+    var lastY = window.scrollY, swTick = false;
+    window.addEventListener('scroll', function () {
+      if (swTick) return;
+      swTick = true;
+      requestAnimationFrame(function () {
+        swTick = false;
+        var y = window.scrollY, pinned = sw.getBoundingClientRect().top <= 20;
+        if (!pinned || y < lastY - 4) sw.classList.remove('tucked');
+        else if (y > lastY + 4) sw.classList.add('tucked');
+        lastY = y;
+      });
+    }, { passive: true });
+    sw.addEventListener('focusin', function () { sw.classList.remove('tucked'); });
+  }
 
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
