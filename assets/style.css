@@ -1286,3 +1286,5 @@ main[data-view="cases"] .stop:not([data-kind="case"]):not([data-kind="both"]),
 main[data-view="cases"] .learned,
 main[data-view="cases"] .honors,
 main[data-view="cases"] section.ch.no-cases { display: none; }
+/* Smallest phones: post cards stack the art above the text instead of squeezing it beside a 120px column. */
+@media (max-width: 360px) { .issue.post { grid-template-columns: minmax(0, 1fr); } .issue.post .art { min-height: 0; aspect-ratio: 16 / 7; } }
