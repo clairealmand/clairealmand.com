@@ -20,7 +20,7 @@
 <link rel="preload" href="/assets/fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin>
 <script>/* Day to night: a visitor's light or dark choice beats their device setting, and sticks between visits. */(function(){var d=document.documentElement,k='ca-theme';try{var t=localStorage.getItem(k);if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}function night(){var t=d.getAttribute('data-theme');return t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)}function sync(){var n=night();document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',n?'true':'false');b.title=n?'Night to day':'Day to night'})}document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.theme-toggle');if(!b)return;var t=night()?'light':'dark';d.setAttribute('data-theme',t);try{localStorage.setItem(k,t)}catch(e){}sync();if(window.gtag)gtag('event','theme_toggle',{theme:t})});document.addEventListener('DOMContentLoaded',sync)})();</script>
-<link rel="stylesheet" href="/assets/style.css?v=20261011f">
+<link rel="stylesheet" href="/assets/style.css?v=20261012a">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -68,6 +68,16 @@
 <p>Then came the part I'm proudest of. I sat down with Kantipur TV, Radio Kantipur and NTV World and answered the questions families actually ask: what happens if I can't pay, and why would anyone lend without property? I did every interview in person, in the studio.</p>
 <p>In March 2026 we co-hosted the International Education &amp; Global Career Summit in Kathmandu. I ran a session on building relationships, which ended in a very loud round of Networking Bingo.</p>
 <h2>What happened</h2>
+<figure class="chart grow-chart dots-chart nepal-chart">
+  <p class="grow-key" aria-hidden="true"><span><i></i>A year earlier</span><span><i class="after"></i>February 2026</span></p>
+  <div class="grow-row" role="img" aria-label="Site traffic from Nepal grew 4 times year over year by February 2026."><p class="grow-label">Site traffic from Nepal</p><div class="grow-bars"><i style="--w:25%"></i><i class="after" style="--w:100%"></i></div><p class="grow-val">4×</p></div>
+  <div class="seats">
+    <p class="grow-label">Our first event, March 2026</p>
+    <div class="dots" role="img" aria-label="Half the dots are lit: 1,500 qualified prospects got in, and 1,500 more were turned away."><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i><i class="on" style="--i:5"></i><i class="on" style="--i:6"></i><i class="on" style="--i:7"></i><i class="on" style="--i:8"></i><i class="on" style="--i:9"></i><i class="on" style="--i:10"></i><i class="on" style="--i:11"></i><i class="on" style="--i:12"></i><i class="on" style="--i:13"></i><i class="on" style="--i:14"></i><i class="on" style="--i:15"></i><i class="on" style="--i:16"></i><i class="on" style="--i:17"></i><i class="on" style="--i:18"></i><i class="on" style="--i:19"></i><i class="on" style="--i:20"></i><i class="on" style="--i:21"></i><i class="on" style="--i:22"></i><i class="on" style="--i:23"></i><i class="on" style="--i:24"></i><i class="on" style="--i:25"></i><i class="on" style="--i:26"></i><i class="on" style="--i:27"></i><i class="on" style="--i:28"></i><i class="on" style="--i:29"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i><i class="out"></i></div>
+    <p class="grow-key seats-key" aria-hidden="true"><span><i class="after"></i>1,500 got in</span><span><i class="hollow"></i>1,500 turned away</span></p>
+  </div>
+  <figcaption>Each dot is 50 people. The summit filled to capacity, and as many again were turned away at the door.</figcaption>
+</figure>
 <p>Site traffic from Nepal grew 4× year over year by February 2026. The summit, our first event, drew 1,500 qualified prospects, and we turned away 1,500 more.</p>
       </div>
       <div class="videos" style="grid-template-columns: minmax(0, 1fr); max-width: 40rem;">
@@ -106,6 +116,7 @@
     </div></div>
   </section>
 </main>
+<script src="/assets/charts.js?v=20261009a" defer></script>
 <script>
 document.querySelectorAll('.video[data-yt]').forEach(function (f) {
   f.querySelector('.video-play').addEventListener('click', function () {

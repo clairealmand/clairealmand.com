@@ -306,6 +306,7 @@ footer ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem
 .stop h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
 .stop p { color: var(--muted); }
 .stop .text-link { justify-self: start; font-size: 0.92rem; }
+.stop p.note { font-size: 0.85rem; font-style: italic; }
 .stop.dim { opacity: 0.5; }
 .ch.night .stop p, .ch.night .stop .yr { color: #B9B3D3; }
 .ch.night .stop::before { background: #0E0C1E; }
@@ -1210,6 +1211,8 @@ body:not(.sub) main > .ch { padding-block: 9vh; }
 @media (max-width: 560px) { .moved-cards .cards, .moved-cards .cards.four { grid-template-columns: minmax(0, 1fr); } }
 .moved-cards .card h3 { font-size: 1.05rem; }
 .moved-cards .btn-row { margin-top: 1rem; }
+.who-cards h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); margin: 0.75rem 0 0.9rem; }
+.who-cards > .soft { margin-top: 1rem; }
 /* No arrow symbols anywhere (Claire, 10 Oct): links that need a marker get a small star. */
 .btn-mini::after { content: ' ✦'; font-size: 0.75em; }
 /* Intro beat and timeline case studies (10 Oct 2026). */
@@ -1288,3 +1291,8 @@ main[data-view="cases"] .honors,
 main[data-view="cases"] section.ch.no-cases { display: none; }
 /* Smallest phones: post cards stack the art above the text instead of squeezing it beside a 120px column. */
 @media (max-width: 360px) { .issue.post { grid-template-columns: minmax(0, 1fr); } .issue.post .art { min-height: 0; aspect-ratio: 16 / 7; } }
+/* Nepal: traffic bar plus a half-full hall of dots */
+.nepal-chart .seats { display: grid; gap: 0.5rem; }
+.nepal-chart .dots { max-width: 18rem; }
+.dots i.out { background: transparent; box-shadow: inset 0 0 0 1.5px var(--bar-base); }
+.grow-key i.hollow { background: transparent; box-shadow: inset 0 0 0 1.5px var(--bar-base); }
