@@ -726,6 +726,8 @@ footer.site-foot .icon-link { color: #E6E1F3; opacity: 1; }
 :root[data-theme="light"] .ch.night .fork, :root[data-theme="light"] .owl-form { border-color: var(--rule); }
 :root[data-theme="light"] .ch.night .stamp, :root[data-theme="light"] .ch.night .text-link, :root[data-theme="light"] .ch.night .fork .icon-link { color: #7A5A12; }
 :root[data-theme="light"] .ch.night .stop::before { background: var(--paper); }
+:root[data-theme="light"] .honors li { color: var(--muted); border-color: var(--rule); }
+:root[data-theme="light"] .honors b { color: var(--ink); }
 :root[data-theme="light"] .owl-form input, :root[data-theme="light"] .owl-form textarea, :root[data-theme="light"] .owl-form select { color: var(--ink); background: rgba(255,255,255,0.7); border-color: #CFC4BC; }
 :root[data-theme="light"] .owl-form input:focus, :root[data-theme="light"] .owl-form textarea:focus, :root[data-theme="light"] .owl-form select:focus { outline-color: #A86A12; }
 :root[data-theme="light"] .owl-form select option { background: #FFFFFF; color: var(--ink); }
