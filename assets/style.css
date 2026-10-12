@@ -1296,3 +1296,14 @@ main[data-view="cases"] section.ch.no-cases { display: none; }
 .nepal-chart .dots { max-width: 18rem; }
 .dots i.out { background: transparent; box-shadow: inset 0 0 0 1.5px var(--bar-base); }
 .grow-key i.hollow { background: transparent; box-shadow: inset 0 0 0 1.5px var(--bar-base); }
+/* Hero: one shared column. The headline's widest line sets the width, and on wide screens the stamp, beats, and intro all end on that same right edge. */
+.hero { --h1: clamp(2.5rem, 6.4vw, 4.9rem); --hero-col: min(100%, calc(var(--h1) * 7.8)); }
+.hero h1 { font-size: var(--h1); max-width: min(100%, calc(var(--h1) * 7.95)); }
+.hero p.intro { text-wrap: pretty; }
+@media (min-width: 1024px) {
+  .hero p.intro, .hero .tag, .hero .hero-stamp { max-width: var(--hero-col); }
+  /* Sized to the headline so each fills the column at its natural spacing; justify only absorbs the last few pixels. */
+  .hero .hero-stamp { font-size: calc(var(--h1) * 0.25); white-space: nowrap; text-align: justify; text-align-last: justify; }
+  .hero .tag { white-space: nowrap; text-align: justify; text-align-last: justify; font-size: calc(var(--h1) * 0.232); }
+  .hero p.intro { text-align: justify; hyphens: none; }
+}
