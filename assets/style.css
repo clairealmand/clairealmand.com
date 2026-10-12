@@ -1307,3 +1307,8 @@ main[data-view="cases"] section.ch.no-cases { display: none; }
   .hero .tag { white-space: nowrap; text-align: justify; text-align-last: justify; font-size: calc(var(--h1) * 0.232); }
   .hero p.intro { text-align: justify; hyphens: none; }
 }
+/* Menu bar scaled up on wide screens so it holds its own next to the hero type. */
+@media (min-width: 1024px) {
+  .topbar .wrap { font-size: 1.1rem; column-gap: 2rem; padding-block: 1.4rem; }
+  .topbar .home { font-size: 1.65rem; }
+}
