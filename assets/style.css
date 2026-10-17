@@ -1314,3 +1314,7 @@ main[data-view="cases"] section.ch.no-cases { display: none; }
   .topbar .wrap { font-size: 1.1rem; column-gap: 2rem; padding-block: 1.4rem; }
   .topbar .home { font-size: 1.65rem; }
 }
+.post-art video { display: block; width: 100%; height: auto; }
+.post-art figcaption { font-size: 0.85rem; color: var(--muted); text-align: center; padding-top: 0.45rem; }
+.post-art.tall { max-width: 24rem; }
+.post-art.tall img { max-height: none; }
