@@ -136,7 +136,7 @@
     });
   }
   // Guild crests: phones have no hover, so wake each animal briefly as its card scrolls into view, and on tap.
-  var members = document.querySelectorAll('.member');
+  var members = document.querySelectorAll('.member, .founder');
   function wake(m, ms) { m.classList.add('awake'); clearTimeout(m._t); m._t = setTimeout(function () { m.classList.remove('awake'); }, ms); }
   members.forEach(function (m) { m.addEventListener('click', function (e) { if (!e.target.closest('a')) wake(m, 2400); }); });
   if (window.matchMedia && matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
